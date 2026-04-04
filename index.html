@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Margenes y ROAS Real para E-commerce | ROA Sense</title>
+    <meta
+      name="description"
+      content="Calcula en tiempo real tu margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio para e-commerce con costos ocultos, pasarelas colombianas y marketing."
+    />
+    <meta
+      name="keywords"
+      content="calculadora ROAS, calculadora margen ecommerce, break even roas, margen neto tienda online, costos ocultos ecommerce, colombia"
+    />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#07111f" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Calculadora de Margenes y ROAS Real para E-commerce"
+    />
+    <meta
+      property="og:description"
+      content="Descubre tu beneficio real por venta, tu margen neto y el ROAS minimo que necesitas para no perder dinero."
+    />
+    <meta property="og:locale" content="es_CO" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              shell: "#07111f",
+              panel: "#0d1728",
+              panelSoft: "#101d31",
+              line: "rgba(148, 163, 184, 0.18)",
+              accent: "#38f2a1",
+              accentSoft: "#1ec8ff",
+              danger: "#ff6b7b",
+              warning: "#ffc857",
+              muted: "#9fb0c9",
+            },
+            fontFamily: {
+              display: [
+                "ui-monospace",
+                "SFMono-Regular",
+                "Cascadia Code",
+                "Consolas",
+                "monospace",
+              ],
+              body: [
+                "\"Segoe UI Variable Text\"",
+                "Aptos",
+                "\"Trebuchet MS\"",
+                "sans-serif",
+              ],
+            },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(56, 242, 161, 0.14), 0 18px 48px rgba(6, 10, 18, 0.45)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top, rgba(30, 200, 255, 0.12), transparent 28%),
+          radial-gradient(circle at 80% 0%, rgba(56, 242, 161, 0.14), transparent 20%),
+          linear-gradient(180deg, #07111f 0%, #050b14 100%);
+      }
+
+      .glass {
+        background: rgba(13, 23, 40, 0.82);
+        backdrop-filter: blur(16px);
+      }
+
+      .metric-grid {
+        background-image:
+          linear-gradient(rgba(159, 176, 201, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(159, 176, 201, 0.08) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      .safe-bottom {
+        padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Calculadora de Margenes y ROAS Real para E-commerce",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "es-CO",
+        "description": "Herramienta web gratuita para calcular margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio en e-commerce.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Calculo en tiempo real",
+          "ROAS de equilibrio",
+          "Margen bruto y neto",
+          "Presets de pasarelas colombianas",
+          "Calculo de beneficio real por venta"
+        ]
+      }
+    </script>
+  </head>
+  <body class="font-body text-slate-100 antialiased">
+    <a
+      href="#calculadora"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-slate-950"
+    >
+      Saltar al contenido principal
+    </a>
+
+    <header class="mx-auto max-w-7xl px-4 pb-10 pt-5 sm:px-6 lg:px-8">
+      <div
+        class="glass flex items-center justify-between rounded-full border border-line px-4 py-3 shadow-glow"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-accent"
+          >
+            RS
+          </span>
+          <div>
+            <p class="font-display text-sm tracking-[0.18em] text-slate-300">
+              ROA SENSE
+            </p>
+            <p class="text-xs text-muted">Calculadora real para e-commerce</p>
+          </div>
+        </div>
+        <a
+          href="#faq"
+          class="rounded-full border border-line px-4 py-2 text-sm text-slate-200 transition hover:border-accent hover:text-accent"
+        >
+          FAQ
+        </a>
+      </div>
+    </header>
+
+    <main id="calculadora" class="mx-auto max-w-7xl px-4 pb-32 sm:px-6 lg:px-8">
+      <section class="mb-8 grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
+        <div class="space-y-5">
+          <span
+            class="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-200"
+          >
+            Margenes, ROAS y utilidad real
+          </span>
+          <div class="max-w-3xl space-y-4">
+            <h1 class="font-display text-4xl leading-tight text-white sm:text-5xl">
+              Descubre si tu tienda gana dinero antes de escalar anuncios.
+            </h1>
+            <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
+              Calcula el impacto real de producto, envio, pasarela, impuestos y
+              marketing en una sola pantalla. Sin hojas eternas. Sin adivinar.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 text-sm text-slate-300">
+            <span class="rounded-full border border-line px-3 py-2">
+              Actualizacion instantanea
+            </span>
+            <span class="rounded-full border border-line px-3 py-2">
+              Presets Colombia
+            </span>
+            <span class="rounded-full border border-line px-3 py-2">
+              Mobile-first
+            </span>
+          </div>
+        </div>
+
+        <aside class="glass metric-grid rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            La unica metrica que importa
+          </p>
+          <div class="mt-4 rounded-[1.75rem] border border-accent/20 bg-slate-950/60 p-5">
+            <p class="text-sm text-muted">Beneficio neto real por venta</p>
+            <div class="mt-3 flex items-end justify-between gap-3">
+              <p
+                id="heroProfit"
+                aria-live="polite"
+                class="font-display text-4xl font-semibold tracking-tight text-accent sm:text-5xl"
+              >
+                $0
+              </p>
+              <span
+                id="heroBadge"
+                class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent"
+              >
+                saludable
+              </span>
+            </div>
+            <p id="heroCopy" class="mt-3 text-sm leading-6 text-slate-300">
+              Cuando descuentas todo, este es el numero que protege tu caja.
+            </p>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
+            <div class="rounded-2xl border border-line bg-slate-950/45 p-4">
+              <p class="text-muted">Margen neto</p>
+              <p id="miniNetMargin" class="mt-2 font-display text-2xl text-white">
+                0%
+              </p>
+            </div>
+            <div class="rounded-2xl border border-line bg-slate-950/45 p-4">
+              <p class="text-muted">ROAS equilibrio</p>
+              <p id="miniBreakEven" class="mt-2 font-display text-2xl text-white">
+                0.00x
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid gap-6 xl:grid-cols-[1.04fr_0.96fr]">
+        <form
+          class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
+          aria-label="Formulario de costos y rentabilidad"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                Entradas
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold text-white">
+                Configura tus costos reales
+              </h2>
+            </div>
+            <button
+              id="resetButton"
+              type="button"
+              class="rounded-full border border-line px-4 py-2 text-sm text-slate-200 transition hover:border-accent hover:text-accent"
+            >
+              Restablecer
+            </button>
+          </div>
+
+          <div class="mt-6 space-y-6">
+            <section>
+              <div class="mb-4 flex items-center justify-between">
+                <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                  Costos basicos
+                </h3>
+                <span class="text-xs text-muted">Valores en COP</span>
+              </div>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Precio de venta al publico
+                  </span>
+                  <input
+                    id="salePrice"
+                    name="salePrice"
+                    type="number"
+                    min="0"
+                    step="100"
+                    value="149000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Costo del producto
+                  </span>
+                  <input
+                    id="productCost"
+                    name="productCost"
+                    type="number"
+                    min="0"
+                    step="100"
+                    value="52000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block sm:col-span-2">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Costo de envio
+                  </span>
+                  <input
+                    id="shippingCost"
+                    name="shippingCost"
+                    type="number"
+                    min="0"
+                    step="100"
+                    value="12000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+            </section>
+
+            <section>
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <div>
+                  <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                    Costos ocultos
+                  </h3>
+                  <p class="mt-1 text-xs text-muted">
+                    La pasarela se puede autocompletar con presets oficiales de referencia.
+                  </p>
+                </div>
+                <label class="text-xs text-slate-300">
+                  <span class="mb-2 block">Preset de pasarela</span>
+                  <select
+                    id="gatewayPreset"
+                    class="rounded-full border border-line bg-slate-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-accent"
+                  >
+                    <option value="wompi">Wompi</option>
+                    <option value="epayco">ePayco</option>
+                    <option value="mercadopago">Mercado Pago</option>
+                    <option value="custom">Personalizado</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Tarifa pasarela (%)
+                  </span>
+                  <input
+                    id="gatewayPercent"
+                    name="gatewayPercent"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="2.65"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Comision plana (COP)
+                  </span>
+                  <input
+                    id="gatewayFixed"
+                    name="gatewayFixed"
+                    type="number"
+                    min="0"
+                    step="10"
+                    value="700"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block sm:col-span-2">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Impuestos sobre la venta (%)
+                  </span>
+                  <input
+                    id="taxPercent"
+                    name="taxPercent"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="19"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+
+              <div class="mt-4 grid gap-3 rounded-[1.5rem] border border-line bg-slate-950/45 p-4">
+                <div class="flex items-start gap-3">
+                  <input
+                    id="applyGatewayVat"
+                    name="applyGatewayVat"
+                    type="checkbox"
+                    checked
+                    class="mt-1 h-4 w-4 rounded border-line bg-slate-900 text-accent focus:ring-accent"
+                  />
+                  <label for="applyGatewayVat" class="text-sm leading-6 text-slate-200">
+                    Aplicar IVA a la comision de la pasarela
+                  </label>
+                </div>
+                <label class="block sm:max-w-xs">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    IVA sobre comision (%)
+                  </span>
+                  <input
+                    id="gatewayVatPercent"
+                    name="gatewayVatPercent"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    value="19"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+                <p id="presetNote" class="text-xs leading-5 text-muted">
+                  Wompi referencia: 2,65% + $700 + IVA por transaccion exitosa.
+                </p>
+              </div>
+            </section>
+
+            <section>
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <div>
+                  <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                    Marketing
+                  </h3>
+                  <p class="mt-1 text-xs text-muted">
+                    Cambia entre CPA directo o presupuesto diario para derivar el costo por venta.
+                  </p>
+                </div>
+                <div class="inline-flex rounded-full border border-line bg-slate-950/70 p-1">
+                  <button
+                    type="button"
+                    data-marketing-mode="cpa"
+                    class="marketing-toggle rounded-full px-4 py-2 text-sm font-medium"
+                  >
+                    CPA
+                  </button>
+                  <button
+                    type="button"
+                    data-marketing-mode="budget"
+                    class="marketing-toggle rounded-full px-4 py-2 text-sm font-medium"
+                  >
+                    Presupuesto
+                  </button>
+                </div>
+              </div>
+
+              <div id="marketingCPAFields" class="grid gap-4">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Costo por adquisicion (CPA) estimado
+                  </span>
+                  <input
+                    id="estimatedCPA"
+                    name="estimatedCPA"
+                    type="number"
+                    min="0"
+                    step="100"
+                    value="22000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+
+              <div id="marketingBudgetFields" class="hidden grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Presupuesto diario de publicidad
+                  </span>
+                  <input
+                    id="dailyAdBudget"
+                    name="dailyAdBudget"
+                    type="number"
+                    min="0"
+                    step="100"
+                    value="120000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Ventas esperadas por dia
+                  </span>
+                  <input
+                    id="dailyOrders"
+                    name="dailyOrders"
+                    type="number"
+                    min="1"
+                    step="1"
+                    value="6"
+                    inputmode="numeric"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+            </section>
+          </div>
+        </form>
+
+        <section class="space-y-6">
+          <div class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                  Resultados
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold text-white">
+                  Rentabilidad en tiempo real
+                </h2>
+              </div>
+              <span
+                class="rounded-full border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent"
+              >
+                Live
+              </span>
+            </div>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">Margen bruto</p>
+                <p id="grossProfitValue" class="mt-3 font-display text-3xl text-white">
+                  $0
+                </p>
+                <p id="grossMarginValue" class="mt-2 text-sm text-slate-300">0%</p>
+              </article>
+
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">Margen neto</p>
+                <p id="netProfitValue" class="mt-3 font-display text-3xl text-white">
+                  $0
+                </p>
+                <p id="netMarginValue" class="mt-2 text-sm text-slate-300">0%</p>
+              </article>
+
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">ROAS de equilibrio</p>
+                <p id="breakEvenValue" class="mt-3 font-display text-3xl text-white">
+                  0.00x
+                </p>
+                <p class="mt-2 text-sm text-slate-300">
+                  Minimo ROAS para no perder dinero.
+                </p>
+              </article>
+
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">CPA actual usado</p>
+                <p id="effectiveCPAValue" class="mt-3 font-display text-3xl text-white">
+                  $0
+                </p>
+                <p id="effectiveCPALabel" class="mt-2 text-sm text-slate-300">
+                  Basado en el modo actual.
+                </p>
+              </article>
+            </div>
+
+            <div class="mt-6 rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-sm text-muted">Desglose por venta</p>
+                <p id="statusLabel" class="text-sm font-medium text-slate-300">
+                  Estado neutral
+                </p>
+              </div>
+
+              <dl class="mt-4 space-y-3 text-sm">
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Producto + envio</dt>
+                  <dd id="fulfillmentCostValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Pasarela total</dt>
+                  <dd id="gatewayCostValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Impuestos</dt>
+                  <dd id="taxCostValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Marketing</dt>
+                  <dd id="marketingCostValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4 border-t border-line pt-3">
+                  <dt class="font-semibold text-white">Beneficio real por venta</dt>
+                  <dd
+                    id="realProfitValue"
+                    aria-live="polite"
+                    class="font-display text-2xl font-semibold text-accent"
+                  >
+                    $0
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <section
+            aria-labelledby="affiliate-tools"
+            class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                  Monetizacion
+                </p>
+                <h2 id="affiliate-tools" class="mt-2 text-2xl font-semibold text-white">
+                  Herramientas recomendadas para mejorar tu margen
+                </h2>
+              </div>
+            </div>
+
+            <div class="mt-6 grid gap-4 lg:grid-cols-2">
+              <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-slate-900 text-lg font-semibold text-accentSoft"
+                    aria-hidden="true"
+                  >
+                    S
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-white">Shopify</h3>
+                    <p class="text-sm text-muted">
+                      Placeholder listo para tu logo y tu enlace de afiliado.
+                    </p>
+                  </div>
+                </div>
+                <p class="mt-4 text-sm leading-6 text-slate-300">
+                  Ideal para montar una tienda solida, mejorar conversion movil y conectar
+                  apps que reduzcan friccion en checkout.
+                </p>
+                <a
+                  href="#"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+                >
+                  Probar ahora
+                </a>
+              </article>
+
+              <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+                <div class="flex items-center gap-4">
+                  <div
+                    class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-slate-900 text-lg font-semibold text-warning"
+                    aria-hidden="true"
+                  >
+                    E
+                  </div>
+                  <div>
+                    <h3 class="text-lg font-semibold text-white">Email Marketing</h3>
+                    <p class="text-sm text-muted">
+                      Espacio listo para Klaviyo, Brevo o tu stack favorito.
+                    </p>
+                  </div>
+                </div>
+                <p class="mt-4 text-sm leading-6 text-slate-300">
+                  Recupera carritos abandonados, aumenta LTV y reduce dependencia del
+                  ROAS pagado con automatizaciones bien segmentadas.
+                </p>
+                <a
+                  href="#"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="mt-5 inline-flex w-full items-center justify-center rounded-2xl border border-line px-4 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent"
+                >
+                  Probar ahora
+                </a>
+              </article>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <section
+        id="faq"
+        class="glass mt-8 rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
+      >
+        <div class="max-w-3xl">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            SEO + Contenido
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-white">
+            Preguntas frecuentes (FAQ)
+          </h2>
+          <p class="mt-3 text-sm leading-6 text-muted">
+            Esta seccion queda lista para ampliar con texto orientado a SEO y captacion
+            de trafico organico.
+          </p>
+        </div>
+
+        <div class="mt-6 space-y-4">
+          <details class="group rounded-[1.5rem] border border-line bg-slate-950/45 p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+              <span class="text-base font-semibold text-white">Que es el ROAS?</span>
+              <span
+                class="rounded-full border border-line px-3 py-1 text-xs text-muted transition group-open:border-accent group-open:text-accent"
+              >
+                Abrir
+              </span>
+            </summary>
+            <p class="mt-4 text-sm leading-6 text-slate-300">
+              Agrega aqui una explicacion clara, practica y orientada a busquedas sobre
+              que es el ROAS, como se interpreta y por que no basta con mirar el ingreso.
+            </p>
+          </details>
+
+          <details class="group rounded-[1.5rem] border border-line bg-slate-950/45 p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+              <span class="text-base font-semibold text-white">
+                Como se calcula el margen neto real en e-commerce?
+              </span>
+              <span
+                class="rounded-full border border-line px-3 py-1 text-xs text-muted transition group-open:border-accent group-open:text-accent"
+              >
+                Abrir
+              </span>
+            </summary>
+            <p class="mt-4 text-sm leading-6 text-slate-300">
+              Este bloque puede atacar keywords informativas explicando la diferencia
+              entre utilidad bruta, utilidad neta y beneficio real por pedido.
+            </p>
+          </details>
+
+          <details class="group rounded-[1.5rem] border border-line bg-slate-950/45 p-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+              <span class="text-base font-semibold text-white">
+                Que es el ROAS de equilibrio y por que importa?
+              </span>
+              <span
+                class="rounded-full border border-line px-3 py-1 text-xs text-muted transition group-open:border-accent group-open:text-accent"
+              >
+                Abrir
+              </span>
+            </summary>
+            <p class="mt-4 text-sm leading-6 text-slate-300">
+              Completa esta respuesta con ejemplos concretos para ayudar a que el usuario
+              entienda cuanto puede pagar por adquirir una venta sin entrar en perdida.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <a
+      href="#"
+      class="safe-bottom fixed inset-x-4 bottom-0 z-40 mx-auto max-w-md"
+      aria-label="Descargar plantilla Excel proyectiva a 12 meses"
+    >
+      <span
+        class="flex items-center justify-between gap-4 rounded-[1.4rem] border border-accent/20 bg-slate-950/90 px-4 py-4 shadow-glow backdrop-blur"
+      >
+        <span>
+          <strong class="block text-sm text-white">
+            Descarga la Plantilla Excel Proyectiva a 12 Meses
+          </strong>
+          <span class="text-xs text-muted">$9 USD - Lista para Gumroad / Hotmart</span>
+        </span>
+        <span
+          class="shrink-0 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-slate-950"
+        >
+          Ver
+        </span>
+      </span>
+    </a>
+
+    <script>
+      const currencyFormatter = new Intl.NumberFormat("es-CO", {
+        style: "currency",
+        currency: "COP",
+        maximumFractionDigits: 0,
+      });
+
+      const percentFormatter = new Intl.NumberFormat("es-CO", {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1,
+      });
+
+      const numberFormatter = new Intl.NumberFormat("es-CO", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+
+      const presets = {
+        wompi: {
+          percent: 2.65,
+          fixed: 700,
+          note: "Wompi referencia: 2,65% + $700 + IVA por transaccion exitosa.",
+        },
+        epayco: {
+          percent: 2.68,
+          fixed: 900,
+          note: "ePayco referencia: 2,68% + $900 + IVA por transaccion exitosa en plan agregador.",
+        },
+        mercadopago: {
+          percent: 3.29,
+          fixed: 800,
+          note: "Mercado Pago referencia: 3,29% + $800 para disponibilidad inmediata del dinero.",
+        },
+        custom: {
+          percent: 0,
+          fixed: 0,
+          note: "Personaliza la tarifa segun tu negociacion o el plazo de dispersion elegido.",
+        },
+      };
+
+      const defaults = {
+        salePrice: 149000,
+        productCost: 52000,
+        shippingCost: 12000,
+        gatewayPreset: "wompi",
+        gatewayPercent: 2.65,
+        gatewayFixed: 700,
+        taxPercent: 19,
+        applyGatewayVat: true,
+        gatewayVatPercent: 19,
+        marketingMode: "cpa",
+        estimatedCPA: 22000,
+        dailyAdBudget: 120000,
+        dailyOrders: 6,
+      };
+
+      const elements = {
+        salePrice: document.getElementById("salePrice"),
+        productCost: document.getElementById("productCost"),
+        shippingCost: document.getElementById("shippingCost"),
+        gatewayPreset: document.getElementById("gatewayPreset"),
+        gatewayPercent: document.getElementById("gatewayPercent"),
+        gatewayFixed: document.getElementById("gatewayFixed"),
+        taxPercent: document.getElementById("taxPercent"),
+        applyGatewayVat: document.getElementById("applyGatewayVat"),
+        gatewayVatPercent: document.getElementById("gatewayVatPercent"),
+        estimatedCPA: document.getElementById("estimatedCPA"),
+        dailyAdBudget: document.getElementById("dailyAdBudget"),
+        dailyOrders: document.getElementById("dailyOrders"),
+        marketingCPAFields: document.getElementById("marketingCPAFields"),
+        marketingBudgetFields: document.getElementById("marketingBudgetFields"),
+        presetNote: document.getElementById("presetNote"),
+        resetButton: document.getElementById("resetButton"),
+        grossProfitValue: document.getElementById("grossProfitValue"),
+        grossMarginValue: document.getElementById("grossMarginValue"),
+        netProfitValue: document.getElementById("netProfitValue"),
+        netMarginValue: document.getElementById("netMarginValue"),
+        breakEvenValue: document.getElementById("breakEvenValue"),
+        effectiveCPAValue: document.getElementById("effectiveCPAValue"),
+        effectiveCPALabel: document.getElementById("effectiveCPALabel"),
+        fulfillmentCostValue: document.getElementById("fulfillmentCostValue"),
+        gatewayCostValue: document.getElementById("gatewayCostValue"),
+        taxCostValue: document.getElementById("taxCostValue"),
+        marketingCostValue: document.getElementById("marketingCostValue"),
+        realProfitValue: document.getElementById("realProfitValue"),
+        heroProfit: document.getElementById("heroProfit"),
+        heroBadge: document.getElementById("heroBadge"),
+        heroCopy: document.getElementById("heroCopy"),
+        miniNetMargin: document.getElementById("miniNetMargin"),
+        miniBreakEven: document.getElementById("miniBreakEven"),
+        statusLabel: document.getElementById("statusLabel"),
+      };
+
+      const marketingButtons = [...document.querySelectorAll(".marketing-toggle")];
+      let marketingMode = defaults.marketingMode;
+
+      const parseNumber = (value) => {
+        const parsed = Number.parseFloat(value);
+        return Number.isFinite(parsed) && parsed >= 0 ? parsed : 0;
+      };
+
+      const formatCurrency = (value) => currencyFormatter.format(value || 0);
+      const formatPercent = (value) => `${percentFormatter.format(value || 0)}%`;
+      const formatROAS = (value) =>
+        Number.isFinite(value) && value > 0 ? `${numberFormatter.format(value)}x` : "No viable";
+
+      const setPreset = (presetKey) => {
+        const preset = presets[presetKey];
+        if (!preset) {
+          return;
+        }
+
+        elements.presetNote.textContent = preset.note;
+        if (presetKey !== "custom") {
+          elements.gatewayPercent.value = preset.percent;
+          elements.gatewayFixed.value = preset.fixed;
+        }
+      };
+
+      const syncMarketingUI = () => {
+        marketingButtons.forEach((button) => {
+          const isActive = button.dataset.marketingMode === marketingMode;
+          button.className = isActive
+            ? "marketing-toggle rounded-full bg-accent px-4 py-2 text-sm font-medium text-slate-950"
+            : "marketing-toggle rounded-full px-4 py-2 text-sm font-medium text-slate-400";
+        });
+
+        elements.marketingCPAFields.classList.toggle("hidden", marketingMode !== "cpa");
+        elements.marketingBudgetFields.classList.toggle("hidden", marketingMode !== "budget");
+      };
+
+      const updateHeroState = (netProfit, netMargin) => {
+        const isHealthy = netProfit > 0;
+        const isBreakEven = Math.abs(netProfit) < 100;
+
+        elements.heroProfit.textContent = formatCurrency(netProfit);
+        elements.realProfitValue.textContent = formatCurrency(netProfit);
+        elements.miniNetMargin.textContent = formatPercent(netMargin);
+
+        if (isHealthy) {
+          elements.heroProfit.className =
+            "font-display text-4xl font-semibold tracking-tight text-accent sm:text-5xl";
+          elements.realProfitValue.className =
+            "font-display text-2xl font-semibold text-accent";
+          elements.heroBadge.textContent = "saludable";
+          elements.heroBadge.className =
+            "rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent";
+          elements.heroCopy.textContent =
+            "Tienes margen para escalar con mas criterio y menos ansiedad.";
+          elements.statusLabel.textContent = "Rentable";
+          return;
+        }
+
+        if (isBreakEven) {
+          elements.heroProfit.className =
+            "font-display text-4xl font-semibold tracking-tight text-warning sm:text-5xl";
+          elements.realProfitValue.className =
+            "font-display text-2xl font-semibold text-warning";
+          elements.heroBadge.textContent = "al limite";
+          elements.heroBadge.className =
+            "rounded-full border border-warning/20 bg-warning/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-warning";
+          elements.heroCopy.textContent =
+            "Estas practicamente en tablas. Un pequeno ajuste puede cambiar todo.";
+          elements.statusLabel.textContent = "Punto de equilibrio";
+          return;
+        }
+
+        elements.heroProfit.className =
+          "font-display text-4xl font-semibold tracking-tight text-danger sm:text-5xl";
+        elements.realProfitValue.className =
+          "font-display text-2xl font-semibold text-danger";
+        elements.heroBadge.textContent = "en perdida";
+        elements.heroBadge.className =
+          "rounded-full border border-danger/20 bg-danger/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-danger";
+        elements.heroCopy.textContent =
+          "Ahora mismo vendes por debajo de un margen sostenible.";
+        elements.statusLabel.textContent = "No rentable";
+      };
+
+      const calculate = () => {
+        const salePrice = parseNumber(elements.salePrice.value);
+        const productCost = parseNumber(elements.productCost.value);
+        const shippingCost = parseNumber(elements.shippingCost.value);
+        const gatewayPercent = parseNumber(elements.gatewayPercent.value) / 100;
+        const gatewayFixed = parseNumber(elements.gatewayFixed.value);
+        const taxPercent = parseNumber(elements.taxPercent.value) / 100;
+        const gatewayVatPercent = parseNumber(elements.gatewayVatPercent.value) / 100;
+        const applyGatewayVat = elements.applyGatewayVat.checked;
+
+        const baseGatewayFee = salePrice * gatewayPercent + gatewayFixed;
+        const gatewayFeeVat = applyGatewayVat ? baseGatewayFee * gatewayVatPercent : 0;
+        const gatewayTotal = baseGatewayFee + gatewayFeeVat;
+        const taxCost = salePrice * taxPercent;
+        const fulfillmentCost = productCost + shippingCost;
+        const grossProfit = salePrice - fulfillmentCost - gatewayTotal - taxCost;
+        const grossMargin = salePrice > 0 ? (grossProfit / salePrice) * 100 : 0;
+
+        const effectiveCPA =
+          marketingMode === "cpa"
+            ? parseNumber(elements.estimatedCPA.value)
+            : parseNumber(elements.dailyOrders.value) > 0
+              ? parseNumber(elements.dailyAdBudget.value) / parseNumber(elements.dailyOrders.value)
+              : 0;
+
+        const netProfit = grossProfit - effectiveCPA;
+        const netMargin = salePrice > 0 ? (netProfit / salePrice) * 100 : 0;
+        const breakEvenROAS = grossProfit > 0 ? salePrice / grossProfit : Number.NaN;
+
+        elements.grossProfitValue.textContent = formatCurrency(grossProfit);
+        elements.grossMarginValue.textContent = formatPercent(grossMargin);
+        elements.netProfitValue.textContent = formatCurrency(netProfit);
+        elements.netMarginValue.textContent = formatPercent(netMargin);
+        elements.breakEvenValue.textContent = formatROAS(breakEvenROAS);
+        elements.miniBreakEven.textContent = formatROAS(breakEvenROAS);
+        elements.effectiveCPAValue.textContent = formatCurrency(effectiveCPA);
+        elements.effectiveCPALabel.textContent =
+          marketingMode === "cpa"
+            ? "Costo directo por venta segun tu CPA estimado."
+            : "CPA derivado desde presupuesto diario / ventas estimadas.";
+        elements.fulfillmentCostValue.textContent = formatCurrency(fulfillmentCost);
+        elements.gatewayCostValue.textContent = formatCurrency(gatewayTotal);
+        elements.taxCostValue.textContent = formatCurrency(taxCost);
+        elements.marketingCostValue.textContent = formatCurrency(effectiveCPA);
+
+        updateHeroState(netProfit, netMargin);
+      };
+
+      const resetForm = () => {
+        Object.entries(defaults).forEach(([key, value]) => {
+          if (!(key in elements)) {
+            return;
+          }
+
+          if (typeof value === "boolean") {
+            elements[key].checked = value;
+            return;
+          }
+
+          elements[key].value = value;
+        });
+
+        marketingMode = defaults.marketingMode;
+        syncMarketingUI();
+        setPreset(defaults.gatewayPreset);
+        calculate();
+      };
+
+      [
+        elements.salePrice,
+        elements.productCost,
+        elements.shippingCost,
+        elements.gatewayPercent,
+        elements.gatewayFixed,
+        elements.taxPercent,
+        elements.gatewayVatPercent,
+        elements.estimatedCPA,
+        elements.dailyAdBudget,
+        elements.dailyOrders,
+      ].forEach((input) => input.addEventListener("input", calculate));
+
+      [elements.applyGatewayVat, elements.gatewayPreset].forEach((input) =>
+        input.addEventListener("change", () => {
+          if (input === elements.gatewayPreset) {
+            setPreset(elements.gatewayPreset.value);
+          }
+          calculate();
+        })
+      );
+
+      marketingButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          marketingMode = button.dataset.marketingMode;
+          syncMarketingUI();
+          calculate();
+        });
+      });
+
+      elements.resetButton.addEventListener("click", resetForm);
+
+      syncMarketingUI();
+      setPreset(defaults.gatewayPreset);
+      calculate();
+    </script>
+  </body>
+</html>
