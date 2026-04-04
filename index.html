@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de Margenes y ROAS Real para E-commerce | ROA Sense</title>
+    <title>Calculadora de M&aacute;rgenes y ROAS Real | IloveROAS</title>
     <meta
       name="description"
-      content="Calcula en tiempo real tu margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio para e-commerce con costos ocultos, pasarelas colombianas y marketing."
+      content="IloveROAS calcula en tiempo real tu margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio para e-commerce con costos ocultos, pasarelas colombianas y marketing."
     />
     <meta
       name="keywords"
@@ -15,16 +15,25 @@
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#07111f" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="IloveROAS" />
     <meta
       property="og:title"
-      content="Calculadora de Margenes y ROAS Real para E-commerce"
+      content="Calculadora de M&aacute;rgenes y ROAS Real | IloveROAS"
     />
     <meta
       property="og:description"
-      content="Descubre tu beneficio real por venta, tu margen neto y el ROAS minimo que necesitas para no perder dinero."
+      content="IloveROAS te ayuda a descubrir tu beneficio real por venta, tu margen neto y el ROAS minimo que necesitas para no perder dinero."
     />
     <meta property="og:locale" content="es_CO" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Calculadora de M&aacute;rgenes y ROAS Real | IloveROAS"
+    />
+    <meta
+      name="twitter:description"
+      content="IloveROAS te ayuda a descubrir tu beneficio real por venta, tu margen neto y el ROAS minimo que necesitas para no perder dinero."
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -114,11 +123,16 @@
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "Calculadora de Margenes y ROAS Real para E-commerce",
+        "name": "IloveROAS",
+        "alternateName": "Calculadora de Margenes y ROAS Real",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "inLanguage": "es-CO",
-        "description": "Herramienta web gratuita para calcular margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio en e-commerce.",
+        "description": "IloveROAS es una herramienta web gratuita para calcular margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio en e-commerce.",
+        "brand": {
+          "@type": "Brand",
+          "name": "IloveROAS"
+        },
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -150,11 +164,11 @@
           <span
             class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-accent"
           >
-            RS
+            ILR
           </span>
           <div>
             <p class="font-display text-sm tracking-[0.18em] text-slate-300">
-              ROA SENSE
+              IloveROAS
             </p>
             <p class="text-xs text-muted">Calculadora real para e-commerce</p>
           </div>
@@ -927,7 +941,7 @@
         Number.isFinite(value) && value > 0 ? `${numberFormatter.format(value)}x` : "No viable";
       const publicWebUrl = window.location.href.startsWith("http")
         ? window.location.href
-        : "https://samokampo.github.io/calculadora-roa-sense/";
+        : "https://iloveroas.com/";
 
       const setActionStatus = (message, isError = false) => {
         elements.actionStatus.textContent = message;
