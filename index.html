@@ -3,37 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Calculadora de M&aacute;rgenes y ROAS Real | IloveROAS</title>
+    <title>Calculadora de M&aacute;rgenes y ROAS Real | EscalaMargen</title>
     <meta
       name="description"
-      content="IloveROAS calcula en tiempo real tu margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio para e-commerce con costos ocultos, pasarelas colombianas y marketing."
+      content="EscalaMargen calcula en tiempo real tu margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio para e-commerce con costos ocultos, pasarelas colombianas y marketing."
     />
     <meta
       name="keywords"
       content="calculadora ROAS, calculadora margen ecommerce, break even roas, margen neto tienda online, costos ocultos ecommerce, colombia"
     />
+    <link rel="canonical" href="https://escalamargen.com/" />
     <meta name="robots" content="index,follow,max-image-preview:large" />
     <meta name="theme-color" content="#07111f" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="IloveROAS" />
+    <meta property="og:site_name" content="EscalaMargen" />
+    <meta property="og:url" content="https://escalamargen.com/" />
     <meta
       property="og:title"
-      content="Calculadora de M&aacute;rgenes y ROAS Real | IloveROAS"
+      content="Calculadora de M&aacute;rgenes y ROAS Real | EscalaMargen"
     />
     <meta
       property="og:description"
-      content="IloveROAS te ayuda a descubrir tu beneficio real por venta, tu margen neto y el ROAS minimo que necesitas para no perder dinero."
+      content="EscalaMargen te ayuda a descubrir tu beneficio real por venta, tu margen neto y el ROAS m&iacute;nimo que necesitas para no perder dinero."
     />
+    <meta
+      property="og:image"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:alt" content="Logo de EscalaMargen" />
     <meta property="og:locale" content="es_CO" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
-      content="Calculadora de M&aacute;rgenes y ROAS Real | IloveROAS"
+      content="Calculadora de M&aacute;rgenes y ROAS Real | EscalaMargen"
     />
     <meta
       name="twitter:description"
-      content="IloveROAS te ayuda a descubrir tu beneficio real por venta, tu margen neto y el ROAS minimo que necesitas para no perder dinero."
+      content="EscalaMargen te ayuda a descubrir tu beneficio real por venta, tu margen neto y el ROAS m&iacute;nimo que necesitas para no perder dinero."
     />
+    <meta
+      name="twitter:image"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <meta name="twitter:image:alt" content="Logo de EscalaMargen" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PV4NNKW4');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQNE3MNV04"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-NQNE3MNV04");
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -111,6 +145,82 @@
         -moz-appearance: textfield;
       }
 
+      input::placeholder {
+        color: rgba(159, 176, 201, 0.62);
+        opacity: 1;
+      }
+
+      .select-shell {
+        position: relative;
+        min-width: 0;
+      }
+
+      .select-control {
+        width: 100%;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background:
+          linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(7, 17, 31, 0.92)),
+          rgba(2, 6, 23, 0.8);
+        color: #ffffff;
+        border-radius: 9999px;
+        padding: 0.8rem 2.9rem 0.8rem 1rem;
+        font-weight: 600;
+        line-height: 1.1;
+        box-shadow:
+          inset 0 1px 0 rgba(255, 255, 255, 0.03),
+          0 10px 30px rgba(2, 6, 23, 0.18);
+        outline: none;
+        transition:
+          border-color 180ms ease,
+          box-shadow 180ms ease,
+          transform 180ms ease,
+          background-color 180ms ease;
+      }
+
+      .select-control:hover {
+        border-color: rgba(56, 242, 161, 0.28);
+      }
+
+      .select-control:focus {
+        border-color: rgba(56, 242, 161, 0.65);
+        box-shadow:
+          0 0 0 4px rgba(56, 242, 161, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.04),
+          0 10px 30px rgba(2, 6, 23, 0.22);
+      }
+
+      .select-control option {
+        background: #0d1728;
+        color: #ffffff;
+      }
+
+      .select-caret {
+        pointer-events: none;
+        position: absolute;
+        right: 0.95rem;
+        top: 50%;
+        display: inline-flex;
+        height: 1.3rem;
+        width: 1.3rem;
+        transform: translateY(-50%);
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: rgba(56, 242, 161, 0.1);
+        color: #38f2a1;
+        box-shadow: inset 0 0 0 1px rgba(56, 242, 161, 0.12);
+      }
+
+      .select-control-compact {
+        min-width: 7.25rem;
+        padding: 0.68rem 2.5rem 0.68rem 0.85rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.04em;
+      }
+
       summary::-webkit-details-marker {
         display: none;
       }
@@ -123,15 +233,15 @@
       {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
-        "name": "IloveROAS",
-        "alternateName": "Calculadora de Margenes y ROAS Real",
+        "name": "EscalaMargen",
+        "alternateName": "Calculadora de M\u00E1rgenes y ROAS Real",
         "applicationCategory": "BusinessApplication",
         "operatingSystem": "Web",
         "inLanguage": "es-CO",
-        "description": "IloveROAS es una herramienta web gratuita para calcular margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio en e-commerce.",
+        "description": "EscalaMargen es una herramienta web gratuita para calcular margen bruto, margen neto, beneficio real por venta y ROAS de equilibrio en e-commerce.",
         "brand": {
           "@type": "Brand",
-          "name": "IloveROAS"
+          "name": "EscalaMargen"
         },
         "offers": {
           "@type": "Offer",
@@ -139,16 +249,20 @@
           "priceCurrency": "USD"
         },
         "featureList": [
-          "Calculo en tiempo real",
+          "C\u00E1lculo en tiempo real",
           "ROAS de equilibrio",
           "Margen bruto y neto",
           "Presets de pasarelas colombianas",
-          "Calculo de beneficio real por venta"
+          "C\u00E1lculo de beneficio real por venta"
         ]
       }
     </script>
   </head>
   <body class="font-body text-slate-100 antialiased">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV4NNKW4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <a
       href="#calculadora"
       class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-slate-950"
@@ -158,7 +272,7 @@
 
     <header class="mx-auto max-w-7xl px-4 pb-10 pt-5 sm:px-6 lg:px-8">
       <div
-        class="glass flex items-center justify-between rounded-full border border-line px-4 py-3 shadow-glow"
+        class="glass flex flex-wrap items-center justify-between gap-4 rounded-[2rem] border border-line px-4 py-3 shadow-glow"
       >
         <div class="flex items-center gap-3">
           <span
@@ -168,17 +282,45 @@
           </span>
           <div>
             <p class="font-display text-sm tracking-[0.18em] text-slate-300">
-              IloveROAS
+              EscalaMargen
             </p>
             <p class="text-xs text-muted">Calculadora real para e-commerce</p>
           </div>
         </div>
-        <a
-          href="#faq"
-          class="rounded-full border border-line px-4 py-2 text-sm text-slate-200 transition hover:border-accent hover:text-accent"
-        >
-          FAQ
-        </a>
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-slate-300">
+          <a
+            href="#calculadora"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Calculadora
+          </a>
+          <a
+            href="#herramientas"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Herramientas
+          </a>
+          <a
+            href="#plantilla-excel"
+            id="headerTemplateNav"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Plantilla
+          </a>
+          <a
+            href="#faq"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            FAQ
+          </a>
+          <a
+            href="#plantilla-excel"
+            id="headerTemplateCta"
+            class="rounded-full bg-accent px-4 py-2 font-semibold text-slate-950 transition hover:opacity-90"
+          >
+            Descargar Plantilla Excel PRO
+          </a>
+        </nav>
       </div>
     </header>
 
@@ -188,20 +330,19 @@
           <span
             class="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-200"
           >
-            Margenes, ROAS y utilidad real
+            M&aacute;rgenes, ROAS y utilidad real
           </span>
           <div class="max-w-3xl space-y-4">
             <h1 class="font-display text-4xl leading-tight text-white sm:text-5xl">
               Descubre si tu tienda gana dinero antes de escalar anuncios.
             </h1>
             <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
-              Calcula el impacto real de producto, envio, pasarela, impuestos y
-              marketing en una sola pantalla. Sin hojas eternas. Sin adivinar.
+              La calculadora de ROAS m&aacute;s completa en internet.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 text-sm text-slate-300">
             <span class="rounded-full border border-line px-3 py-2">
-              Actualizacion instantanea
+              Actualizaci&oacute;n instant&aacute;nea
             </span>
             <span class="rounded-full border border-line px-3 py-2">
               Presets Colombia
@@ -214,7 +355,7 @@
 
         <aside class="glass metric-grid rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
           <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
-            La unica metrica que importa
+            La &uacute;nica m&eacute;trica que importa
           </p>
           <div class="mt-4 rounded-[1.75rem] border border-accent/20 bg-slate-950/60 p-5">
             <p class="text-sm text-muted">Beneficio neto real por venta</p>
@@ -234,7 +375,7 @@
               </span>
             </div>
             <p id="heroCopy" class="mt-3 text-sm leading-6 text-slate-300">
-              Cuando descuentas todo, este es el numero que protege tu caja.
+              Cuando descuentas todo, este es el n&uacute;mero que protege tu caja.
             </p>
           </div>
 
@@ -255,7 +396,8 @@
         </aside>
       </section>
 
-      <section class="grid gap-6 xl:grid-cols-[1.04fr_0.96fr]">
+      <section class="space-y-6">
+        <div class="grid gap-6 xl:grid-cols-[1.04fr_0.96fr]">
         <form
           class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
           aria-label="Formulario de costos y rentabilidad"
@@ -282,14 +424,54 @@
             <section>
               <div class="mb-4 flex items-center justify-between">
                 <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
-                  Costos basicos
+                  Costos b&aacute;sicos
                 </h3>
-                <span class="text-xs text-muted">Valores en COP</span>
+                <div class="flex items-center gap-2">
+                  <span id="currencyHint" class="text-xs text-muted">Valores en COP</span>
+                  <label class="flex items-center gap-2 text-xs text-slate-300">
+                    <span class="text-slate-400">Moneda</span>
+                    <span class="select-shell">
+                      <select
+                        id="currencyCode"
+                        class="select-control select-control-compact"
+                      >
+                        <option value="COP" selected>COP</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="ARS">ARS</option>
+                        <option value="BOB">BOB</option>
+                        <option value="BRL">BRL</option>
+                        <option value="CLP">CLP</option>
+                        <option value="CRC">CRC</option>
+                        <option value="CUP">CUP</option>
+                        <option value="DOP">DOP</option>
+                        <option value="GYD">GYD</option>
+                        <option value="GTQ">GTQ</option>
+                        <option value="HNL">HNL</option>
+                        <option value="HTG">HTG</option>
+                        <option value="MXN">MXN</option>
+                        <option value="NIO">NIO</option>
+                        <option value="PAB">PAB</option>
+                        <option value="PEN">PEN</option>
+                        <option value="PYG">PYG</option>
+                        <option value="SRD">SRD</option>
+                        <option value="UYU">UYU</option>
+                        <option value="VES">VES</option>
+                        <option value="BZD">BZD</option>
+                      </select>
+                      <span class="select-caret" aria-hidden="true">
+                        <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
+                          <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
+                        </svg>
+                      </span>
+                    </span>
+                  </label>
+                </div>
               </div>
               <div class="grid gap-4 sm:grid-cols-2">
                 <label class="block">
                   <span class="mb-2 block text-sm text-slate-200">
-                    Precio de venta al publico
+                    Precio de venta al p&uacute;blico
                   </span>
                   <input
                     id="salePrice"
@@ -297,7 +479,6 @@
                     type="number"
                     min="0"
                     step="100"
-                    value="149000"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
@@ -313,7 +494,6 @@
                     type="number"
                     min="0"
                     step="100"
-                    value="52000"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
@@ -321,7 +501,7 @@
 
                 <label class="block sm:col-span-2">
                   <span class="mb-2 block text-sm text-slate-200">
-                    Costo de envio
+                    Costo de env&iacute;o
                   </span>
                   <input
                     id="shippingCost"
@@ -329,7 +509,6 @@
                     type="number"
                     min="0"
                     step="100"
-                    value="12000"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
@@ -347,17 +526,29 @@
                     La pasarela se puede autocompletar con presets oficiales de referencia.
                   </p>
                 </div>
-                <label class="text-xs text-slate-300">
+                <label class="w-full text-xs text-slate-300 sm:w-auto sm:min-w-[18rem]">
                   <span class="mb-2 block">Preset de pasarela</span>
-                  <select
-                    id="gatewayPreset"
-                    class="rounded-full border border-line bg-slate-950/80 px-3 py-2 text-sm text-white outline-none transition focus:border-accent"
-                  >
-                    <option value="wompi">Wompi</option>
-                    <option value="epayco">ePayco</option>
-                    <option value="mercadopago">Mercado Pago</option>
-                    <option value="custom">Personalizado</option>
-                  </select>
+                  <div class="select-shell">
+                    <select
+                      id="gatewayPreset"
+                      class="select-control text-sm sm:min-w-[17rem]"
+                    >
+                      <option value="wompi">Wompi</option>
+                      <option value="epayco_davivienda">ePayco Davivienda</option>
+                      <option value="epayco_other">ePayco otros bancos</option>
+                      <option value="mercadopago_instant">Mercado Pago inmediato</option>
+                      <option value="mercadopago_7d">Mercado Pago 7 d&iacute;as</option>
+                      <option value="mercadopago_14d">Mercado Pago 14 d&iacute;as</option>
+                      <option value="bold_cards">Bold tarjetas online</option>
+                      <option value="bold_pse">Bold PSE y billeteras</option>
+                      <option value="custom">Personalizado</option>
+                    </select>
+                    <span class="select-caret" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
+                        <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
+                      </svg>
+                    </span>
+                  </div>
                 </label>
               </div>
 
@@ -372,15 +563,15 @@
                     type="number"
                     min="0"
                     step="0.01"
-                    value="2.65"
+                    disabled
                     inputmode="decimal"
-                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
                   />
                 </label>
 
                 <label class="block">
-                  <span class="mb-2 block text-sm text-slate-200">
-                    Comision plana (COP)
+                  <span id="gatewayFixedLabel" class="mb-2 block text-sm text-slate-200">
+                    Comisi&oacute;n plana (COP)
                   </span>
                   <input
                     id="gatewayFixed"
@@ -388,9 +579,9 @@
                     type="number"
                     min="0"
                     step="10"
-                    value="700"
+                    disabled
                     inputmode="decimal"
-                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
                   />
                 </label>
 
@@ -404,29 +595,63 @@
                     type="number"
                     min="0"
                     step="0.01"
-                    value="19"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
               </div>
 
-              <div class="mt-4 grid gap-3 rounded-[1.5rem] border border-line bg-slate-950/45 p-4">
-                <div class="flex items-start gap-3">
-                  <input
-                    id="applyGatewayVat"
-                    name="applyGatewayVat"
-                    type="checkbox"
-                    checked
-                    class="mt-1 h-4 w-4 rounded border-line bg-slate-900 text-accent focus:ring-accent"
-                  />
-                  <label for="applyGatewayVat" class="text-sm leading-6 text-slate-200">
-                    Aplicar IVA a la comision de la pasarela
-                  </label>
-                </div>
+              <p class="mt-4 text-xs leading-5 text-muted">
+                Cuando eliges un preset oficial, la tarifa porcentual y la comisi&oacute;n plana
+                se bloquean para evitar errores. Cambia a <strong class="text-white">Personalizado</strong>
+                si quieres editar manualmente esos valores.
+              </p>
+
+              <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 font-medium text-accent">
+                  Preset oficial activo = campos bloqueados
+                </span>
+                <span class="rounded-full border border-line px-3 py-1 text-slate-300">
+                  Personalizado = edici&oacute;n manual
+                </span>
+              </div>
+
+              <div class="mt-4 grid gap-4 rounded-[1.6rem] border border-line bg-gradient-to-br from-slate-950/70 via-slate-950/55 to-slate-900/70 p-4 sm:p-5">
+                <label
+                  for="applyGatewayVat"
+                  class="group flex cursor-pointer items-center justify-between gap-4 rounded-[1.35rem] border border-line bg-slate-900/80 px-4 py-4 transition hover:border-accent/30 hover:bg-slate-900"
+                >
+                  <div class="flex items-start gap-3">
+                    <span
+                      class="mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10 text-lg text-accent transition group-hover:border-accent/40 group-hover:bg-accent/15"
+                      aria-hidden="true"
+                    >
+                      IVA
+                    </span>
+                    <div>
+                      <p class="text-sm font-semibold text-white">
+                      Aplicar IVA a la comisi&oacute;n de la pasarela
+                      </p>
+                      <p class="mt-1 text-xs leading-5 text-muted">
+                      Act&iacute;valo si la tarifa oficial publicada no incluye IVA o si quieres modelarlo aparte.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="relative shrink-0">
+                    <input
+                      id="applyGatewayVat"
+                      name="applyGatewayVat"
+                      type="checkbox"
+                      checked
+                      class="peer sr-only"
+                    />
+                    <span class="block h-7 w-12 rounded-full bg-slate-800 transition peer-checked:bg-accent/30"></span>
+                    <span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition peer-checked:translate-x-5 peer-checked:bg-accent"></span>
+                  </div>
+                </label>
                 <label class="block sm:max-w-xs">
-                  <span class="mb-2 block text-sm text-slate-200">
-                    IVA sobre comision (%)
+                  <span class="mb-2 block text-sm font-medium text-slate-200">
+                    IVA sobre comisi&oacute;n (%)
                   </span>
                   <input
                     id="gatewayVatPercent"
@@ -434,13 +659,12 @@
                     type="number"
                     min="0"
                     step="0.01"
-                    value="19"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
                 <p id="presetNote" class="text-xs leading-5 text-muted">
-                  Wompi referencia: 2,65% + $700 + IVA por transaccion exitosa.
+                  Wompi referencia: 2,65% + $700 + IVA por transacci&oacute;n exitosa.
                 </p>
               </div>
             </section>
@@ -476,7 +700,7 @@
               <div id="marketingCPAFields" class="grid gap-4">
                 <label class="block">
                   <span class="mb-2 block text-sm text-slate-200">
-                    Costo por adquisicion (CPA) estimado
+                    Costo por adquisici&oacute;n (CPA) estimado
                   </span>
                   <input
                     id="estimatedCPA"
@@ -484,7 +708,6 @@
                     type="number"
                     min="0"
                     step="100"
-                    value="22000"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
@@ -502,7 +725,6 @@
                     type="number"
                     min="0"
                     step="100"
-                    value="120000"
                     inputmode="decimal"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
@@ -510,7 +732,7 @@
 
                 <label class="block">
                   <span class="mb-2 block text-sm text-slate-200">
-                    Ventas esperadas por dia
+                    Ventas esperadas por d&iacute;a
                   </span>
                   <input
                     id="dailyOrders"
@@ -518,12 +740,127 @@
                     type="number"
                     min="1"
                     step="1"
-                    value="6"
                     inputmode="numeric"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
               </div>
+            </section>
+
+            <section>
+              <details class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      Ajustes avanzados
+                    </h3>
+                    <p class="mt-1 text-xs text-muted">
+                      Opcionales, pero muy &uacute;tiles cuando ya vendes con descuentos, marketplaces o devoluciones.
+                    </p>
+                  </div>
+                  <span class="rounded-full border border-line px-3 py-1 text-xs text-muted">
+                    Opcional
+                  </span>
+                </summary>
+
+                <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                  <label class="block">
+                    <span class="mb-2 block text-sm text-slate-200">
+                      Descuento promocional (%)
+                    </span>
+                    <input
+                      id="discountPercent"
+                      name="discountPercent"
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      inputmode="decimal"
+                      class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="mb-2 block text-sm text-slate-200">
+                      Devoluciones esperadas (%)
+                    </span>
+                    <input
+                      id="returnsPercent"
+                      name="returnsPercent"
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      inputmode="decimal"
+                      class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="mb-2 block text-sm text-slate-200">
+                      Comisi&oacute;n marketplace (%)
+                    </span>
+                    <input
+                      id="marketplaceFeePercent"
+                      name="marketplaceFeePercent"
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      inputmode="decimal"
+                      class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="mb-2 block text-sm text-slate-200">
+                      Reserva por fraude o no entrega (%)
+                    </span>
+                    <input
+                      id="chargebackPercent"
+                      name="chargebackPercent"
+                      type="number"
+                      min="0"
+                      step="0.01"
+                      inputmode="decimal"
+                      class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="mb-2 block text-sm text-slate-200">
+                      Costo operativo extra por pedido
+                    </span>
+                    <input
+                      id="extraOperatingCost"
+                      name="extraOperatingCost"
+                      type="number"
+                      min="0"
+                      step="100"
+                      inputmode="decimal"
+                      class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    />
+                  </label>
+
+                  <label class="block">
+                    <span class="mb-2 block text-sm text-slate-200">
+                      Empaque o picking extra por pedido
+                    </span>
+                    <input
+                      id="packagingCost"
+                      name="packagingCost"
+                      type="number"
+                      min="0"
+                      step="100"
+                      inputmode="decimal"
+                      class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                    />
+                  </label>
+                </div>
+
+                <p class="mt-4 text-xs leading-5 text-muted">
+                  Estos campos sirven para modelar descuentos, marketplaces, devoluciones,
+                  contracargos y peque&ntilde;os costos operativos que no siempre aparecen en el
+                  ROAS publicitario, pero si golpean tu beneficio real.
+                </p>
+              </details>
             </section>
           </div>
         </form>
@@ -569,7 +906,7 @@
                   0.00x
                 </p>
                 <p class="mt-2 text-sm text-slate-300">
-                  Minimo ROAS para no perder dinero.
+                  M&iacute;nimo ROAS para no perder dinero.
                 </p>
               </article>
 
@@ -594,7 +931,7 @@
 
               <dl class="mt-4 space-y-3 text-sm">
                 <div class="flex items-center justify-between gap-4">
-                  <dt class="text-slate-300">Producto + envio</dt>
+                  <dt class="text-slate-300">Producto + env&iacute;o</dt>
                   <dd id="fulfillmentCostValue" class="font-medium text-white">$0</dd>
                 </div>
                 <div class="flex items-center justify-between gap-4">
@@ -604,6 +941,14 @@
                 <div class="flex items-center justify-between gap-4">
                   <dt class="text-slate-300">Impuestos</dt>
                   <dd id="taxCostValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Marketplace y descuentos</dt>
+                  <dd id="commercialAdjustmentsValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Devoluciones y extras</dt>
+                  <dd id="riskAndOpsValue" class="font-medium text-white">$0</dd>
                 </div>
                 <div class="flex items-center justify-between gap-4">
                   <dt class="text-slate-300">Marketing</dt>
@@ -642,85 +987,479 @@
                 aria-live="polite"
                 class="mt-3 text-xs leading-5 text-muted"
               >
-                Copia tus metricas o compartelas por WhatsApp en un toque.
+                Copia tus m&eacute;tricas o comp&aacute;rtelas por WhatsApp en un toque.
               </p>
             </div>
           </div>
+        </section>
+        </div>
 
-          <section
-            aria-labelledby="affiliate-tools"
-            class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
-          >
+        <section
+          id="herramientas"
+          aria-labelledby="affiliate-tools"
+          class="glass rounded-[2rem] border border-line p-6 shadow-glow sm:p-7 lg:p-8"
+        >
             <div class="flex items-center justify-between gap-3">
               <div>
                 <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
-                  Monetizacion
+                  Herramientas
                 </p>
                 <h2 id="affiliate-tools" class="mt-2 text-2xl font-semibold text-white">
                   Herramientas recomendadas para mejorar tu margen
                 </h2>
+                <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+                  Usa esta secci&oacute;n para monetizar con software afiliado sin
+                  romper la experiencia. El tr&aacute;fico llega por la calculadora y
+                  se convierte mejor cuando la recomendacion resuelve un problema
+                  real del negocio.
+                </p>
               </div>
             </div>
 
-            <div class="mt-6 grid gap-4 lg:grid-cols-2">
-              <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+            <div class="mt-8 grid gap-5 lg:grid-cols-2">
+              <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5 lg:col-span-2">
                 <div class="flex items-center gap-4">
                   <div
-                    class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-slate-900 text-lg font-semibold text-accentSoft"
-                    aria-hidden="true"
+                    class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white/95 shadow-inner"
                   >
-                    S
+                    <svg
+                      viewBox="0 0 64 64"
+                      class="h-9 w-9"
+                      aria-hidden="true"
+                    >
+                      <path fill="#95BF47" d="M46.6 19.3c-.1 0-.3 0-.4.1-.2-1.6-.7-2.8-1.5-3.8-1-1.1-2.3-1.7-3.9-1.7h-.1c-.5-.8-1.2-1.4-2-1.8-1.4-.7-3-.8-4.8-.3-3.4 1-6.8 5-8.2 9.6l-5.8 1.8c-1.7.5-1.8.6-2 2.3l-4.4 33.8 34.1 5.8 18.5-4.6-3.2-38.6c-.1-1.4-.5-1.6-1.3-1.7l-4-1zm-7.4-3.5c.4.2.7.4 1 .7-1.2.4-2.5.8-4 .9.9-1.1 2-1.7 3-1.7zm-1.2 3.3c-2 .1-4.1.1-6.2 0 1.2-2.2 2.9-4.1 4.7-4.6.5-.1 1-.1 1.4 0-1.3 1.1-2.5 2.7-3.5 4.6h3.6zm3 0c.9-2.4 2.1-3.8 3-4.5.6.9 1 2.3 1 4.2-1.2.1-2.5.2-4 .3z"/>
+                      <path fill="#5E8E3E" d="M46.2 28.2c-1-1.1-2.8-1.7-5.2-1.7-2 0-3.6.5-4.9 1.4-1.3.9-2 2.1-2 3.5 0 .9.2 1.7.7 2.3.5.6 1.4 1.3 2.8 2.1 1.1.6 1.8 1 2 1.2.2.2.3.5.3.8 0 .9-.8 1.3-2.4 1.3-1.7 0-3.6-.5-5.7-1.5l-.9 5c1.7.8 3.7 1.1 6 1.1 2.4 0 4.3-.5 5.8-1.5 1.5-1 2.2-2.4 2.2-4.1 0-1-.2-1.9-.7-2.5-.4-.7-1.3-1.4-2.6-2.1-1.3-.8-2.1-1.2-2.3-1.4-.2-.2-.3-.4-.3-.7 0-.3.2-.6.5-.8.3-.2.8-.3 1.4-.3 1.6 0 3.1.3 4.6 1l.9-4.8c-1.5-.5-3-.8-4.5-.8z"/>
+                    </svg>
                   </div>
                   <div>
                     <h3 class="text-lg font-semibold text-white">Shopify</h3>
                     <p class="text-sm text-muted">
-                      Infraestructura estable, checkout veloz y ecosistema listo para crecer.
+                      Infraestructura estable, checkout veloz y ecosistema listo
+                      para crecer.
                     </p>
                   </div>
                 </div>
                 <p class="mt-4 text-sm leading-6 text-slate-300">
                   La plataforma lider para escalar tu tienda online sin caidas de
-                  servidor y con el checkout mas rapido del mercado. Inicia hoy.
+                  servidor y con el checkout m&aacute;s r&aacute;pido del mercado. Inicia hoy.
                 </p>
                 <a
-                  href="#"
+                  id="shopifyAffiliateLink"
+                  href="https://shopify.pxf.io/MKKPRN"
+                  target="_blank"
                   rel="nofollow sponsored noopener noreferrer"
-                  class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
-                >
-                  Probar ahora
-                </a>
-              </article>
-
-              <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-slate-900 text-lg font-semibold text-warning"
-                    aria-hidden="true"
-                  >
-                    E
-                  </div>
-                  <div>
-                    <h3 class="text-lg font-semibold text-white">Klaviyo / Mailchimp</h3>
-                    <p class="text-sm text-muted">
-                      Automatizacion de email marketing para recuperar ingresos y elevar LTV.
-                    </p>
-                  </div>
-                </div>
-                <p class="mt-4 text-sm leading-6 text-slate-300">
-                  Recupera hasta un 15% de ventas perdidas por carritos abandonados.
-                  Deja de depender solo de los anuncios pagados.
-                </p>
-                <a
-                  href="#"
-                  rel="nofollow sponsored noopener noreferrer"
-                  class="mt-5 inline-flex w-full items-center justify-center rounded-2xl border border-line px-4 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent"
+                  class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90 sm:w-auto"
                 >
                   Probar ahora
                 </a>
               </article>
             </div>
-          </section>
+
+            <p class="mt-5 text-xs leading-5 text-muted">
+              Algunos enlaces de esta p&aacute;gina pueden generar una comisi&oacute;n para
+              EscalaMargen sin costo adicional para el usuario.
+            </p>
         </section>
+
+        <section
+          id="patrocinado-top"
+          class="rounded-[2rem] border border-dashed border-accent/25 bg-accent/5 p-5 sm:p-6"
+        >
+            <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-accentSoft">
+                  Patrocinado
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold text-white">
+                  Bloque premium para sponsor o anuncio nativo
+                </h2>
+                <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+                  Esta posici&oacute;n est&aacute; pensada para un recurso recomendado, una
+                  marca patrocinadora o una campa&ntilde;a display que no interrumpa el
+                  uso de la calculadora.
+                </p>
+              </div>
+              <a
+                href="#contacto"
+                id="sponsorTopCta"
+                class="inline-flex items-center justify-center rounded-2xl border border-accent/25 px-5 py-3 text-sm font-semibold text-accent transition hover:bg-accent hover:text-slate-950"
+              >
+                Patrocinar esta posici&oacute;n
+              </a>
+            </div>
+        </section>
+      </section>
+
+      <section
+        id="plantilla-excel"
+        class="mt-8 rounded-[2rem] border border-line bg-slate-900/50 px-5 py-16 shadow-glow sm:px-6 lg:px-10 lg:py-24"
+      >
+        <div class="grid gap-10 lg:grid-cols-[0.96fr_1.04fr] lg:items-start">
+          <div class="max-w-2xl">
+            <p class="text-xs uppercase tracking-[0.24em] text-accent">
+              Sube de nivel tu tienda
+            </p>
+            <h2 class="mt-4 font-display text-3xl leading-tight text-white sm:text-4xl">
+              Menos intuici&oacute;n. M&aacute;s control.
+            </h2>
+            <p class="mt-4 max-w-xl text-base leading-7 text-slate-300">
+              La calculadora te alerta. La plantilla te ayuda a decidir qu&eacute; vender,
+              cu&aacute;nto invertir y c&oacute;mo cuidar tu caja.
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-2">
+              <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                Plantilla premium
+              </span>
+              <span class="rounded-full border border-line px-3 py-1 text-xs text-slate-300">
+                Excel editable
+              </span>
+              <span class="rounded-full border border-line px-3 py-1 text-xs text-slate-300">
+                Gu&iacute;a PDF incluida
+              </span>
+            </div>
+            <div class="mt-8 grid gap-3 sm:grid-cols-3">
+              <article class="rounded-[1.4rem] border border-line bg-slate-950/55 p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">Utilidad real</p>
+                <p class="mt-2 text-sm text-slate-200">Mide lo que realmente te queda.</p>
+              </article>
+              <article class="rounded-[1.4rem] border border-line bg-slate-950/55 p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">Caja</p>
+                <p class="mt-2 text-sm text-slate-200">Evita vender mucho y quedarte corto.</p>
+              </article>
+              <article class="rounded-[1.4rem] border border-line bg-slate-950/55 p-4">
+                <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">Implementaci&oacute;n</p>
+                <p class="mt-2 text-sm text-slate-200">Empieza r&aacute;pido con la gu&iacute;a PDF.</p>
+              </article>
+            </div>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              <button
+                type="button"
+                data-template-feature="catalogo"
+                class="template-feature-btn rounded-[1.35rem] border border-accent/20 bg-accent/10 px-4 py-4 text-left shadow-[0_0_0_1px_rgba(56,242,161,0.12)]"
+              >
+                <span class="text-[11px] uppercase tracking-[0.18em] text-accentSoft">Cat&aacute;logo</span>
+                <span class="mt-2 block text-sm font-semibold text-white">Productos que dejan margen</span>
+              </button>
+              <button
+                type="button"
+                data-template-feature="proyeccion"
+                class="template-feature-btn rounded-[1.35rem] border border-line bg-slate-950/45 px-4 py-4 text-left transition hover:border-accent/20 hover:bg-slate-950/65"
+              >
+                <span class="text-[11px] uppercase tracking-[0.18em] text-accentSoft">12 meses</span>
+                <span class="mt-2 block text-sm font-semibold text-white">Cu&aacute;nto invertir sin improvisar</span>
+              </button>
+              <button
+                type="button"
+                data-template-feature="diario"
+                class="template-feature-btn rounded-[1.35rem] border border-line bg-slate-950/45 px-4 py-4 text-left transition hover:border-accent/20 hover:bg-slate-950/65"
+              >
+                <span class="text-[11px] uppercase tracking-[0.18em] text-accentSoft">D&iacute;a a d&iacute;a</span>
+                <span class="mt-2 block text-sm font-semibold text-white">Control r&aacute;pido de caja y ads</span>
+              </button>
+              <button
+                type="button"
+                data-template-feature="guia"
+                class="template-feature-btn rounded-[1.35rem] border border-line bg-slate-950/45 px-4 py-4 text-left transition hover:border-accent/20 hover:bg-slate-950/65"
+              >
+                <span class="text-[11px] uppercase tracking-[0.18em] text-accentSoft">Bonus</span>
+                <span class="mt-2 block text-sm font-semibold text-white">Gu&iacute;a PDF paso a paso</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="rounded-[2rem] border border-accent/15 bg-slate-950/75 p-6 shadow-glow sm:p-8">
+            <div class="rounded-[1.65rem] border border-line bg-slate-900/80 p-5">
+              <div class="flex flex-wrap items-start justify-between gap-4">
+                <div>
+                  <p id="templateFeatureEyebrow" class="text-[11px] uppercase tracking-[0.18em] text-accentSoft">
+                    Vista activa
+                  </p>
+                  <h3 id="templateFeatureTitle" class="mt-2 text-2xl font-semibold text-white">
+                    Simulador de Cat&aacute;logo
+                  </h3>
+                </div>
+                <span
+                  id="templateFeaturePill"
+                  class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-accent"
+                >
+                  Margen
+                </span>
+              </div>
+
+              <p id="templateFeatureCopy" class="mt-3 text-sm leading-6 text-slate-300">
+                Ve r&aacute;pido qu&eacute; producto te deja dinero y cu&aacute;l deber&iacute;as ajustar o sacar del cat&aacute;logo.
+              </p>
+
+              <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                <article class="rounded-[1.25rem] border border-line bg-slate-950/65 p-4">
+                  <p id="templateMetricOneLabel" class="text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                    M&eacute;trica
+                  </p>
+                  <p id="templateMetricOneValue" class="mt-2 font-display text-2xl text-white">
+                    Semaforo
+                  </p>
+                </article>
+                <article class="rounded-[1.25rem] border border-line bg-slate-950/65 p-4">
+                  <p id="templateMetricTwoLabel" class="text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                    Decision
+                  </p>
+                  <p id="templateMetricTwoValue" class="mt-2 font-display text-2xl text-white">
+                    Subir precio
+                  </p>
+                </article>
+                <article class="rounded-[1.25rem] border border-line bg-slate-950/65 p-4">
+                  <p id="templateMetricThreeLabel" class="text-[11px] uppercase tracking-[0.16em] text-slate-400">
+                    Bonus
+                  </p>
+                  <p id="templateMetricThreeValue" class="mt-2 font-display text-2xl text-white">
+                    Gu&iacute;a PDF
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <h3 class="hidden mt-5 text-2xl font-semibold text-white">
+              Todo lo que necesitas para controlar utilidad, caja e inventario en una sola vista.
+            </h3>
+            <p class="hidden mt-3 text-sm leading-7 text-slate-300">
+              Pensada para due&ntilde;os de tienda que necesitan tomar decisiones r&aacute;pidas sin perderse
+              entre hojas sueltas, cuentas manuales y supuestos que luego salen caros.
+            </p>
+
+            <ul class="hidden mt-6 space-y-4 text-sm leading-7 text-slate-200">
+              <li class="flex items-start gap-3">
+                <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent">
+                  &#10003;
+                </span>
+                <span>
+                  <strong class="text-white">Simulador de Cat&aacute;logo:</strong>
+                  Te pinta en rojo los productos que te hacen perder plata.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent">
+                  &#10003;
+                </span>
+                <span>
+                  <strong class="text-white">Proyecci&oacute;n a 12 Meses:</strong>
+                  Planea el presupuesto exacto de anuncios que necesitas.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent">
+                  &#10003;
+                </span>
+                <span>
+                  <strong class="text-white">Control Diario:</strong>
+                  Tabla anti-estr&eacute;s para medir tu rentabilidad d&iacute;a a d&iacute;a.
+                </span>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="mt-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-accent/15 text-accent">
+                  &#10003;
+                </span>
+                <span>
+                  <strong class="text-white">Bonus:</strong>
+                  Gu&iacute;a de uso en PDF para implementarla sin enredos.
+                </span>
+              </li>
+            </ul>
+
+            <div class="mt-6 rounded-[1.5rem] border border-line bg-slate-900/70 p-5">
+              <div class="flex items-end justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.18em] text-slate-400">
+                    Oferta de lanzamiento
+                  </p>
+                  <div class="mt-2 flex items-end gap-4">
+                    <span class="text-lg text-slate-500 line-through">$49 USD</span>
+                    <span class="font-display text-5xl text-accent">$9 USD</span>
+                  </div>
+                </div>
+                <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
+                  Acceso inmediato
+                </span>
+              </div>
+              <a
+                id="hotmartTemplateLink"
+                href="https://hotm.io/plantillaescalamargen"
+                target="_blank"
+                rel="nofollow sponsored noopener noreferrer"
+                class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-accent px-6 py-4 text-base font-semibold text-slate-950 shadow-[0_18px_40px_rgba(56,242,161,0.18)] transition hover:translate-y-[-1px] hover:opacity-95"
+              >
+                Comprar plantilla en Hotmart
+              </a>
+              <div class="mt-4 flex flex-wrap gap-2 text-xs text-slate-300">
+                <span class="rounded-full border border-line px-3 py-1">Excel editable</span>
+                <span class="rounded-full border border-line px-3 py-1">Gu&iacute;a PDF</span>
+                <span class="rounded-full border border-line px-3 py-1">Descarga inmediata</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="productos-recomendados"
+        class="glass mt-8 rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
+      >
+        <div class="max-w-3xl">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            Operaci&oacute;n
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-white">
+            Productos recomendados para operar mejor tu e-commerce
+          </h2>
+          <p class="mt-3 text-sm leading-6 text-slate-300">
+            Esta secci&oacute;n est&aacute; pensada para afiliados de Amazon o Mercado Libre
+            orientados a cumplimiento, empaque, despacho y control de inventario.
+          </p>
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">
+              Amazon / Mercado Libre
+            </p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Impresora t&eacute;rmica
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Acelera el despacho, reduce errores y mejora la operaci&oacute;n cuando
+              el volumen de pedidos empieza a subir.
+            </p>
+          </article>
+
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">
+              Amazon / Mercado Libre
+            </p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Etiquetas y rollos
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Ideal para estandarizar tu fulfillment, bajar tiempos por pedido
+              y evitar costos ocultos de empaque.
+            </p>
+          </article>
+
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">
+              Amazon / Mercado Libre
+            </p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Balanza digital
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Te ayuda a cotizar mejor el env&iacute;o, controlar costos log&iacute;sticos y
+              no regalar margen por errores de peso.
+            </p>
+          </article>
+
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">
+              Amazon / Mercado Libre
+            </p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Bolsas y empaques
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Una mejora simple que protege el pedido, mejora la percepci&oacute;n de
+              marca y ayuda a controlar devoluciones evitables.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="articulos"
+        class="glass mt-8 rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
+      >
+        <div class="max-w-3xl">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            SEO + Contenido
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-white">
+            Aprende a mejorar el margen de tu tienda
+          </h2>
+          <p class="mt-3 text-sm leading-6 text-slate-300">
+            Este bloque est&aacute; preparado para publicar art&iacute;culos de posicionamiento
+            org&aacute;nico y capturar tr&aacute;fico desde preguntas que ya hacen los due&ntilde;os
+            de tienda en Google y TikTok.
+          </p>
+        </div>
+
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accent">Art&iacute;culo</p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Qu&eacute; es el ROAS de equilibrio y c&oacute;mo usarlo para apagar anuncios malos
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Explica el punto m&iacute;nimo de rentabilidad y por qu&eacute; facturar no
+              siempre significa ganar dinero.
+            </p>
+          </article>
+
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accent">Art&iacute;culo</p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              C&oacute;mo calcular margen neto real en e-commerce sin enga&ntilde;arte
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Una gu&iacute;a para sumar producto, env&iacute;o, pasarela, impuestos y ads en
+              una sola f&oacute;rmula accionable.
+            </p>
+          </article>
+
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accent">Art&iacute;culo</p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Cu&aacute;nto te quitan realmente las pasarelas de pago en Latam
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Ideal para posicionar comparativas y capturar tr&aacute;fico con intenci&oacute;n
+              comercial alta.
+            </p>
+          </article>
+
+          <article class="rounded-[1.6rem] border border-line bg-slate-950/45 p-5">
+            <p class="text-xs uppercase tracking-[0.18em] text-accent">Art&iacute;culo</p>
+            <h3 class="mt-3 text-lg font-semibold text-white">
+              Errores que hacen perder dinero aunque tu tienda venda todos los d&iacute;as
+            </h3>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              Perfecto para redes, newsletters y retargeting con contenido de
+              alto valor percibido.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section
+        id="patrocinado-bottom"
+        class="mt-8 rounded-[2rem] border border-dashed border-line bg-slate-900/45 p-5 sm:p-6"
+      >
+        <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+              Publicidad
+            </p>
+            <h2 class="mt-2 text-2xl font-semibold text-white">
+              Segundo bloque comercial para display, sponsor o lead magnet
+            </h2>
+            <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+              Ub&iacute;calo despu&eacute;s del contenido y antes del FAQ para monetizar sin
+              afectar la conversi&oacute;n principal de la herramienta.
+            </p>
+          </div>
+          <a
+            href="#contacto"
+            class="inline-flex items-center justify-center rounded-2xl border border-line px-5 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent"
+          >
+            Activar este bloque
+          </a>
+        </div>
       </section>
 
       <section
@@ -806,36 +1545,236 @@
       </section>
     </main>
 
-    <a
-      href="#"
-      class="safe-bottom fixed inset-x-4 bottom-0 z-40 mx-auto max-w-md"
-      aria-label="Descargar plantilla Excel proyectiva a 12 meses"
+    <footer
+      id="contacto"
+      class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8"
     >
-      <span
-        class="flex items-center justify-between gap-4 rounded-[1.4rem] border border-accent/20 bg-slate-950/90 px-4 py-4 shadow-glow backdrop-blur"
+      <section class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <div class="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                Contacto + Confianza
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold text-white">
+                EscalaMargen
+              </h2>
+            <p class="mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+              Algunos enlaces de esta p&aacute;gina pueden generar comisiones de
+              afiliado sin costo extra para el usuario. Solo recomendamos
+              herramientas, recursos y productos alineados con rentabilidad,
+              operaci&oacute;n y crecimiento para e-commerce.
+            </p>
+          </div>
+
+          <div class="grid gap-3 text-sm text-slate-300">
+            <div class="rounded-2xl border border-line px-4 py-4">
+              <p class="text-xs uppercase tracking-[0.18em] text-muted">WhatsApp</p>
+              <a
+                href="https://wa.me/573027391521"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-2 inline-flex font-medium text-white transition hover:text-accent"
+              >
+                +57 302 739 1521
+              </a>
+            </div>
+            <div class="rounded-2xl border border-line px-4 py-4">
+              <p class="text-xs uppercase tracking-[0.18em] text-muted">Correo</p>
+              <a
+                href="mailto:saocampoe@unal.edu.co"
+                class="mt-2 inline-flex font-medium text-white transition hover:text-accent"
+              >
+                saocampoe@unal.edu.co
+              </a>
+            </div>
+            <div class="rounded-2xl border border-line px-4 py-4">
+              <p class="text-xs uppercase tracking-[0.18em] text-muted">Instagram</p>
+              <a
+                href="https://instagram.com/0campo_"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-2 inline-flex font-medium text-white transition hover:text-accent"
+              >
+                @0campo_
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+    <div
+      id="floatingUpsell"
+      class="safe-bottom fixed inset-x-4 bottom-0 z-40 mx-auto max-w-md"
+    >
+      <div
+        class="flex items-start gap-3 rounded-[1.4rem] border border-accent/20 bg-slate-950/90 px-4 py-4 shadow-glow backdrop-blur"
       >
-        <span>
-          <strong class="block text-sm text-white">
-            Descarga la Plantilla Excel Proyectiva a 12 Meses
-          </strong>
-          <span class="text-xs text-muted">
-            $9 USD - Proyecta flujo de caja, utilidad y ROAS durante 12 meses.
-          </span>
-        </span>
-        <span
-          class="shrink-0 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-slate-950"
+        <a
+          id="floatingUpsellLink"
+          href="#plantilla-excel"
+          class="flex min-w-0 flex-1 items-center justify-between gap-4"
+          aria-label="Descargar plantilla Excel proyectiva a 12 meses"
         >
-          Ver
-        </span>
-      </span>
-    </a>
+          <span>
+            <strong class="block text-sm text-white">
+              Descarga la Plantilla Excel Proyectiva a 12 Meses
+            </strong>
+            <span class="text-xs text-muted">
+              $9 USD - Proyecta flujo de caja, utilidad y ROAS durante 12 meses.
+            </span>
+          </span>
+          <span
+            class="shrink-0 rounded-full bg-accent px-4 py-2 text-sm font-semibold text-slate-950"
+          >
+            Ver
+          </span>
+        </a>
+        <button
+          id="dismissFloatingBanner"
+          type="button"
+          class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-line text-lg text-slate-300 transition hover:border-accent hover:text-accent"
+          aria-label="Ocultar banner flotante"
+        >
+          ×
+        </button>
+      </div>
+    </div>
 
     <script>
-      const currencyFormatter = new Intl.NumberFormat("es-CO", {
-        style: "currency",
-        currency: "COP",
-        maximumFractionDigits: 0,
-      });
+      const currencyCatalog = {
+        COP: { locale: "es-CO", decimals: 0, label: "COP" },
+        USD: { locale: "en-US", decimals: 2, label: "USD" },
+        EUR: { locale: "es-ES", decimals: 2, label: "EUR" },
+        ARS: { locale: "es-AR", decimals: 2, label: "ARS" },
+        BOB: { locale: "es-BO", decimals: 2, label: "BOB" },
+        BRL: { locale: "pt-BR", decimals: 2, label: "BRL" },
+        CLP: { locale: "es-CL", decimals: 0, label: "CLP" },
+        CRC: { locale: "es-CR", decimals: 2, label: "CRC" },
+        CUP: { locale: "es-CU", decimals: 2, label: "CUP" },
+        DOP: { locale: "es-DO", decimals: 2, label: "DOP" },
+        GYD: { locale: "en-GY", decimals: 2, label: "GYD" },
+        GTQ: { locale: "es-GT", decimals: 2, label: "GTQ" },
+        HNL: { locale: "es-HN", decimals: 2, label: "HNL" },
+        HTG: { locale: "fr-HT", decimals: 2, label: "HTG" },
+        MXN: { locale: "es-MX", decimals: 2, label: "MXN" },
+        NIO: { locale: "es-NI", decimals: 2, label: "NIO" },
+        PAB: { locale: "es-PA", decimals: 2, label: "PAB" },
+        PEN: { locale: "es-PE", decimals: 2, label: "PEN" },
+        PYG: { locale: "es-PY", decimals: 0, label: "PYG" },
+        SRD: { locale: "nl-SR", decimals: 2, label: "SRD" },
+        UYU: { locale: "es-UY", decimals: 2, label: "UYU" },
+        VES: { locale: "es-VE", decimals: 2, label: "VES" },
+        BZD: { locale: "en-BZ", decimals: 2, label: "BZD" },
+      };
+
+      const STORAGE_KEYS = {
+        currency: "escalamargen:currency",
+      };
+
+      const SITE_CONFIG = {
+        siteUrl: "https://escalamargen.com",
+        // Reemplaza estos placeholders cuando conectes GA4 y Meta Ads.
+        gaMeasurementId: "G-XXXXXXXXXX",
+        metaPixelId: "META_PIXEL_ID",
+      };
+
+      const TRACKING_PLACEHOLDERS = new Set(["", "G-XXXXXXXXXX", "META_PIXEL_ID"]);
+
+      const shouldEnableTracking = (value) =>
+        typeof value === "string" && !TRACKING_PLACEHOLDERS.has(value.trim());
+
+      const loadGoogleAnalytics = (measurementId) => {
+        if (!shouldEnableTracking(measurementId) || window.gtag) {
+          return;
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = function gtag() {
+          window.dataLayer.push(arguments);
+        };
+
+        window.gtag("js", new Date());
+        window.gtag("config", measurementId, {
+          send_page_view: true,
+          anonymize_ip: true,
+        });
+
+        const script = document.createElement("script");
+        script.async = true;
+        script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+        document.head.appendChild(script);
+      };
+
+      const loadMetaPixel = (pixelId) => {
+        if (!shouldEnableTracking(pixelId) || window.fbq) {
+          return;
+        }
+
+        ((f, b, e, v, n, t, s) => {
+          if (f.fbq) {
+            return;
+          }
+          n = f.fbq = function fbq() {
+            if (n.callMethod) {
+              n.callMethod.apply(n, arguments);
+            } else {
+              n.queue.push(arguments);
+            }
+          };
+          if (!f._fbq) {
+            f._fbq = n;
+          }
+          n.push = n;
+          n.loaded = true;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = true;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
+        window.fbq("init", pixelId);
+        window.fbq("track", "PageView");
+      };
+
+      const initializeTracking = () => {
+        loadGoogleAnalytics(SITE_CONFIG.gaMeasurementId);
+        loadMetaPixel(SITE_CONFIG.metaPixelId);
+      };
+
+      const getStoredCurrency = () => {
+        try {
+          const storedCurrency = window.localStorage.getItem(STORAGE_KEYS.currency);
+          return currencyCatalog[storedCurrency] ? storedCurrency : "COP";
+        } catch (error) {
+          return "COP";
+        }
+      };
+
+      const persistCurrency = (currencyCode) => {
+        try {
+          window.localStorage.setItem(STORAGE_KEYS.currency, currencyCode);
+        } catch (error) {
+          // localStorage puede estar bloqueado; la calculadora sigue funcionando.
+        }
+      };
+
+      let selectedCurrency = getStoredCurrency();
+
+      const createCurrencyFormatter = (currencyCode) => {
+        const { locale, decimals } = currencyCatalog[currencyCode] || currencyCatalog.COP;
+        return new Intl.NumberFormat(locale, {
+          style: "currency",
+          currency: currencyCode,
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        });
+      };
+
+      let currencyFormatter = createCurrencyFormatter(selectedCurrency);
 
       const percentFormatter = new Intl.NumberFormat("es-CO", {
         minimumFractionDigits: 1,
@@ -851,22 +1790,56 @@
         wompi: {
           percent: 2.65,
           fixed: 700,
-          note: "Wompi referencia: 2,65% + $700 + IVA por transaccion exitosa.",
+          locked: true,
+          note: "Wompi agregador: 2,65% + $700 COP + IVA por transacci\u00F3n exitosa con dispersi\u00F3n al siguiente d\u00EDa h\u00E1bil.",
         },
-        epayco: {
+        epayco_davivienda: {
           percent: 2.68,
           fixed: 900,
-          note: "ePayco referencia: 2,68% + $900 + IVA por transaccion exitosa en plan agregador.",
+          locked: true,
+          note: "ePayco plan agregador con cuenta Davivienda vinculada: 2,68% + $900 COP + IVA por transacci\u00F3n exitosa.",
         },
-        mercadopago: {
+        epayco_other: {
+          percent: 2.99,
+          fixed: 900,
+          locked: true,
+          note: "ePayco plan agregador con otros bancos: 2,99% + $900 COP + IVA por transacci\u00F3n exitosa.",
+        },
+        mercadopago_instant: {
           percent: 3.29,
           fixed: 800,
-          note: "Mercado Pago referencia: 3,29% + $800 para disponibilidad inmediata del dinero.",
+          locked: true,
+          note: "Mercado Pago inmediato: 3,29% + $800 COP por cobro aprobado.",
+        },
+        mercadopago_7d: {
+          percent: 2.99,
+          fixed: 800,
+          locked: true,
+          note: "Mercado Pago con disponibilidad en 7 d\u00EDas: 2,99% + $800 COP por cobro aprobado.",
+        },
+        mercadopago_14d: {
+          percent: 2.79,
+          fixed: 800,
+          locked: true,
+          note: "Mercado Pago con disponibilidad en 14 d\u00EDas: 2,79% + $800 COP por cobro aprobado.",
+        },
+        bold_cards: {
+          percent: 2.99,
+          fixed: 900,
+          locked: true,
+          note: "Bold tarjetas nacionales online: desde 2,99% + $900 COP por venta. No incluye IVA ni retenciones ajenas a Bold.",
+        },
+        bold_pse: {
+          percent: 2.89,
+          fixed: 900,
+          locked: true,
+          note: "Bold PSE, Bancolombia y billeteras: desde 2,89% + $900 COP por venta. No incluye IVA ni retenciones ajenas a Bold.",
         },
         custom: {
           percent: 0,
           fixed: 0,
-          note: "Personaliza la tarifa segun tu negociacion o el plazo de dispersion elegido.",
+          locked: false,
+          note: "Personaliza la tarifa seg\u00FAn tu negociaci\u00F3n, medio de pago o plazo de dispersi\u00F3n.",
         },
       };
 
@@ -880,6 +1853,12 @@
         taxPercent: 19,
         applyGatewayVat: true,
         gatewayVatPercent: 19,
+        discountPercent: 0,
+        returnsPercent: 0,
+        chargebackPercent: 0,
+        marketplaceFeePercent: 0,
+        extraOperatingCost: 0,
+        packagingCost: 0,
         marketingMode: "cpa",
         estimatedCPA: 22000,
         dailyAdBudget: 120000,
@@ -890,12 +1869,21 @@
         salePrice: document.getElementById("salePrice"),
         productCost: document.getElementById("productCost"),
         shippingCost: document.getElementById("shippingCost"),
+        currencyCode: document.getElementById("currencyCode"),
+        currencyHint: document.getElementById("currencyHint"),
         gatewayPreset: document.getElementById("gatewayPreset"),
         gatewayPercent: document.getElementById("gatewayPercent"),
         gatewayFixed: document.getElementById("gatewayFixed"),
+        gatewayFixedLabel: document.getElementById("gatewayFixedLabel"),
         taxPercent: document.getElementById("taxPercent"),
         applyGatewayVat: document.getElementById("applyGatewayVat"),
         gatewayVatPercent: document.getElementById("gatewayVatPercent"),
+        discountPercent: document.getElementById("discountPercent"),
+        returnsPercent: document.getElementById("returnsPercent"),
+        chargebackPercent: document.getElementById("chargebackPercent"),
+        marketplaceFeePercent: document.getElementById("marketplaceFeePercent"),
+        extraOperatingCost: document.getElementById("extraOperatingCost"),
+        packagingCost: document.getElementById("packagingCost"),
         estimatedCPA: document.getElementById("estimatedCPA"),
         dailyAdBudget: document.getElementById("dailyAdBudget"),
         dailyOrders: document.getElementById("dailyOrders"),
@@ -913,6 +1901,8 @@
         fulfillmentCostValue: document.getElementById("fulfillmentCostValue"),
         gatewayCostValue: document.getElementById("gatewayCostValue"),
         taxCostValue: document.getElementById("taxCostValue"),
+        commercialAdjustmentsValue: document.getElementById("commercialAdjustmentsValue"),
+        riskAndOpsValue: document.getElementById("riskAndOpsValue"),
         marketingCostValue: document.getElementById("marketingCostValue"),
         realProfitValue: document.getElementById("realProfitValue"),
         heroProfit: document.getElementById("heroProfit"),
@@ -924,11 +1914,167 @@
         copySummaryButton: document.getElementById("copySummaryButton"),
         shareWhatsappButton: document.getElementById("shareWhatsappButton"),
         actionStatus: document.getElementById("actionStatus"),
+        headerTemplateNav: document.getElementById("headerTemplateNav"),
+        headerTemplateCta: document.getElementById("headerTemplateCta"),
+        shopifyAffiliateLink: document.getElementById("shopifyAffiliateLink"),
+        sponsorTopCta: document.getElementById("sponsorTopCta"),
+        hotmartTemplateLink: document.getElementById("hotmartTemplateLink"),
+        floatingUpsellLink: document.getElementById("floatingUpsellLink"),
+        templateSection: document.getElementById("plantilla-excel"),
+        floatingUpsell: document.getElementById("floatingUpsell"),
+        dismissFloatingBanner: document.getElementById("dismissFloatingBanner"),
+        templateFeatureEyebrow: document.getElementById("templateFeatureEyebrow"),
+        templateFeatureTitle: document.getElementById("templateFeatureTitle"),
+        templateFeaturePill: document.getElementById("templateFeaturePill"),
+        templateFeatureCopy: document.getElementById("templateFeatureCopy"),
+        templateMetricOneLabel: document.getElementById("templateMetricOneLabel"),
+        templateMetricOneValue: document.getElementById("templateMetricOneValue"),
+        templateMetricTwoLabel: document.getElementById("templateMetricTwoLabel"),
+        templateMetricTwoValue: document.getElementById("templateMetricTwoValue"),
+        templateMetricThreeLabel: document.getElementById("templateMetricThreeLabel"),
+        templateMetricThreeValue: document.getElementById("templateMetricThreeValue"),
       };
 
+      const placeholderValues = {
+        salePrice: defaults.salePrice,
+        productCost: defaults.productCost,
+        shippingCost: defaults.shippingCost,
+        gatewayPercent: defaults.gatewayPercent,
+        gatewayFixed: defaults.gatewayFixed,
+        taxPercent: defaults.taxPercent,
+        gatewayVatPercent: defaults.gatewayVatPercent,
+        discountPercent: defaults.discountPercent,
+        returnsPercent: defaults.returnsPercent,
+        chargebackPercent: defaults.chargebackPercent,
+        marketplaceFeePercent: defaults.marketplaceFeePercent,
+        extraOperatingCost: defaults.extraOperatingCost,
+        packagingCost: defaults.packagingCost,
+        estimatedCPA: defaults.estimatedCPA,
+        dailyAdBudget: defaults.dailyAdBudget,
+        dailyOrders: defaults.dailyOrders,
+      };
+
+      const resettableFields = Object.keys(placeholderValues);
       const marketingButtons = [...document.querySelectorAll(".marketing-toggle")];
+      const templateFeatureButtons = [...document.querySelectorAll(".template-feature-btn")];
       let marketingMode = defaults.marketingMode;
       let latestSummaryText = "";
+      const trackedViews = new Set();
+
+      const trackEvent = (eventName, params = {}) => {
+        const payload = {
+          currency: selectedCurrency,
+          page_location: window.location.href,
+          page_path: window.location.pathname || "/",
+          ...params,
+        };
+
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, payload);
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: eventName, ...payload });
+
+        if (typeof window.fbq === "function") {
+          window.fbq("trackCustom", eventName, payload);
+        }
+      };
+
+      const trackViewOnce = (viewKey, eventName, params = {}) => {
+        if (trackedViews.has(viewKey)) {
+          return;
+        }
+        trackedViews.add(viewKey);
+        trackEvent(eventName, params);
+      };
+
+      const bindTrackedClick = (element, eventName, params = {}) => {
+        if (!element) {
+          return;
+        }
+        element.addEventListener("click", () => {
+          trackEvent(eventName, params);
+        });
+      };
+
+      const observeSectionView = (element, viewKey, eventName, params = {}) => {
+        if (!element) {
+          return;
+        }
+
+        if (!("IntersectionObserver" in window)) {
+          trackViewOnce(viewKey, eventName, params);
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                trackViewOnce(viewKey, eventName, params);
+                observer.disconnect();
+              }
+            });
+          },
+          {
+            threshold: 0.45,
+          }
+        );
+
+        observer.observe(element);
+      };
+
+      const templateFeatures = {
+        catalogo: {
+          eyebrow: "Vista activa",
+          title: "Simulador de Cat\u00E1logo",
+          pill: "Margen",
+          copy: "Ve r\u00E1pido qu\u00E9 producto te deja dinero y cu\u00E1l deber\u00EDas ajustar o sacar del cat\u00E1logo.",
+          metrics: [
+            ["M\u00E9trica", "Sem\u00E1foro"],
+            ["Decisi\u00F3n", "Subir precio"],
+            ["Bonus", "Gu\u00EDa PDF"],
+          ],
+        },
+        proyeccion: {
+          eyebrow: "Vista activa",
+          title: "Proyecci\u00F3n 12 meses",
+          pill: "Planeaci\u00F3n",
+          copy: "Visualiza el gasto en ads, ventas netas y ritmo de crecimiento antes de comprometer caja.",
+          metrics: [
+            ["Tiempo", "12 meses"],
+            ["Objetivo", "Invertir mejor"],
+            ["Lectura", "M\u00E1s clara"],
+          ],
+        },
+        diario: {
+          eyebrow: "Vista activa",
+          title: "Control Diario",
+          pill: "Caja",
+          copy: "Mide ventas, gasto y beneficio diario para saber r\u00E1pido si tu operaci\u00F3n va sana o en p\u00E9rdida.",
+          metrics: [
+            ["Frecuencia", "Diaria"],
+            ["Control", "Ads + ventas"],
+            ["Uso", "5 min"],
+          ],
+        },
+        guia: {
+          eyebrow: "Vista activa",
+          title: "Gu\u00EDa de uso PDF",
+          pill: "Bonus",
+          copy: "Empiezas m\u00E1s r\u00E1pido porque la plantilla viene acompa\u00F1ada por una gu\u00EDa simple de implementaci\u00F3n.",
+          metrics: [
+            ["Formato", "PDF"],
+            ["Objetivo", "Implementar"],
+            ["Curva", "Sin enredos"],
+          ],
+        },
+      };
+
+      if (elements.dismissFloatingBanner) {
+        elements.dismissFloatingBanner.innerHTML = "&times;";
+      }
 
       const parseNumber = (value) => {
         const parsed = Number.parseFloat(value);
@@ -941,7 +2087,7 @@
         Number.isFinite(value) && value > 0 ? `${numberFormatter.format(value)}x` : "No viable";
       const publicWebUrl = window.location.href.startsWith("http")
         ? window.location.href
-        : "https://iloveroas.com/";
+        : SITE_CONFIG.siteUrl;
 
       const setActionStatus = (message, isError = false) => {
         elements.actionStatus.textContent = message;
@@ -950,14 +2096,47 @@
           : "mt-3 text-xs leading-5 text-muted";
       };
 
+      const syncGatewayLockState = (isLocked) => {
+        elements.gatewayPercent.disabled = isLocked;
+        elements.gatewayFixed.disabled = isLocked;
+      };
+
+      const syncCurrencyUI = () => {
+        const currentCurrency =
+          currencyCatalog[elements.currencyCode.value] ? elements.currencyCode.value : "COP";
+        selectedCurrency = currentCurrency;
+        currencyFormatter = createCurrencyFormatter(selectedCurrency);
+        elements.currencyHint.textContent = `Valores en ${selectedCurrency}`;
+        elements.gatewayFixedLabel.textContent = `Comisi\u00F3n plana (${selectedCurrency})`;
+      };
+
+      const syncInputPlaceholders = () => {
+        Object.entries(placeholderValues).forEach(([key, value]) => {
+          if (elements[key]) {
+            elements[key].placeholder = `Ej: ${value}`;
+          }
+        });
+      };
+
       const setPreset = (presetKey) => {
         const preset = presets[presetKey];
         if (!preset) {
           return;
         }
 
+        if (selectedCurrency !== "COP" && preset.locked) {
+          elements.gatewayPreset.value = "custom";
+          elements.gatewayPercent.value = preset.percent;
+          elements.gatewayFixed.value = "";
+          elements.presetNote.textContent =
+            "Los presets autom\u00E1ticos de pasarela usan comisiones fijas de referencia en COP. Dejamos el porcentaje como gu\u00EDa, pero en otra moneda debes usar Personalizado y definir la comisi\u00F3n fija manualmente.";
+          syncGatewayLockState(false);
+          return;
+        }
+
         elements.presetNote.textContent = preset.note;
-        if (presetKey !== "custom") {
+        syncGatewayLockState(preset.locked);
+        if (preset.locked) {
           elements.gatewayPercent.value = preset.percent;
           elements.gatewayFixed.value = preset.fixed;
         }
@@ -973,6 +2152,31 @@
 
         elements.marketingCPAFields.classList.toggle("hidden", marketingMode !== "cpa");
         elements.marketingBudgetFields.classList.toggle("hidden", marketingMode !== "budget");
+      };
+
+      const syncTemplateFeature = (featureKey = "catalogo") => {
+        const feature = templateFeatures[featureKey] || templateFeatures.catalogo;
+        if (!elements.templateFeatureTitle) {
+          return;
+        }
+
+        elements.templateFeatureEyebrow.textContent = feature.eyebrow;
+        elements.templateFeatureTitle.textContent = feature.title;
+        elements.templateFeaturePill.textContent = feature.pill;
+        elements.templateFeatureCopy.textContent = feature.copy;
+        elements.templateMetricOneLabel.textContent = feature.metrics[0][0];
+        elements.templateMetricOneValue.textContent = feature.metrics[0][1];
+        elements.templateMetricTwoLabel.textContent = feature.metrics[1][0];
+        elements.templateMetricTwoValue.textContent = feature.metrics[1][1];
+        elements.templateMetricThreeLabel.textContent = feature.metrics[2][0];
+        elements.templateMetricThreeValue.textContent = feature.metrics[2][1];
+
+        templateFeatureButtons.forEach((button) => {
+          const isActive = button.dataset.templateFeature === featureKey;
+          button.className = isActive
+            ? "template-feature-btn rounded-[1.35rem] border border-accent/20 bg-accent/10 px-4 py-4 text-left shadow-[0_0_0_1px_rgba(56,242,161,0.12)]"
+            : "template-feature-btn rounded-[1.35rem] border border-line bg-slate-950/45 px-4 py-4 text-left transition hover:border-accent/20 hover:bg-slate-950/65";
+        });
       };
 
       const updateHeroState = (netProfit, netMargin) => {
@@ -992,7 +2196,7 @@
           elements.heroBadge.className =
             "rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent";
           elements.heroCopy.textContent =
-            "Tienes margen para escalar con mas criterio y menos ansiedad.";
+            "Tienes margen para escalar con m\u00E1s criterio y menos ansiedad.";
           elements.statusLabel.textContent = "Rentable";
           return;
         }
@@ -1002,11 +2206,11 @@
             "font-display text-4xl font-semibold tracking-tight text-warning sm:text-5xl";
           elements.realProfitValue.className =
             "font-display text-2xl font-semibold text-warning";
-          elements.heroBadge.textContent = "al limite";
+          elements.heroBadge.textContent = "al l\u00EDmite";
           elements.heroBadge.className =
             "rounded-full border border-warning/20 bg-warning/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-warning";
           elements.heroCopy.textContent =
-            "Estas practicamente en tablas. Un pequeno ajuste puede cambiar todo.";
+            "Est\u00E1s pr\u00E1cticamente en tablas. Un peque\u00F1o ajuste puede cambiar todo.";
           elements.statusLabel.textContent = "Punto de equilibrio";
           return;
         }
@@ -1015,7 +2219,7 @@
           "font-display text-4xl font-semibold tracking-tight text-danger sm:text-5xl";
         elements.realProfitValue.className =
           "font-display text-2xl font-semibold text-danger";
-        elements.heroBadge.textContent = "en perdida";
+        elements.heroBadge.textContent = "en p\u00E9rdida";
         elements.heroBadge.className =
           "rounded-full border border-danger/20 bg-danger/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-danger";
         elements.heroCopy.textContent =
@@ -1031,15 +2235,35 @@
         const gatewayFixed = parseNumber(elements.gatewayFixed.value);
         const taxPercent = parseNumber(elements.taxPercent.value) / 100;
         const gatewayVatPercent = parseNumber(elements.gatewayVatPercent.value) / 100;
+        const discountPercent = parseNumber(elements.discountPercent.value) / 100;
+        const returnsPercent = parseNumber(elements.returnsPercent.value) / 100;
+        const chargebackPercent = parseNumber(elements.chargebackPercent.value) / 100;
+        const marketplaceFeePercent = parseNumber(elements.marketplaceFeePercent.value) / 100;
+        const extraOperatingCost = parseNumber(elements.extraOperatingCost.value);
+        const packagingCost = parseNumber(elements.packagingCost.value);
         const applyGatewayVat = elements.applyGatewayVat.checked;
 
-        const baseGatewayFee = salePrice * gatewayPercent + gatewayFixed;
+        const effectiveRevenue = salePrice * (1 - discountPercent);
+        const discountCost = salePrice - effectiveRevenue;
+        const baseGatewayFee = effectiveRevenue * gatewayPercent + gatewayFixed;
         const gatewayFeeVat = applyGatewayVat ? baseGatewayFee * gatewayVatPercent : 0;
         const gatewayTotal = baseGatewayFee + gatewayFeeVat;
-        const taxCost = salePrice * taxPercent;
+        const taxCost = effectiveRevenue * taxPercent;
         const fulfillmentCost = productCost + shippingCost;
-        const grossProfit = salePrice - fulfillmentCost - gatewayTotal - taxCost;
-        const grossMargin = salePrice > 0 ? (grossProfit / salePrice) * 100 : 0;
+        const marketplaceFeeCost = effectiveRevenue * marketplaceFeePercent;
+        const returnsReserveCost = effectiveRevenue * returnsPercent;
+        const chargebackReserveCost = effectiveRevenue * chargebackPercent;
+        const commercialAdjustments = discountCost + marketplaceFeeCost;
+        const riskAndOps =
+          returnsReserveCost + chargebackReserveCost + extraOperatingCost + packagingCost;
+        const grossProfit =
+          effectiveRevenue -
+          fulfillmentCost -
+          gatewayTotal -
+          taxCost -
+          commercialAdjustments -
+          riskAndOps;
+        const grossMargin = effectiveRevenue > 0 ? (grossProfit / effectiveRevenue) * 100 : 0;
 
         const effectiveCPA =
           marketingMode === "cpa"
@@ -1049,8 +2273,8 @@
               : 0;
 
         const netProfit = grossProfit - effectiveCPA;
-        const netMargin = salePrice > 0 ? (netProfit / salePrice) * 100 : 0;
-        const breakEvenROAS = grossProfit > 0 ? salePrice / grossProfit : Number.NaN;
+        const netMargin = effectiveRevenue > 0 ? (netProfit / effectiveRevenue) * 100 : 0;
+        const breakEvenROAS = grossProfit > 0 ? effectiveRevenue / grossProfit : Number.NaN;
 
         elements.grossProfitValue.textContent = formatCurrency(grossProfit);
         elements.grossMarginValue.textContent = formatPercent(grossMargin);
@@ -1066,6 +2290,8 @@
         elements.fulfillmentCostValue.textContent = formatCurrency(fulfillmentCost);
         elements.gatewayCostValue.textContent = formatCurrency(gatewayTotal);
         elements.taxCostValue.textContent = formatCurrency(taxCost);
+        elements.commercialAdjustmentsValue.textContent = formatCurrency(commercialAdjustments);
+        elements.riskAndOpsValue.textContent = formatCurrency(riskAndOps);
         elements.marketingCostValue.textContent = formatCurrency(effectiveCPA);
         latestSummaryText = [
           "Resumen de rentabilidad",
@@ -1075,6 +2301,13 @@
         ].join("\n");
 
         updateHeroState(netProfit, netMargin);
+      };
+
+      const dismissFloatingBanner = () => {
+        elements.floatingUpsell.classList.add("hidden");
+        trackEvent("floating_upsell_dismiss", {
+          placement: "bottom_banner",
+        });
       };
 
       const copySummary = async () => {
@@ -1093,9 +2326,15 @@
             helper.remove();
           }
 
+          trackEvent("copy_summary_click", {
+            action: "success",
+          });
           setActionStatus("Resumen copiado. Ya lo puedes guardar en notas o enviarlo a tu equipo.");
         } catch (error) {
-          setActionStatus("No se pudo copiar el resumen. Intentalo de nuevo.", true);
+          trackEvent("copy_summary_click", {
+            action: "error",
+          });
+          setActionStatus("No se pudo copiar el resumen. Int\u00E9ntalo de nuevo.", true);
         }
       };
 
@@ -1103,27 +2342,29 @@
         const message =
           `Mira esta calculadora gratuita para descubrir si realmente estamos ganando plata en la tienda ${publicWebUrl}`;
         const shareUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+        trackEvent("whatsapp_share_click", {
+          channel: "whatsapp",
+        });
         window.open(shareUrl, "_blank", "noopener,noreferrer");
-        setActionStatus("Se abrio WhatsApp con el mensaje listo para compartir.");
+        setActionStatus("Se abri\u00F3 WhatsApp con el mensaje listo para compartir.");
       };
 
-      const resetForm = () => {
-        Object.entries(defaults).forEach(([key, value]) => {
-          if (!(key in elements)) {
-            return;
-          }
-
-          if (typeof value === "boolean") {
-            elements[key].checked = value;
-            return;
-          }
-
-          elements[key].value = value;
+      const resetForm = (shouldTrack = true) => {
+        resettableFields.forEach((key) => {
+          elements[key].value = "";
         });
 
+        elements.applyGatewayVat.checked = defaults.applyGatewayVat;
         marketingMode = defaults.marketingMode;
         syncMarketingUI();
-        setPreset(defaults.gatewayPreset);
+        elements.gatewayPreset.value = "custom";
+        setPreset("custom");
+        if (shouldTrack) {
+          trackEvent("calculator_reset", {
+            marketing_mode: marketingMode,
+          });
+        }
+        setActionStatus("Completa los campos y ver\u00E1s tu resumen real en tiempo real.");
         calculate();
       };
 
@@ -1135,6 +2376,12 @@
         elements.gatewayFixed,
         elements.taxPercent,
         elements.gatewayVatPercent,
+        elements.discountPercent,
+        elements.returnsPercent,
+        elements.chargebackPercent,
+        elements.marketplaceFeePercent,
+        elements.extraOperatingCost,
+        elements.packagingCost,
         elements.estimatedCPA,
         elements.dailyAdBudget,
         elements.dailyOrders,
@@ -1144,10 +2391,24 @@
         input.addEventListener("change", () => {
           if (input === elements.gatewayPreset) {
             setPreset(elements.gatewayPreset.value);
+            trackEvent("gateway_preset_change", {
+              gateway_preset: elements.gatewayPreset.value,
+              currency: selectedCurrency,
+            });
           }
           calculate();
         })
       );
+
+      elements.currencyCode.addEventListener("change", () => {
+        syncCurrencyUI();
+        persistCurrency(selectedCurrency);
+        setPreset(elements.gatewayPreset.value);
+        trackEvent("currency_change", {
+          currency: selectedCurrency,
+        });
+        calculate();
+      });
 
       marketingButtons.forEach((button) => {
         button.addEventListener("click", () => {
@@ -1157,13 +2418,49 @@
         });
       });
 
+      templateFeatureButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          syncTemplateFeature(button.dataset.templateFeature);
+          trackEvent("template_feature_select", {
+            feature: button.dataset.templateFeature,
+          });
+        });
+      });
+
+      bindTrackedClick(elements.headerTemplateNav, "template_nav_click", {
+        placement: "header_nav",
+      });
+      bindTrackedClick(elements.headerTemplateCta, "template_cta_click", {
+        placement: "header_cta",
+      });
+      bindTrackedClick(elements.shopifyAffiliateLink, "shopify_affiliate_click", {
+        placement: "recommended_tools",
+      });
+      bindTrackedClick(elements.sponsorTopCta, "sponsor_cta_click", {
+        placement: "sponsored_top",
+      });
+      bindTrackedClick(elements.hotmartTemplateLink, "template_purchase_click", {
+        placement: "template_section",
+        vendor: "hotmart",
+      });
+      bindTrackedClick(elements.floatingUpsellLink, "template_cta_click", {
+        placement: "bottom_banner",
+      });
+
       elements.resetButton.addEventListener("click", resetForm);
       elements.copySummaryButton.addEventListener("click", copySummary);
       elements.shareWhatsappButton.addEventListener("click", shareOnWhatsapp);
+      elements.dismissFloatingBanner.addEventListener("click", dismissFloatingBanner);
 
-      syncMarketingUI();
-      setPreset(defaults.gatewayPreset);
-      calculate();
+      initializeTracking();
+      observeSectionView(elements.templateSection, "template_offer_view", "template_offer_view", {
+        section: "plantilla-excel",
+      });
+      syncInputPlaceholders();
+      elements.currencyCode.value = selectedCurrency;
+      syncCurrencyUI();
+      syncTemplateFeature("catalogo");
+      resetForm(false);
     </script>
   </body>
 </html>
