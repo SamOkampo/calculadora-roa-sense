@@ -1029,6 +1029,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </div>
               <form id="emailReportForm" class="mt-4 grid gap-3 sm:grid-cols-[1fr_auto]">
                 <input
+                  type="text"
+                  name="website"
+                  tabindex="-1"
+                  autocomplete="off"
+                  class="hidden"
+                  aria-hidden="true"
+                />
+                <input
                   id="emailReportInput"
                   name="emailReport"
                   type="email"
@@ -1925,6 +1933,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <form id="exitIntentForm" class="mt-5 grid gap-3 sm:grid-cols-[1fr_auto]">
           <input
+            type="text"
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            class="hidden"
+            aria-hidden="true"
+          />
+          <input
             id="exitIntentEmail"
             name="exitIntentEmail"
             type="email"
@@ -2007,12 +2023,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       const SITE_CONFIG = {
         siteUrl: "https://escalamargen.com",
+        // URL publica de la Edge Function de Supabase que enviara el reporte.
+        reportFunctionUrl:
+          "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-report",
+        reportFunctionTimeoutMs: 12000,
         // Reemplaza estos placeholders cuando conectes GA4 y Meta Ads.
         gaMeasurementId: "G-XXXXXXXXXX",
         metaPixelId: "META_PIXEL_ID",
       };
 
       const TRACKING_PLACEHOLDERS = new Set(["", "G-XXXXXXXXXX", "META_PIXEL_ID"]);
+      const REPORT_FUNCTION_PLACEHOLDERS = new Set([
+        "",
+        "https://TU-PROYECTO.supabase.co/functions/v1/send-report",
+      ]);
 
       const shouldEnableTracking = (value) =>
         typeof value === "string" && !TRACKING_PLACEHOLDERS.has(value.trim());
@@ -2304,6 +2328,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       const templateFeatureButtons = [...document.querySelectorAll(".template-feature-btn")];
       let marketingMode = defaults.marketingMode;
       let latestSummaryText = "";
+      let latestCalculation = null;
       const trackedViews = new Set();
       let hasShownExitIntent = false;
 
@@ -2338,6 +2363,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         element.className = isError
           ? "mt-3 text-xs leading-5 text-danger"
           : "mt-3 text-xs leading-5 text-muted";
+      };
+
+      const setSubmitState = (formElement, isPending, pendingLabel = "Enviando...") => {
+        if (!formElement) {
+          return;
+        }
+
+        const submitButton = formElement.querySelector('button[type="submit"]');
+        if (!submitButton) {
+          return;
+        }
+
+        if (!submitButton.dataset.defaultLabel) {
+          submitButton.dataset.defaultLabel = submitButton.textContent.trim();
+        }
+
+        submitButton.disabled = isPending;
+        submitButton.classList.toggle("opacity-60", isPending);
+        submitButton.classList.toggle("cursor-not-allowed", isPending);
+        submitButton.textContent = isPending
+          ? pendingLabel
+          : submitButton.dataset.defaultLabel;
+      };
+
+      const hasConfiguredReportBackend = () =>
+        typeof SITE_CONFIG.reportFunctionUrl === "string" &&
+        !REPORT_FUNCTION_PLACEHOLDERS.has(SITE_CONFIG.reportFunctionUrl.trim());
+
+      const getEmailReportDefaultHint = (source = "inline") => {
+        if (hasConfiguredReportBackend()) {
+          return source === "modal"
+            ? "Te enviaremos el reporte y quedara guardado para seguimiento."
+            : "Te enviaremos el reporte automaticamente y quedara guardado para seguimiento.";
+        }
+
+        return source === "modal"
+          ? "Solo se mostrara una vez por visita y no se activa en dispositivos moviles."
+          : "Abriremos tu correo con el resumen listo para enviarte los resultados.";
+      };
+
+      const syncEmailReportHints = () => {
+        setInlineStatus(elements.emailReportStatus, getEmailReportDefaultHint("inline"));
+        setInlineStatus(elements.exitIntentStatus, getEmailReportDefaultHint("modal"));
       };
 
       const trackViewOnce = (viewKey, eventName, params = {}) => {
@@ -2482,6 +2550,99 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
         window.location.href = `mailto:${encodeURIComponent(recipientEmail)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
         return true;
+      };
+
+      const buildReportRequestPayload = (recipientEmail, source, formElement) => {
+        const utmParams = {};
+        const searchParams = new URLSearchParams(window.location.search);
+        ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((key) => {
+          const value = searchParams.get(key);
+          if (value) {
+            utmParams[key] = value;
+          }
+        });
+
+        return {
+          email: recipientEmail,
+          source,
+          honeypot: formElement?.querySelector('[name="website"]')?.value?.trim() || "",
+          currency: selectedCurrency,
+          page_url: publicWebUrl,
+          page_title: document.title,
+          summary_text: latestSummaryText,
+          inputs: {
+            sale_price: parseNumber(elements.salePrice.value),
+            product_cost: parseNumber(elements.productCost.value),
+            shipping_cost: parseNumber(elements.shippingCost.value),
+            gateway_percent: parseNumber(elements.gatewayPercent.value),
+            gateway_fixed: parseNumber(elements.gatewayFixed.value),
+            tax_percent: parseNumber(elements.taxPercent.value),
+            gateway_vat_percent: parseNumber(elements.gatewayVatPercent.value),
+            discount_percent: parseNumber(elements.discountPercent.value),
+            returns_percent: parseNumber(elements.returnsPercent.value),
+            chargeback_percent: parseNumber(elements.chargebackPercent.value),
+            marketplace_fee_percent: parseNumber(elements.marketplaceFeePercent.value),
+            extra_operating_cost: parseNumber(elements.extraOperatingCost.value),
+            packaging_cost: parseNumber(elements.packagingCost.value),
+            marketing_mode: marketingMode,
+            estimated_cpa: parseNumber(elements.estimatedCPA.value),
+            daily_ad_budget: parseNumber(elements.dailyAdBudget.value),
+            daily_orders: parseNumber(elements.dailyOrders.value),
+            gateway_preset: elements.gatewayPreset.value,
+            apply_gateway_vat: elements.applyGatewayVat.checked,
+          },
+          results: {
+            gross_profit: elements.grossProfitValue.textContent,
+            gross_margin_percent: elements.grossMarginValue.textContent,
+            net_profit: elements.netProfitValue.textContent,
+            net_margin_percent: elements.netMarginValue.textContent,
+            break_even_roas: elements.breakEvenValue.textContent,
+            effective_cpa: elements.effectiveCPAValue.textContent,
+            fulfillment_cost: elements.fulfillmentCostValue.textContent,
+            gateway_total: elements.gatewayCostValue.textContent,
+            tax_cost: elements.taxCostValue.textContent,
+            commercial_adjustments: elements.commercialAdjustmentsValue.textContent,
+            risk_and_ops: elements.riskAndOpsValue.textContent,
+            raw: latestCalculation || {},
+          },
+          context: {
+            utm: utmParams,
+            user_agent: navigator.userAgent,
+            viewport: {
+              width: window.innerWidth,
+              height: window.innerHeight,
+            },
+          },
+        };
+      };
+
+      const sendReportToBackend = async (payload) => {
+        const controller = new AbortController();
+        const timeoutId = window.setTimeout(
+          () => controller.abort(),
+          SITE_CONFIG.reportFunctionTimeoutMs || 12000
+        );
+
+        try {
+          const response = await fetch(SITE_CONFIG.reportFunctionUrl, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+            signal: controller.signal,
+          });
+
+          const data = await response.json().catch(() => ({}));
+
+          if (!response.ok) {
+            throw new Error(data?.error || "No se pudo enviar el reporte.");
+          }
+
+          return data;
+        } finally {
+          window.clearTimeout(timeoutId);
+        }
       };
 
       const syncTemplatePriceReference = () => {
@@ -2711,6 +2872,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           `ROAS de equilibrio: ${formatROAS(breakEvenROAS)}`,
           `Beneficio real por venta: ${formatCurrency(netProfit)}`,
         ].join("\n");
+        latestCalculation = {
+          sale_price: salePrice,
+          effective_revenue: effectiveRevenue,
+          gross_profit: grossProfit,
+          gross_margin_percent: grossMargin,
+          net_profit: netProfit,
+          net_margin_percent: netMargin,
+          break_even_roas: Number.isFinite(breakEvenROAS) ? breakEvenROAS : null,
+          effective_cpa: effectiveCPA,
+          fulfillment_cost: fulfillmentCost,
+          gateway_total: gatewayTotal,
+          tax_cost: taxCost,
+          commercial_adjustments: commercialAdjustments,
+          risk_and_ops: riskAndOps,
+        };
 
         updateHeroState(netProfit, netMargin);
       };
@@ -2787,20 +2963,81 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         document.body.style.overflow = "";
       };
 
-      const handleEmailReportSubmit = (inputElement, statusElement, source, shouldCloseModal = false) => {
+      const handleEmailReportSubmit = async (
+        formElement,
+        inputElement,
+        statusElement,
+        source,
+        shouldCloseModal = false
+      ) => {
         const recipientEmail = inputElement?.value?.trim() || "";
+        const honeypotValue = formElement?.querySelector('[name="website"]')?.value?.trim() || "";
+
+        if (honeypotValue) {
+          setInlineStatus(statusElement, "No pudimos procesar tu solicitud.", true);
+          trackEvent("email_report_blocked", {
+            source,
+            reason: "honeypot",
+          });
+          return;
+        }
 
         if (!isValidEmail(recipientEmail)) {
-          setInlineStatus(statusElement, "Escribe un correo v\u00E1lido para abrir el reporte.", true);
+          setInlineStatus(statusElement, "Escribe un correo valido para enviar el reporte.", true);
           trackEvent("email_report_invalid", {
             source,
           });
           return;
         }
 
+        if (hasConfiguredReportBackend()) {
+          setSubmitState(formElement, true);
+          setInlineStatus(statusElement, "Enviando tu reporte...");
+
+          try {
+            await sendReportToBackend(buildReportRequestPayload(recipientEmail, source, formElement));
+            setInlineStatus(
+              statusElement,
+              "Listo. Te enviamos el reporte a tu correo y guardamos tu solicitud."
+            );
+            trackEvent("email_report_request", {
+              source,
+              delivery: "supabase_resend",
+              recipient_domain: recipientEmail.split("@")[1] || "",
+            });
+
+            if (inputElement) {
+              inputElement.value = "";
+            }
+            if (formElement?.querySelector('[name="website"]')) {
+              formElement.querySelector('[name="website"]').value = "";
+            }
+
+            if (shouldCloseModal) {
+              window.setTimeout(() => {
+                closeExitIntentModal();
+              }, 900);
+            }
+            return;
+          } catch (error) {
+            setInlineStatus(
+              statusElement,
+              "No pudimos enviar el reporte automatico. Abriremos tu correo como respaldo.",
+              true
+            );
+            trackEvent("email_report_error", {
+              source,
+              delivery: "supabase_resend",
+              message: error instanceof Error ? error.message : "unknown_error",
+            });
+          } finally {
+            setSubmitState(formElement, false);
+          }
+        }
+
         const draftOpened = openEmailDraft(recipientEmail, source);
         if (!draftOpened) {
-          setInlineStatus(statusElement, "No pudimos abrir tu correo. Int\u00E9ntalo otra vez.", true);
+          setInlineStatus(statusElement, "No pudimos abrir tu correo. Intentalo otra vez.", true);
           return;
         }
 
@@ -2924,6 +3161,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.emailReportForm.addEventListener("submit", (event) => {
           event.preventDefault();
           handleEmailReportSubmit(
+            elements.emailReportForm,
             elements.emailReportInput,
             elements.emailReportStatus,
             "inline_report_form"
@@ -2935,6 +3173,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.exitIntentForm.addEventListener("submit", (event) => {
           event.preventDefault();
           handleEmailReportSubmit(
+            elements.exitIntentForm,
             elements.exitIntentEmail,
             elements.exitIntentStatus,
             "exit_intent_modal",
@@ -2982,6 +3221,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         section: "plantilla-excel",
       });
       syncInputPlaceholders();
+      syncEmailReportHints();
       elements.currencyCode.value = selectedCurrency;
       syncCurrencyUI();
       syncTemplateFeature("catalogo");

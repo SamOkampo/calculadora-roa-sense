@@ -22,3 +22,49 @@ SPA en un solo archivo pensada para captacion de trafico, SEO on-page, monetizac
 ## Despliegue
 
 Sube `index.html` a cualquier hosting estatico o a GitHub Pages.
+
+## Reportes por correo con Supabase + Resend
+
+La landing ya quedo preparada para enviar el reporte automaticamente y guardar cada lead en base de datos. La arquitectura sugerida es:
+
+- `GitHub Pages` para la web
+- `Supabase` para la tabla `report_requests`
+- `Supabase Edge Functions` para procesar el envio
+- `Resend` para mandar el correo desde tu dominio
+
+### Archivos incluidos
+
+- `supabase/migrations/20260406_create_report_requests.sql`
+- `supabase/functions/send-report/index.ts`
+- `supabase/functions/_shared/cors.ts`
+
+### Variables que debes configurar en Supabase
+
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `RESEND_API_KEY`
+- `REPORT_FROM_EMAIL`
+- `REPORT_REPLY_TO_EMAIL`
+- `SITE_URL`
+- `ALLOWED_ORIGINS`
+
+### Flujo de puesta en marcha
+
+1. Crea tu proyecto en Supabase.
+2. Ejecuta la migracion SQL para crear `report_requests`.
+3. Crea la Edge Function `send-report`.
+4. Agrega los secrets anteriores en Supabase.
+5. Despliega la funcion con el CLI usando una funcion publica para este formulario estatico.
+6. En `index.html`, completa `SITE_CONFIG.reportFunctionUrl` con la URL publica de la funcion.
+
+Ejemplo:
+
+```bash
+supabase functions deploy send-report --no-verify-jwt
+```
+
+Mientras `SITE_CONFIG.reportFunctionUrl` siga vacio, la web conserva el fallback actual por `mailto:` para no romper la captura.
+
+Guia completa:
+
+- `SUPABASE_SETUP.md`
