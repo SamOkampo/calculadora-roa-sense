@@ -5,6 +5,8 @@ type ReportPayload = {
   email: string;
   source: string;
   honeypot?: string;
+  consent_accepted?: boolean;
+  consent_text?: string;
   currency: string;
   page_url?: string;
   page_title?: string;
@@ -28,6 +30,8 @@ const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "
 const SITE_URL = Deno.env.get("SITE_URL") || "https://escalamargen.com";
 const SHOPIFY_AFFILIATE_URL =
   Deno.env.get("SHOPIFY_AFFILIATE_URL") || "https://shopify.pxf.io/MKKPRN";
+const HOTMART_TEMPLATE_URL =
+  Deno.env.get("HOTMART_TEMPLATE_URL") || "https://hotm.io/plantillaescalamargen";
 const DUPLICATE_WINDOW_SECONDS = Number.parseInt(
   Deno.env.get("REPORT_DUPLICATE_WINDOW_SECONDS") || "90",
   10
@@ -101,9 +105,9 @@ const buildEmailHtml = (payload: ReportPayload) => `
     <div style="max-width:640px;margin:0 auto;background:#0d1728;border:1px solid rgba(148,163,184,0.18);border-radius:24px;overflow:hidden;">
       <div style="padding:28px 28px 20px;border-bottom:1px solid rgba(148,163,184,0.12);background:linear-gradient(180deg,#0d1728 0%,#101d31 100%);">
         <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#1ec8ff;">EscalaMargen</p>
-        <h1 style="margin:0;font-size:28px;line-height:1.15;">Tu reporte de rentabilidad</h1>
+        <h1 style="margin:0;font-size:28px;line-height:1.15;">Tu reporte ya esta listo</h1>
         <p style="margin:12px 0 0;color:#9fb0c9;line-height:1.6;">
-          Aqui tienes el resumen que generaste en la calculadora. Guardalo como referencia antes de lanzar mas ads.
+          Aqui tienes una foto clara de tu margen, tu utilidad real y el ROAS minimo que necesita tu tienda para no perder dinero.
         </p>
       </div>
 
@@ -141,22 +145,31 @@ const buildEmailHtml = (payload: ReportPayload) => `
           </table>
         </div>
 
-        <p style="margin:22px 0 0;color:#9fb0c9;line-height:1.7;">
-          Si quieres planear caja, inventario y utilidad durante 12 meses, revisa la plantilla completa aqui:
-          <a href="${SITE_URL}#plantilla-excel" style="color:#38f2a1;">${SITE_URL}#plantilla-excel</a>
-        </p>
+        <div style="margin-top:22px;border:1px solid rgba(56,242,161,0.16);background:rgba(56,242,161,0.06);border-radius:20px;padding:20px;">
+          <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#38f2a1;">Siguiente paso recomendado</p>
+          <h2 style="margin:0 0 10px;font-size:20px;line-height:1.3;">Controla caja, utilidad, inventario y ROAS todo el ano</h2>
+          <p style="margin:0;color:#d8e2f0;line-height:1.7;">
+            Si ya viste la verdad de hoy, el siguiente paso es ordenar tu operacion completa con la plantilla maestra de EscalaMargen.
+          </p>
+          <a
+            href="${HOTMART_TEMPLATE_URL}"
+            style="display:inline-block;margin-top:16px;padding:12px 18px;border-radius:999px;background:#38f2a1;color:#07111f;font-weight:700;text-decoration:none;"
+          >
+            Quiero proteger mis ganancias hoy (Solo $9)
+          </a>
+        </div>
 
         <div style="margin-top:22px;border:1px solid rgba(30,200,255,0.18);background:rgba(30,200,255,0.08);border-radius:20px;padding:20px;">
           <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#1ec8ff;">Herramienta recomendada</p>
-          <h2 style="margin:0 0 10px;font-size:20px;line-height:1.3;">¿Estas pagando demasiadas comisiones?</h2>
+          <h2 style="margin:0 0 10px;font-size:20px;line-height:1.3;">Abre tu tienda en Shopify y obten un mes por $1</h2>
           <p style="margin:0;color:#d8e2f0;line-height:1.7;">
-            Abre tu tienda en Shopify con este enlace y obten un mes por $1. Puede ayudarte a vender con mejor infraestructura, checkout rapido y menos friccion operativa.
+            Si hoy estas pagando demasiadas comisiones o tu tienda se siente limitada, Shopify puede darte mejor infraestructura, checkout mas rapido y una base mas solida para crecer.
           </p>
           <a
             href="${SHOPIFY_AFFILIATE_URL}"
             style="display:inline-block;margin-top:16px;padding:12px 18px;border-radius:999px;background:#38f2a1;color:#07111f;font-weight:700;text-decoration:none;"
           >
-            Probar Shopify
+            Crear mi tienda en Shopify
           </a>
         </div>
       </div>
@@ -165,15 +178,16 @@ const buildEmailHtml = (payload: ReportPayload) => `
 `;
 
 const buildEmailText = (payload: ReportPayload) => [
-  "EscalaMargen | Tu reporte de rentabilidad",
+  "EscalaMargen | Tu reporte ya esta listo",
   "",
   payload.summary_text,
   "",
   `Moneda: ${payload.currency}`,
   `Pagina: ${payload.page_url || SITE_URL}`,
   "",
-  "Sigue controlando tu rentabilidad en:",
-  `${SITE_URL}#plantilla-excel`,
+  "Plantilla recomendada:",
+  "Quiero proteger mis ganancias hoy (Solo $9):",
+  HOTMART_TEMPLATE_URL,
   "",
   "Herramienta recomendada:",
   "Abre tu tienda en Shopify con este enlace y obten un mes por $1:",
@@ -218,6 +232,10 @@ Deno.serve(async (request) => {
     return jsonResponse({ error: "Request blocked." }, 400, origin);
   }
 
+  if (!payload?.consent_accepted) {
+    return jsonResponse({ error: "Consent is required." }, 400, origin);
+  }
+
   if (!payload?.summary_text?.trim()) {
     return jsonResponse({ error: "Missing summary text." }, 400, origin);
   }
@@ -236,10 +254,13 @@ Deno.serve(async (request) => {
     page_url: payload.page_url || SITE_URL,
     page_title: payload.page_title || "EscalaMargen",
     summary_text: payload.summary_text,
+    consent_accepted: Boolean(payload.consent_accepted),
+    consent_text: payload.consent_text || null,
     inputs_json: payload.inputs || {},
     results_json: payload.results || {},
     context_json: payload.context || {},
     user_agent: payload.context?.user_agent || request.headers.get("User-Agent") || "",
+    follow_up_stage: payload.consent_accepted ? "welcome_pending" : "report_only",
   };
 
   const duplicateThreshold = new Date(Date.now() - DUPLICATE_WINDOW_SECONDS * 1000).toISOString();
@@ -285,7 +306,7 @@ Deno.serve(async (request) => {
       from: REPORT_FROM_EMAIL,
       to: [payload.email],
       reply_to: REPORT_REPLY_TO_EMAIL ? [REPORT_REPLY_TO_EMAIL] : undefined,
-      subject: "Tu reporte de rentabilidad en EscalaMargen",
+      subject: "Tu reporte EscalaMargen: margen, utilidad y ROAS de tu tienda",
       html: buildEmailHtml(payload),
       text: buildEmailText(payload),
     }),

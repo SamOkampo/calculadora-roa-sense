@@ -23,6 +23,8 @@ Proyecto actual:
 
 Eso crea la tabla `report_requests`, los indices y deja RLS activo.
 
+Si agregas nuevas migraciones para consentimiento o seguimiento, ejecutalas tambien para mantener la tabla actualizada.
+
 ## 3. Configura Resend
 
 1. Crea tu cuenta en [Resend](https://resend.com/).
@@ -56,6 +58,7 @@ supabase secrets set SITE_URL=https://escalamargen.com
 supabase secrets set ALLOWED_ORIGINS=https://escalamargen.com,https://www.escalamargen.com
 supabase secrets set REPORT_DUPLICATE_WINDOW_SECONDS=90
 supabase secrets set SHOPIFY_AFFILIATE_URL=https://shopify.pxf.io/MKKPRN
+supabase secrets set HOTMART_TEMPLATE_URL=https://hotm.io/plantillaescalamargen
 ```
 
 No intentes cargar `SUPABASE_URL` ni `SUPABASE_SERVICE_ROLE_KEY` con `supabase secrets set`.
@@ -96,6 +99,7 @@ reportFunctionUrl: "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-r
    - que llega el email
    - que se crea una fila en `report_requests`
    - que el formulario responde bien
+   - que se guardan `consent_accepted` y `follow_up_stage`
 
 ## 9. Si algo falla
 
@@ -112,7 +116,8 @@ reportFunctionUrl: "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-r
 ## 10. Lo que ya hace esta implementacion
 
 - guarda lead + inputs + resultados
+- guarda consentimiento y estado inicial de seguimiento
 - envia el reporte automatico
 - bloquea bots simples con honeypot
 - evita duplicados accidentales en una ventana corta
-- mantiene fallback a `mailto:` si la funcion no esta configurada
+- deja los leads listos para secuencia de bienvenida, recordatorio de plantilla y empuje a Shopify
