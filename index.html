@@ -2027,6 +2027,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         reportFunctionUrl:
           "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-report",
         reportFunctionTimeoutMs: 12000,
+        emailDraftFallback: false,
         // Reemplaza estos placeholders cuando conectes GA4 y Meta Ads.
         gaMeasurementId: "G-XXXXXXXXXX",
         metaPixelId: "META_PIXEL_ID",
@@ -3022,7 +3023,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           } catch (error) {
             setInlineStatus(
               statusElement,
-              "No pudimos enviar el reporte automatico. Abriremos tu correo como respaldo.",
+              "No pudimos enviar el reporte automatico todavia. Intentalo de nuevo en unos minutos.",
               true
             );
             trackEvent("email_report_error", {
@@ -3030,9 +3031,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               delivery: "supabase_resend",
               message: error instanceof Error ? error.message : "unknown_error",
             });
+            return;
           } finally {
             setSubmitState(formElement, false);
           }
+        }
+
+        if (!SITE_CONFIG.emailDraftFallback) {
+          setInlineStatus(
+            statusElement,
+            "El envio por correo manual esta desactivado mientras terminamos de ajustar la automatizacion.",
+            true
+          );
+          return;
         }
 
         const draftOpened = openEmailDraft(recipientEmail, source);
