@@ -926,24 +926,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div>
                   <div class="flex items-center justify-between gap-3">
                     <div>
-                      <p class="text-xs uppercase tracking-[0.24em] text-accentSoft">
+                      <p id="calculatorAdEyebrow" class="text-xs uppercase tracking-[0.24em] text-accentSoft">
                         Patrocinio / Ads
                       </p>
-                      <h3 class="mt-2 text-xl font-semibold text-white">
+                      <h3 id="calculatorAdTitle" class="mt-2 text-xl font-semibold text-white">
                         Espacio comercial dentro de la calculadora
                       </h3>
                     </div>
-                    <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                    <span id="calculatorAdStatus" class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
                       Disponible
                     </span>
                   </div>
 
-                  <p class="mt-4 max-w-xl text-sm leading-6 text-slate-300">
+                  <p id="calculatorAdCopy" class="mt-4 max-w-xl text-sm leading-6 text-slate-300">
                     Ideal para software, sponsor nativo, lead magnet o anuncio de una marca que
                     complemente la rentabilidad de tiendas online sin competir con el resultado.
                   </p>
 
-                  <div class="mt-5 grid gap-3 sm:grid-cols-3">
+                  <div id="calculatorAdTags" class="mt-5 grid gap-3 sm:grid-cols-3">
                     <span class="rounded-full border border-line bg-slate-950/60 px-3 py-2 text-center text-xs text-slate-200">
                       Sponsor nativo
                     </span>
@@ -957,19 +957,32 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
 
                 <div class="rounded-[1.6rem] border border-accent/15 bg-slate-950/55 p-5 shadow-[inset_0_0_0_1px_rgba(56,242,161,0.05)]">
-                  <p class="text-xs uppercase tracking-[0.22em] text-slate-400">
-                    Formato recomendado
-                  </p>
-                  <p class="mt-3 text-lg font-semibold text-white">
-                    Recurso o marca que ayude a vender mejor, controlar caja o reducir costos.
-                  </p>
-                  <p class="mt-2 text-sm leading-6 text-slate-300">
-                    Visible justo despu&eacute;s de la calculadora y antes de la oferta principal.
-                    Buen lugar para monetizar sin romper la experiencia.
-                  </p>
+                  <div id="calculatorAdFallback" class="space-y-3">
+                    <p class="text-xs uppercase tracking-[0.22em] text-slate-400">
+                      Formato recomendado
+                    </p>
+                    <p class="text-lg font-semibold text-white">
+                      Recurso o marca que ayude a vender mejor, controlar caja o reducir costos.
+                    </p>
+                    <p class="text-sm leading-6 text-slate-300">
+                      Visible justo despu&eacute;s de la calculadora y antes de la oferta principal.
+                      Buen lugar para monetizar sin romper la experiencia.
+                    </p>
+                  </div>
+                  <div id="calculatorGoogleAdWrap" class="hidden">
+                    <p class="mb-3 text-xs uppercase tracking-[0.22em] text-slate-400">
+                      Publicidad
+                    </p>
+                    <ins
+                      id="calculatorGoogleAd"
+                      class="adsbygoogle block min-h-[250px] w-full overflow-hidden rounded-[1.2rem] border border-line bg-slate-950/70"
+                      data-ad-format="auto"
+                      data-full-width-responsive="true"
+                    ></ins>
+                  </div>
                 </div>
 
-                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div id="calculatorAdFooter" class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                   <a
                     href="#contacto"
                     id="sponsorTopCta"
@@ -2161,12 +2174,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-report",
         reportFunctionTimeoutMs: 12000,
         emailDraftFallback: false,
+        // Reemplaza estos placeholders cuando te aprueben AdSense.
+        googleAdsClientId: "ca-pub-XXXXXXXXXXXXXXXX",
+        googleAdsCalculatorSlot: "1234567890",
         // Reemplaza estos placeholders cuando conectes GA4 y Meta Ads.
         gaMeasurementId: "G-XXXXXXXXXX",
         metaPixelId: "META_PIXEL_ID",
       };
 
       const TRACKING_PLACEHOLDERS = new Set(["", "G-XXXXXXXXXX", "META_PIXEL_ID"]);
+      const GOOGLE_ADS_PLACEHOLDERS = new Set(["", "ca-pub-XXXXXXXXXXXXXXXX", "1234567890"]);
       const REPORT_FUNCTION_PLACEHOLDERS = new Set([
         "",
         "https://TU-PROYECTO.supabase.co/functions/v1/send-report",
@@ -2174,6 +2191,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       const shouldEnableTracking = (value) =>
         typeof value === "string" && !TRACKING_PLACEHOLDERS.has(value.trim());
+      const shouldEnableGoogleAdsValue = (value) =>
+        typeof value === "string" && !GOOGLE_ADS_PLACEHOLDERS.has(value.trim());
 
       const loadGoogleAnalytics = (measurementId) => {
         if (!shouldEnableTracking(measurementId) || window.gtag) {
@@ -2229,6 +2248,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         window.fbq("init", pixelId);
         window.fbq("track", "PageView");
+      };
+
+      const loadGoogleAdsScript = (clientId) => {
+        if (!shouldEnableGoogleAdsValue(clientId)) {
+          return Promise.resolve(false);
+        }
+
+        if (window.__escalaMargenGoogleAdsPromise) {
+          return window.__escalaMargenGoogleAdsPromise;
+        }
+
+        window.__escalaMargenGoogleAdsPromise = new Promise((resolve, reject) => {
+          const existingScript = document.querySelector('script[data-google-ads-loader="true"]');
+          if (existingScript) {
+            resolve(true);
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.async = true;
+          script.crossOrigin = "anonymous";
+          script.dataset.googleAdsLoader = "true";
+          script.src =
+            `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(clientId)}`;
+          script.onload = () => resolve(true);
+          script.onerror = () => reject(new Error("No se pudo cargar Google Ads."));
+          document.head.appendChild(script);
+        });
+
+        return window.__escalaMargenGoogleAdsPromise;
       };
 
       const initializeTracking = () => {
@@ -2410,6 +2459,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         headerTemplateCta: document.getElementById("headerTemplateCta"),
         shopifyAffiliateLink: document.getElementById("shopifyAffiliateLink"),
         sponsorTopCta: document.getElementById("sponsorTopCta"),
+        calculatorAdEyebrow: document.getElementById("calculatorAdEyebrow"),
+        calculatorAdTitle: document.getElementById("calculatorAdTitle"),
+        calculatorAdStatus: document.getElementById("calculatorAdStatus"),
+        calculatorAdCopy: document.getElementById("calculatorAdCopy"),
+        calculatorAdTags: document.getElementById("calculatorAdTags"),
+        calculatorAdFallback: document.getElementById("calculatorAdFallback"),
+        calculatorGoogleAdWrap: document.getElementById("calculatorGoogleAdWrap"),
+        calculatorGoogleAd: document.getElementById("calculatorGoogleAd"),
+        calculatorAdFooter: document.getElementById("calculatorAdFooter"),
         hotmartTemplateLink: document.getElementById("hotmartTemplateLink"),
         shopifyB2bBannerLink: document.getElementById("shopifyB2bBannerLink"),
         floatingUpsellLink: document.getElementById("floatingUpsellLink"),
@@ -2590,6 +2648,46 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         );
 
         observer.observe(element);
+      };
+
+      const initializeCalculatorGoogleAd = async () => {
+        const clientId = SITE_CONFIG.googleAdsClientId?.trim() || "";
+        const slotId = SITE_CONFIG.googleAdsCalculatorSlot?.trim() || "";
+        const shouldEnableAds =
+          shouldEnableGoogleAdsValue(clientId) && shouldEnableGoogleAdsValue(slotId);
+
+        if (!shouldEnableAds || !elements.calculatorGoogleAd || !elements.calculatorGoogleAdWrap) {
+          return;
+        }
+
+        try {
+          elements.calculatorGoogleAd.setAttribute("data-ad-client", clientId);
+          elements.calculatorGoogleAd.setAttribute("data-ad-slot", slotId);
+          await loadGoogleAdsScript(clientId);
+
+          elements.calculatorGoogleAdWrap.classList.remove("hidden");
+          elements.calculatorAdFallback?.classList.add("hidden");
+          elements.calculatorAdTags?.classList.add("hidden");
+          elements.calculatorAdFooter?.classList.add("hidden");
+
+          if (elements.calculatorAdEyebrow) {
+            elements.calculatorAdEyebrow.textContent = "Google Ads";
+          }
+          if (elements.calculatorAdTitle) {
+            elements.calculatorAdTitle.textContent = "Publicidad dentro de la calculadora";
+          }
+          if (elements.calculatorAdStatus) {
+            elements.calculatorAdStatus.textContent = "Activo";
+          }
+          if (elements.calculatorAdCopy) {
+            elements.calculatorAdCopy.textContent =
+              "Este espacio ya est\u00E1 preparado para monetizaci\u00F3n con Google Ads sin romper la experiencia principal de la herramienta.";
+          }
+
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch (error) {
+          console.error("No se pudo inicializar Google Ads en el slot de calculadora.", error);
+        }
       };
 
       const templateFeatures = {
@@ -3418,6 +3516,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       });
 
       initializeTracking();
+      initializeCalculatorGoogleAd();
       observeSectionView(elements.templateSection, "template_offer_view", "template_offer_view", {
         section: "plantilla-excel",
       });
