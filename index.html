@@ -232,6 +232,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         display: none;
       }
 
+      .disclosure-panel[open] .disclosure-chevron {
+        transform: rotate(180deg);
+      }
+
+      .disclosure-chevron {
+        transition: transform 180ms ease;
+      }
+
       .safe-bottom {
         padding-bottom: calc(1rem + env(safe-area-inset-bottom));
       }
@@ -539,156 +547,184 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             </section>
 
             <section>
-              <div class="mb-4 flex items-center justify-between gap-4">
-                <div>
-                  <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
-                    Costos ocultos
-                  </h3>
-                  <p class="mt-1 text-xs text-muted">
-                    La pasarela se puede autocompletar con presets oficiales de referencia.
-                  </p>
-                </div>
-                <label class="w-full text-xs text-slate-300 sm:w-auto sm:min-w-[18rem]">
-                  <span class="mb-2 block">Preset de pasarela</span>
-                  <div class="select-shell">
-                    <select
-                      id="gatewayPreset"
-                      class="select-control text-sm sm:min-w-[17rem]"
-                    >
-                      <option value="wompi">Wompi</option>
-                      <option value="epayco_davivienda">ePayco Davivienda</option>
-                      <option value="epayco_other">ePayco otros bancos</option>
-                      <option value="mercadopago_instant">Mercado Pago inmediato</option>
-                      <option value="mercadopago_7d">Mercado Pago 7 d&iacute;as</option>
-                      <option value="mercadopago_14d">Mercado Pago 14 d&iacute;as</option>
-                      <option value="bold_cards">Bold tarjetas online</option>
-                      <option value="bold_pse">Bold PSE y billeteras</option>
-                      <option value="custom">Personalizado</option>
-                    </select>
-                    <span class="select-caret" aria-hidden="true">
-                      <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
+              <details id="hiddenCostsPanel" class="disclosure-panel rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                  <div>
+                    <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                      Costos ocultos
+                    </h3>
+                    <p class="mt-1 text-xs leading-5 text-muted">
+                      Pasarela, impuestos e IVA separados para afinar el margen.
+                      <span id="gatewayPresetSummary" class="font-medium text-slate-200">
+                        Preset: Wompi
+                      </span>
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                      Importante
+                    </span>
+                    <span class="disclosure-chevron inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-slate-300">
+                      <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current" aria-hidden="true">
                         <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
                       </svg>
                     </span>
                   </div>
-                </label>
-              </div>
+                </summary>
 
-              <div class="grid gap-4 sm:grid-cols-2">
-                <label class="block">
-                  <span class="mb-2 block text-sm text-slate-200">
-                    Tarifa pasarela (%)
-                  </span>
-                  <input
-                    id="gatewayPercent"
-                    name="gatewayPercent"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    disabled
-                    inputmode="decimal"
-                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
-                  />
-                </label>
-
-                <label class="block">
-                  <span id="gatewayFixedLabel" class="mb-2 block text-sm text-slate-200">
-                    Comisi&oacute;n plana (COP)
-                  </span>
-                  <input
-                    id="gatewayFixed"
-                    name="gatewayFixed"
-                    type="number"
-                    min="0"
-                    step="10"
-                    disabled
-                    inputmode="decimal"
-                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
-                  />
-                </label>
-
-                <label class="block sm:col-span-2">
-                  <span class="mb-2 block text-sm text-slate-200">
-                    Impuestos sobre la venta (%)
-                  </span>
-                  <input
-                    id="taxPercent"
-                    name="taxPercent"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    inputmode="decimal"
-                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  />
-                </label>
-              </div>
-
-              <p class="mt-4 text-xs leading-5 text-muted">
-                Cuando eliges un preset oficial, la tarifa porcentual y la comisi&oacute;n plana
-                se bloquean para evitar errores. Cambia a <strong class="text-white">Personalizado</strong>
-                si quieres editar manualmente esos valores.
-              </p>
-
-              <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 font-medium text-accent">
-                  Preset oficial activo = campos bloqueados
-                </span>
-                <span class="rounded-full border border-line px-3 py-1 text-slate-300">
-                  Personalizado = edici&oacute;n manual
-                </span>
-              </div>
-
-              <div class="mt-4 grid gap-4 rounded-[1.6rem] border border-line bg-gradient-to-br from-slate-950/70 via-slate-950/55 to-slate-900/70 p-4 sm:p-5">
-                <label
-                  for="applyGatewayVat"
-                  class="group flex cursor-pointer items-center justify-between gap-4 rounded-[1.35rem] border border-line bg-slate-900/80 px-4 py-4 transition hover:border-accent/30 hover:bg-slate-900"
-                >
-                  <div class="flex items-start gap-3">
-                    <span
-                      class="mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10 text-lg text-accent transition group-hover:border-accent/40 group-hover:bg-accent/15"
-                      aria-hidden="true"
-                    >
-                      IVA
-                    </span>
+                <div class="mt-5">
+                  <div class="mb-4 flex items-center justify-between gap-4">
                     <div>
                       <p class="text-sm font-semibold text-white">
-                      Aplicar IVA a la comisi&oacute;n de la pasarela
+                        Comisiones y carga tributaria
                       </p>
-                      <p class="mt-1 text-xs leading-5 text-muted">
-                      Act&iacute;valo si la tarifa oficial publicada no incluye IVA o si quieres modelarlo aparte.
+                      <p class="mt-1 text-xs text-muted">
+                        La pasarela se puede autocompletar con presets oficiales de referencia.
                       </p>
                     </div>
+                    <label class="w-full text-xs text-slate-300 sm:w-auto sm:min-w-[18rem]">
+                      <span class="mb-2 block">Preset de pasarela</span>
+                      <div class="select-shell">
+                        <select
+                          id="gatewayPreset"
+                          class="select-control text-sm sm:min-w-[17rem]"
+                        >
+                          <option value="wompi">Wompi</option>
+                          <option value="epayco_davivienda">ePayco Davivienda</option>
+                          <option value="epayco_other">ePayco otros bancos</option>
+                          <option value="mercadopago_instant">Mercado Pago inmediato</option>
+                          <option value="mercadopago_7d">Mercado Pago 7 d&iacute;as</option>
+                          <option value="mercadopago_14d">Mercado Pago 14 d&iacute;as</option>
+                          <option value="bold_cards">Bold tarjetas online</option>
+                          <option value="bold_pse">Bold PSE y billeteras</option>
+                          <option value="custom">Personalizado</option>
+                        </select>
+                        <span class="select-caret" aria-hidden="true">
+                          <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
+                            <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
+                          </svg>
+                        </span>
+                      </div>
+                    </label>
                   </div>
-                  <div class="relative shrink-0">
-                    <input
-                      id="applyGatewayVat"
-                      name="applyGatewayVat"
-                      type="checkbox"
-                      checked
-                      class="peer sr-only"
-                    />
-                    <span class="block h-7 w-12 rounded-full bg-slate-800 transition peer-checked:bg-accent/30"></span>
-                    <span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition peer-checked:translate-x-5 peer-checked:bg-accent"></span>
+
+                  <div class="grid gap-4 sm:grid-cols-2">
+                    <label class="block">
+                      <span class="mb-2 block text-sm text-slate-200">
+                        Tarifa pasarela (%)
+                      </span>
+                      <input
+                        id="gatewayPercent"
+                        name="gatewayPercent"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        disabled
+                        inputmode="decimal"
+                        class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
+                      />
+                    </label>
+
+                    <label class="block">
+                      <span id="gatewayFixedLabel" class="mb-2 block text-sm text-slate-200">
+                        Comisi&oacute;n plana (COP)
+                      </span>
+                      <input
+                        id="gatewayFixed"
+                        name="gatewayFixed"
+                        type="number"
+                        min="0"
+                        step="10"
+                        disabled
+                        inputmode="decimal"
+                        class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
+                      />
+                    </label>
+
+                    <label class="block sm:col-span-2">
+                      <span class="mb-2 block text-sm text-slate-200">
+                        Impuestos sobre la venta (%)
+                      </span>
+                      <input
+                        id="taxPercent"
+                        name="taxPercent"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        inputmode="decimal"
+                        class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                      />
+                    </label>
                   </div>
-                </label>
-                <label class="block sm:max-w-xs">
-                  <span class="mb-2 block text-sm font-medium text-slate-200">
-                    IVA sobre comisi&oacute;n (%)
-                  </span>
-                  <input
-                    id="gatewayVatPercent"
-                    name="gatewayVatPercent"
-                    type="number"
-                    min="0"
-                    step="0.01"
-                    inputmode="decimal"
-                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
-                  />
-                </label>
-                <p id="presetNote" class="text-xs leading-5 text-muted">
-                  Wompi referencia: 2,65% + $700 + IVA por transacci&oacute;n exitosa.
-                </p>
-              </div>
+
+                  <p class="mt-4 text-xs leading-5 text-muted">
+                    Cuando eliges un preset oficial, la tarifa porcentual y la comisi&oacute;n plana
+                    se bloquean para evitar errores. Cambia a <strong class="text-white">Personalizado</strong>
+                    si quieres editar manualmente esos valores.
+                  </p>
+
+                  <div class="mt-3 flex flex-wrap gap-2 text-xs">
+                    <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 font-medium text-accent">
+                      Preset oficial activo = campos bloqueados
+                    </span>
+                    <span class="rounded-full border border-line px-3 py-1 text-slate-300">
+                      Personalizado = edici&oacute;n manual
+                    </span>
+                  </div>
+
+                  <div class="mt-4 grid gap-4 rounded-[1.6rem] border border-line bg-gradient-to-br from-slate-950/70 via-slate-950/55 to-slate-900/70 p-4 sm:p-5">
+                    <label
+                      for="applyGatewayVat"
+                      class="group flex cursor-pointer items-center justify-between gap-4 rounded-[1.35rem] border border-line bg-slate-900/80 px-4 py-4 transition hover:border-accent/30 hover:bg-slate-900"
+                    >
+                      <div class="flex items-start gap-3">
+                        <span
+                          class="mt-0.5 inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-accent/20 bg-accent/10 text-lg text-accent transition group-hover:border-accent/40 group-hover:bg-accent/15"
+                          aria-hidden="true"
+                        >
+                          IVA
+                        </span>
+                        <div>
+                          <p class="text-sm font-semibold text-white">
+                          Aplicar IVA a la comisi&oacute;n de la pasarela
+                          </p>
+                          <p class="mt-1 text-xs leading-5 text-muted">
+                          Act&iacute;valo si la tarifa oficial publicada no incluye IVA o si quieres modelarlo aparte.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="relative shrink-0">
+                        <input
+                          id="applyGatewayVat"
+                          name="applyGatewayVat"
+                          type="checkbox"
+                          checked
+                          class="peer sr-only"
+                        />
+                        <span class="block h-7 w-12 rounded-full bg-slate-800 transition peer-checked:bg-accent/30"></span>
+                        <span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition peer-checked:translate-x-5 peer-checked:bg-accent"></span>
+                      </div>
+                    </label>
+                    <label class="block sm:max-w-xs">
+                      <span class="mb-2 block text-sm font-medium text-slate-200">
+                        IVA sobre comisi&oacute;n (%)
+                      </span>
+                      <input
+                        id="gatewayVatPercent"
+                        name="gatewayVatPercent"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        inputmode="decimal"
+                        class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                      />
+                    </label>
+                    <p id="presetNote" class="text-xs leading-5 text-muted">
+                      Wompi referencia: 2,65% + $700 + IVA por transacci&oacute;n exitosa.
+                    </p>
+                  </div>
+                </div>
+              </details>
             </section>
 
             <section>
@@ -1107,66 +1143,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           aria-labelledby="affiliate-tools"
           class="glass rounded-[2rem] border border-line p-6 shadow-glow sm:p-7 lg:p-8"
         >
-            <div class="flex items-center justify-between gap-3">
-              <div>
-                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
-                  Herramientas
-                </p>
-                <h2 id="affiliate-tools" class="mt-2 text-2xl font-semibold text-white">
-                  Herramientas recomendadas para mejorar tu margen
-                </h2>
-                <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
-                  Usa esta secci&oacute;n para monetizar con software afiliado sin
-                  romper la experiencia. El tr&aacute;fico llega por la calculadora y
-                  se convierte mejor cuando la recomendacion resuelve un problema
-                  real del negocio.
-                </p>
-              </div>
-            </div>
-
-            <div class="mt-8 grid gap-5 lg:grid-cols-2">
-              <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5 lg:col-span-2">
-                <div class="flex items-center gap-4">
-                  <div
-                    class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white/95 shadow-inner"
-                  >
-                    <svg
-                      viewBox="0 0 64 64"
-                      class="h-9 w-9"
-                      aria-hidden="true"
-                    >
-                      <path fill="#95BF47" d="M46.6 19.3c-.1 0-.3 0-.4.1-.2-1.6-.7-2.8-1.5-3.8-1-1.1-2.3-1.7-3.9-1.7h-.1c-.5-.8-1.2-1.4-2-1.8-1.4-.7-3-.8-4.8-.3-3.4 1-6.8 5-8.2 9.6l-5.8 1.8c-1.7.5-1.8.6-2 2.3l-4.4 33.8 34.1 5.8 18.5-4.6-3.2-38.6c-.1-1.4-.5-1.6-1.3-1.7l-4-1zm-7.4-3.5c.4.2.7.4 1 .7-1.2.4-2.5.8-4 .9.9-1.1 2-1.7 3-1.7zm-1.2 3.3c-2 .1-4.1.1-6.2 0 1.2-2.2 2.9-4.1 4.7-4.6.5-.1 1-.1 1.4 0-1.3 1.1-2.5 2.7-3.5 4.6h3.6zm3 0c.9-2.4 2.1-3.8 3-4.5.6.9 1 2.3 1 4.2-1.2.1-2.5.2-4 .3z"/>
-                      <path fill="#5E8E3E" d="M46.2 28.2c-1-1.1-2.8-1.7-5.2-1.7-2 0-3.6.5-4.9 1.4-1.3.9-2 2.1-2 3.5 0 .9.2 1.7.7 2.3.5.6 1.4 1.3 2.8 2.1 1.1.6 1.8 1 2 1.2.2.2.3.5.3.8 0 .9-.8 1.3-2.4 1.3-1.7 0-3.6-.5-5.7-1.5l-.9 5c1.7.8 3.7 1.1 6 1.1 2.4 0 4.3-.5 5.8-1.5 1.5-1 2.2-2.4 2.2-4.1 0-1-.2-1.9-.7-2.5-.4-.7-1.3-1.4-2.6-2.1-1.3-.8-2.1-1.2-2.3-1.4-.2-.2-.3-.4-.3-.7 0-.3.2-.6.5-.8.3-.2.8-.3 1.4-.3 1.6 0 3.1.3 4.6 1l.9-4.8c-1.5-.5-3-.8-4.5-.8z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-lg font-semibold text-white">Shopify</h3>
-                    <p class="text-sm text-muted">
-                      Infraestructura estable, checkout veloz y ecosistema listo
-                      para crecer.
-                    </p>
-                  </div>
+            <details class="disclosure-panel">
+              <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+                <div>
+                  <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                    Herramientas
+                  </p>
+                  <h2 id="affiliate-tools" class="mt-2 text-2xl font-semibold text-white">
+                    Herramientas recomendadas para mejorar tu margen
+                  </h2>
+                  <p class="mt-2 max-w-3xl text-sm leading-6 text-slate-300">
+                    La dejamos plegada para que la calculadora respire. &Aacute;brela cuando
+                    quieras revisar software afiliado que s&iacute; encaja con e-commerce.
+                  </p>
                 </div>
-                <p class="mt-4 text-sm leading-6 text-slate-300">
-                  La plataforma lider para escalar tu tienda online sin caidas de
-                  servidor y con el checkout m&aacute;s r&aacute;pido del mercado. Inicia hoy.
-                </p>
-                <a
-                  id="shopifyAffiliateLink"
-                  href="https://shopify.pxf.io/MKKPRN"
-                  target="_blank"
-                  rel="nofollow sponsored noopener noreferrer"
-                  class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90 sm:w-auto"
-                >
-                  Probar ahora
-                </a>
-              </article>
-            </div>
+                <div class="flex items-center gap-2">
+                  <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+                    1 recomendaci&oacute;n
+                  </span>
+                  <span class="disclosure-chevron inline-flex h-10 w-10 items-center justify-center rounded-full border border-line text-slate-300">
+                    <svg viewBox="0 0 20 20" class="h-4 w-4 fill-current" aria-hidden="true">
+                      <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
+                    </svg>
+                  </span>
+                </div>
+              </summary>
 
-            <p class="mt-5 text-xs leading-5 text-muted">
-              Algunos enlaces de esta p&aacute;gina pueden generar una comisi&oacute;n para
-              EscalaMargen sin costo adicional para el usuario.
-            </p>
+              <div class="mt-8 grid gap-5 lg:grid-cols-2">
+                <article class="rounded-[1.75rem] border border-line bg-slate-950/45 p-5 lg:col-span-2">
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="flex h-14 w-14 items-center justify-center rounded-2xl border border-line bg-white/95 shadow-inner"
+                    >
+                      <svg
+                        viewBox="0 0 64 64"
+                        class="h-9 w-9"
+                        aria-hidden="true"
+                      >
+                        <path fill="#95BF47" d="M46.6 19.3c-.1 0-.3 0-.4.1-.2-1.6-.7-2.8-1.5-3.8-1-1.1-2.3-1.7-3.9-1.7h-.1c-.5-.8-1.2-1.4-2-1.8-1.4-.7-3-.8-4.8-.3-3.4 1-6.8 5-8.2 9.6l-5.8 1.8c-1.7.5-1.8.6-2 2.3l-4.4 33.8 34.1 5.8 18.5-4.6-3.2-38.6c-.1-1.4-.5-1.6-1.3-1.7l-4-1zm-7.4-3.5c.4.2.7.4 1 .7-1.2.4-2.5.8-4 .9.9-1.1 2-1.7 3-1.7zm-1.2 3.3c-2 .1-4.1.1-6.2 0 1.2-2.2 2.9-4.1 4.7-4.6.5-.1 1-.1 1.4 0-1.3 1.1-2.5 2.7-3.5 4.6h3.6zm3 0c.9-2.4 2.1-3.8 3-4.5.6.9 1 2.3 1 4.2-1.2.1-2.5.2-4 .3z"/>
+                        <path fill="#5E8E3E" d="M46.2 28.2c-1-1.1-2.8-1.7-5.2-1.7-2 0-3.6.5-4.9 1.4-1.3.9-2 2.1-2 3.5 0 .9.2 1.7.7 2.3.5.6 1.4 1.3 2.8 2.1 1.1.6 1.8 1 2 1.2.2.2.3.5.3.8 0 .9-.8 1.3-2.4 1.3-1.7 0-3.6-.5-5.7-1.5l-.9 5c1.7.8 3.7 1.1 6 1.1 2.4 0 4.3-.5 5.8-1.5 1.5-1 2.2-2.4 2.2-4.1 0-1-.2-1.9-.7-2.5-.4-.7-1.3-1.4-2.6-2.1-1.3-.8-2.1-1.2-2.3-1.4-.2-.2-.3-.4-.3-.7 0-.3.2-.6.5-.8.3-.2.8-.3 1.4-.3 1.6 0 3.1.3 4.6 1l.9-4.8c-1.5-.5-3-.8-4.5-.8z"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-lg font-semibold text-white">Shopify</h3>
+                      <p class="text-sm text-muted">
+                        Infraestructura estable, checkout veloz y ecosistema listo
+                        para crecer.
+                      </p>
+                    </div>
+                  </div>
+                  <p class="mt-4 text-sm leading-6 text-slate-300">
+                    La plataforma lider para escalar tu tienda online sin caidas de
+                    servidor y con el checkout m&aacute;s r&aacute;pido del mercado. Inicia hoy.
+                  </p>
+                  <a
+                    id="shopifyAffiliateLink"
+                    href="https://shopify.pxf.io/MKKPRN"
+                    target="_blank"
+                    rel="nofollow sponsored noopener noreferrer"
+                    class="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90 sm:w-auto"
+                  >
+                    Probar ahora
+                  </a>
+                </article>
+              </div>
+
+              <p class="mt-5 text-xs leading-5 text-muted">
+                Algunos enlaces de esta p&aacute;gina pueden generar una comisi&oacute;n para
+                EscalaMargen sin costo adicional para el usuario.
+              </p>
+            </details>
         </section>
 
         <section
@@ -2255,6 +2301,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         currencyCode: document.getElementById("currencyCode"),
         currencyHint: document.getElementById("currencyHint"),
         gatewayPreset: document.getElementById("gatewayPreset"),
+        gatewayPresetSummary: document.getElementById("gatewayPresetSummary"),
         gatewayPercent: document.getElementById("gatewayPercent"),
         gatewayFixed: document.getElementById("gatewayFixed"),
         gatewayFixedLabel: document.getElementById("gatewayFixedLabel"),
@@ -2559,6 +2606,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.gatewayFixed.disabled = isLocked;
       };
 
+      const updateGatewayPresetSummary = () => {
+        if (!elements.gatewayPresetSummary || !elements.gatewayPreset) {
+          return;
+        }
+
+        const selectedOption =
+          elements.gatewayPreset.options[elements.gatewayPreset.selectedIndex];
+        const presetLabel = selectedOption ? selectedOption.textContent.trim() : "Personalizado";
+
+        if (elements.gatewayPreset.value === "custom") {
+          elements.gatewayPresetSummary.textContent = "Modo manual activo";
+          return;
+        }
+
+        const vatLabel = elements.applyGatewayVat.checked ? "IVA aparte" : "sin IVA aparte";
+        elements.gatewayPresetSummary.textContent = `Preset: ${presetLabel} | ${vatLabel}`;
+      };
+
       const openEmailDraft = (recipientEmail, source) => {
         if (!isValidEmail(recipientEmail)) {
           return false;
@@ -2720,6 +2785,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.currencyHint.textContent = `Valores en ${selectedCurrency}`;
         elements.gatewayFixedLabel.textContent = `Comisi\u00F3n plana (${selectedCurrency})`;
         syncTemplatePriceReference();
+        updateGatewayPresetSummary();
       };
 
       const syncInputPlaceholders = () => {
@@ -2743,6 +2809,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           elements.presetNote.textContent =
             "Los presets autom\u00E1ticos de pasarela usan comisiones fijas de referencia en COP. Dejamos el porcentaje como gu\u00EDa, pero en otra moneda debes usar Personalizado y definir la comisi\u00F3n fija manualmente.";
           syncGatewayLockState(false);
+          updateGatewayPresetSummary();
           return;
         }
 
@@ -2752,6 +2819,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           elements.gatewayPercent.value = preset.percent;
           elements.gatewayFixed.value = preset.fixed;
         }
+        updateGatewayPresetSummary();
       };
 
       const syncMarketingUI = () => {
@@ -3168,6 +3236,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               currency: selectedCurrency,
             });
           }
+          updateGatewayPresetSummary();
           calculate();
         })
       );
