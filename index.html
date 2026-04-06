@@ -240,6 +240,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         transition: transform 180ms ease;
       }
 
+      #hiddenCostsPanel[open] + .calculator-ad-slot {
+        display: none;
+      }
+
       .safe-bottom {
         padding-bottom: calc(1rem + env(safe-area-inset-bottom));
       }
@@ -921,79 +925,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </details>
             </section>
 
-            <section class="rounded-[1.75rem] border border-dashed border-accent/20 bg-gradient-to-br from-accent/6 via-slate-950/45 to-accentSoft/5 p-5 lg:min-h-[22rem]">
-              <div class="flex h-full flex-col justify-between gap-6">
-                <div>
-                  <div class="flex items-center justify-between gap-3">
-                    <div>
-                      <p id="calculatorAdEyebrow" class="text-xs uppercase tracking-[0.24em] text-accentSoft">
-                        Patrocinio / Ads
-                      </p>
-                      <h3 id="calculatorAdTitle" class="mt-2 text-xl font-semibold text-white">
-                        Espacio comercial dentro de la calculadora
-                      </h3>
-                    </div>
-                    <span id="calculatorAdStatus" class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-                      Disponible
-                    </span>
-                  </div>
-
-                  <p id="calculatorAdCopy" class="mt-4 max-w-xl text-sm leading-6 text-slate-300">
-                    Ideal para software, sponsor nativo, lead magnet o anuncio de una marca que
-                    complemente la rentabilidad de tiendas online sin competir con el resultado.
-                  </p>
-
-                  <div id="calculatorAdTags" class="mt-5 grid gap-3 sm:grid-cols-3">
-                    <span class="rounded-full border border-line bg-slate-950/60 px-3 py-2 text-center text-xs text-slate-200">
-                      Sponsor nativo
-                    </span>
-                    <span class="rounded-full border border-line bg-slate-950/60 px-3 py-2 text-center text-xs text-slate-200">
-                      Ads premium
-                    </span>
-                    <span class="rounded-full border border-line bg-slate-950/60 px-3 py-2 text-center text-xs text-slate-200">
-                      Lead magnet
-                    </span>
-                  </div>
-                </div>
-
-                <div class="rounded-[1.6rem] border border-accent/15 bg-slate-950/55 p-5 shadow-[inset_0_0_0_1px_rgba(56,242,161,0.05)]">
-                  <div id="calculatorAdFallback" class="space-y-3">
-                    <p class="text-xs uppercase tracking-[0.22em] text-slate-400">
-                      Formato recomendado
-                    </p>
-                    <p class="text-lg font-semibold text-white">
-                      Recurso o marca que ayude a vender mejor, controlar caja o reducir costos.
-                    </p>
-                    <p class="text-sm leading-6 text-slate-300">
-                      Visible justo despu&eacute;s de la calculadora y antes de la oferta principal.
-                      Buen lugar para monetizar sin romper la experiencia.
-                    </p>
-                  </div>
-                  <div id="calculatorGoogleAdWrap" class="hidden">
-                    <p class="mb-3 text-xs uppercase tracking-[0.22em] text-slate-400">
-                      Publicidad
-                    </p>
-                    <ins
-                      id="calculatorGoogleAd"
-                      class="adsbygoogle block min-h-[250px] w-full overflow-hidden rounded-[1.2rem] border border-line bg-slate-950/70"
-                      data-ad-format="auto"
-                      data-full-width-responsive="true"
-                    ></ins>
-                  </div>
-                </div>
-
-                <div id="calculatorAdFooter" class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <a
-                    href="#contacto"
-                    id="sponsorTopCta"
-                    class="inline-flex items-center justify-center rounded-2xl border border-accent/25 px-5 py-3 text-sm font-semibold text-accent transition hover:bg-accent hover:text-slate-950"
-                  >
-                    Reservar este espacio
-                  </a>
-                  <p class="text-xs leading-5 text-muted">
-                    Pensado para sponsors, software afiliado o campa&ntilde;as comerciales de alto valor.
-                  </p>
-                </div>
+            <section class="calculator-ad-slot rounded-[1.75rem] border border-dashed border-accent/20 bg-slate-950/25 p-5 lg:min-h-[22rem]">
+              <div
+                id="calculatorAdFallback"
+                class="h-full min-h-[18rem] rounded-[1.5rem] border border-line/60 bg-slate-950/35"
+              ></div>
+              <div id="calculatorGoogleAdWrap" class="hidden">
+                <ins
+                  id="calculatorGoogleAd"
+                  class="adsbygoogle block min-h-[250px] w-full overflow-hidden rounded-[1.2rem] border border-line bg-slate-950/70"
+                  data-ad-format="auto"
+                  data-full-width-responsive="true"
+                ></ins>
               </div>
             </section>
           </div>
