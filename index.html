@@ -1290,6 +1290,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="text-lg text-slate-500 line-through">$49 USD</span>
                     <span class="font-display text-5xl text-accent">$9 USD</span>
                   </div>
+                  <div class="mt-3 rounded-2xl border border-white/5 bg-slate-950/55 px-4 py-3">
+                    <p class="text-[11px] uppercase tracking-[0.16em] text-slate-500">
+                      Referencia en tu moneda
+                    </p>
+                    <p id="templateLocalPrice" class="mt-2 text-lg font-semibold text-white">
+                      Aprox. COP 36.000
+                    </p>
+                    <p
+                      id="templateLocalPriceNote"
+                      class="mt-1 text-xs leading-5 text-slate-400"
+                    >
+                      Hotmart procesa el pago en USD. Tu banco puede variar el total final.
+                    </p>
+                  </div>
                 </div>
                 <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-accent">
                   Acceso inmediato
@@ -1683,6 +1697,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         BZD: { locale: "en-BZ", decimals: 2, label: "BZD" },
       };
 
+      const templateUsdPrice = 9;
+      const usdReferenceRates = {
+        USD: 1,
+        EUR: 0.92,
+        COP: 4000,
+        ARS: 1075,
+        BOB: 6.91,
+        BRL: 5.08,
+        CLP: 970,
+        CRC: 505,
+        CUP: 24,
+        DOP: 54.5,
+        GYD: 209,
+        GTQ: 7.72,
+        HNL: 24.7,
+        HTG: 131,
+        MXN: 16.6,
+        NIO: 36.8,
+        PAB: 1,
+        PEN: 3.69,
+        PYG: 7380,
+        SRD: 36.5,
+        UYU: 42.2,
+        VES: 36.7,
+        BZD: 2,
+      };
+
       const STORAGE_KEYS = {
         currency: "escalamargen:currency",
       };
@@ -1948,6 +1989,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         templateMetricTwoValue: document.getElementById("templateMetricTwoValue"),
         templateMetricThreeLabel: document.getElementById("templateMetricThreeLabel"),
         templateMetricThreeValue: document.getElementById("templateMetricThreeValue"),
+        templateLocalPrice: document.getElementById("templateLocalPrice"),
+        templateLocalPriceNote: document.getElementById("templateLocalPriceNote"),
       };
 
       const placeholderValues = {
@@ -2116,6 +2159,27 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.gatewayFixed.disabled = isLocked;
       };
 
+      const syncTemplatePriceReference = () => {
+        if (!elements.templateLocalPrice || !elements.templateLocalPriceNote) {
+          return;
+        }
+
+        const referenceRate = usdReferenceRates[selectedCurrency] || 1;
+        const formatter = createCurrencyFormatter(selectedCurrency);
+        const localReferenceValue = formatter.format(templateUsdPrice * referenceRate);
+
+        if (selectedCurrency === "USD") {
+          elements.templateLocalPrice.textContent = "Cobro base en USD";
+          elements.templateLocalPriceNote.textContent =
+            "El pago se procesa en USD por Hotmart. Tu banco puede aplicar conversi\u00F3n si usas otra moneda.";
+          return;
+        }
+
+        elements.templateLocalPrice.textContent = `Aprox. ${localReferenceValue}`;
+        elements.templateLocalPriceNote.textContent =
+          "Referencia informativa. Hotmart procesa el pago en USD y tu banco puede variar el total final.";
+      };
+
       const syncCurrencyUI = () => {
         const currentCurrency =
           currencyCatalog[elements.currencyCode.value] ? elements.currencyCode.value : "COP";
@@ -2123,6 +2187,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         currencyFormatter = createCurrencyFormatter(selectedCurrency);
         elements.currencyHint.textContent = `Valores en ${selectedCurrency}`;
         elements.gatewayFixedLabel.textContent = `Comisi\u00F3n plana (${selectedCurrency})`;
+        syncTemplatePriceReference();
       };
 
       const syncInputPlaceholders = () => {
