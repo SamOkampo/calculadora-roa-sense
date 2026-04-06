@@ -59,6 +59,11 @@ supabase secrets set ALLOWED_ORIGINS=https://escalamargen.com,https://www.escala
 supabase secrets set REPORT_DUPLICATE_WINDOW_SECONDS=90
 supabase secrets set SHOPIFY_AFFILIATE_URL=https://shopify.pxf.io/MKKPRN
 supabase secrets set HOTMART_TEMPLATE_URL=https://hotm.io/plantillaescalamargen
+supabase secrets set FOLLOW_UPS_CRON_SECRET=tu_token_seguro
+supabase secrets set FOLLOW_UP_BATCH_SIZE=30
+supabase secrets set WELCOME_DELAY_MINUTES=45
+supabase secrets set TEMPLATE_REMINDER_DELAY_HOURS=24
+supabase secrets set SHOPIFY_PUSH_DELAY_HOURS=48
 ```
 
 No intentes cargar `SUPABASE_URL` ni `SUPABASE_SERVICE_ROLE_KEY` con `supabase secrets set`.
@@ -68,12 +73,19 @@ Supabase las inyecta automaticamente dentro de las Edge Functions.
 
 ```powershell
 supabase functions deploy send-report --no-verify-jwt
+supabase functions deploy process-follow-ups --no-verify-jwt
 ```
 
 La URL final quedara con este formato:
 
 ```text
 https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-report
+```
+
+Y la secuencia de seguimiento usara:
+
+```text
+https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/process-follow-ups
 ```
 
 ## 7. Conecta la landing
@@ -121,3 +133,22 @@ reportFunctionUrl: "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-r
 - bloquea bots simples con honeypot
 - evita duplicados accidentales en una ventana corta
 - deja los leads listos para secuencia de bienvenida, recordatorio de plantilla y empuje a Shopify
+
+## 11. Ejecutar la secuencia de seguimiento
+
+La funcion `process-follow-ups` recorre la cola y envia:
+
+- bienvenida inicial
+- recordatorio de plantilla
+- empuje a Shopify
+
+Protegela con `FOLLOW_UPS_CRON_SECRET`.
+
+Ejemplo de ejecucion manual:
+
+```powershell
+curl.exe -X POST "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/process-follow-ups" ^
+  -H "Authorization: Bearer tu_token_seguro"
+```
+
+La funcion devolvera cuantos leads reviso, cuantos estaban listos y cuantos correos envio.
