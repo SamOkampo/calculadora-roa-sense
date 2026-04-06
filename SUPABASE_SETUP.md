@@ -55,6 +55,7 @@ supabase secrets set REPORT_REPLY_TO_EMAIL=saocampoe@unal.edu.co
 supabase secrets set SITE_URL=https://escalamargen.com
 supabase secrets set ALLOWED_ORIGINS=https://escalamargen.com,https://www.escalamargen.com
 supabase secrets set REPORT_DUPLICATE_WINDOW_SECONDS=90
+supabase secrets set SHOPIFY_AFFILIATE_URL=https://shopify.pxf.io/MKKPRN
 ```
 
 No intentes cargar `SUPABASE_URL` ni `SUPABASE_SERVICE_ROLE_KEY` con `supabase secrets set`.

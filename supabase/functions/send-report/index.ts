@@ -26,6 +26,8 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
 const SITE_URL = Deno.env.get("SITE_URL") || "https://escalamargen.com";
+const SHOPIFY_AFFILIATE_URL =
+  Deno.env.get("SHOPIFY_AFFILIATE_URL") || "https://shopify.pxf.io/MKKPRN";
 const DUPLICATE_WINDOW_SECONDS = Number.parseInt(
   Deno.env.get("REPORT_DUPLICATE_WINDOW_SECONDS") || "90",
   10
@@ -143,6 +145,20 @@ const buildEmailHtml = (payload: ReportPayload) => `
           Si quieres planear caja, inventario y utilidad durante 12 meses, revisa la plantilla completa aqui:
           <a href="${SITE_URL}#plantilla-excel" style="color:#38f2a1;">${SITE_URL}#plantilla-excel</a>
         </p>
+
+        <div style="margin-top:22px;border:1px solid rgba(30,200,255,0.18);background:rgba(30,200,255,0.08);border-radius:20px;padding:20px;">
+          <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#1ec8ff;">Herramienta recomendada</p>
+          <h2 style="margin:0 0 10px;font-size:20px;line-height:1.3;">¿Estas pagando demasiadas comisiones?</h2>
+          <p style="margin:0;color:#d8e2f0;line-height:1.7;">
+            Abre tu tienda en Shopify con este enlace y obten un mes por $1. Puede ayudarte a vender con mejor infraestructura, checkout rapido y menos friccion operativa.
+          </p>
+          <a
+            href="${SHOPIFY_AFFILIATE_URL}"
+            style="display:inline-block;margin-top:16px;padding:12px 18px;border-radius:999px;background:#38f2a1;color:#07111f;font-weight:700;text-decoration:none;"
+          >
+            Probar Shopify
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -158,6 +174,10 @@ const buildEmailText = (payload: ReportPayload) => [
   "",
   "Sigue controlando tu rentabilidad en:",
   `${SITE_URL}#plantilla-excel`,
+  "",
+  "Herramienta recomendada:",
+  "Abre tu tienda en Shopify con este enlace y obten un mes por $1:",
+  SHOPIFY_AFFILIATE_URL,
 ].join("\n");
 
 Deno.serve(async (request) => {
@@ -271,9 +291,18 @@ Deno.serve(async (request) => {
     }),
   });
 
-  const resendData = await resendResponse.json().catch(() => ({}));
+  const resendRawText = await resendResponse.text();
+  const resendData = (() => {
+    try {
+      return JSON.parse(resendRawText);
+    } catch {
+      return { raw: resendRawText };
+    }
+  })();
 
   if (!resendResponse.ok) {
+    console.error("Resend send failed", resendData);
+
     await supabaseAdmin
       .from("report_requests")
       .update({
@@ -281,7 +310,15 @@ Deno.serve(async (request) => {
       })
       .eq("id", insertedRow.id);
 
-    return jsonResponse({ error: "Could not send the email." }, 502, origin);
+    return jsonResponse(
+      {
+        error: "Could not send the email.",
+        provider_status: resendResponse.status,
+        provider_error: resendData,
+      },
+      502,
+      origin
+    );
   }
 
   await supabaseAdmin
