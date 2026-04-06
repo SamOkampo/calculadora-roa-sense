@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Vista previa de Proyeccion Financiera a 12 Meses</title>
+  <desc id="desc">Mockup visual de la hoja Proyeccion 12 Meses de EscalaMargen.</desc>
+  <rect width="1200" height="720" fill="#0b1220"/>
+  <rect x="18" y="18" width="1164" height="64" rx="12" fill="#101a2d" stroke="#3af2a1" stroke-width="2"/>
+  <text x="600" y="58" fill="#ffffff" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">EscalaMargen | Proyeccion Financiera a 12 Meses</text>
+  <text x="600" y="104" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Moneda base activa: Valor - Descripcion (COP)</text>
+
+  <rect x="18" y="126" width="1164" height="46" fill="#101a2d"/>
+  <g fill="#ffffff" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="105" y="155">Mes</text>
+    <text x="305" y="155">Presupuesto Ads</text>
+    <text x="485" y="155">ROAS Esperado</text>
+    <text x="690" y="155">Ventas Brutas Estimadas</text>
+    <text x="875" y="155">% Devoluciones</text>
+    <text x="1060" y="155">Ventas Netas</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="1">
+    <line x1="18" y1="172" x2="1182" y2="172"/>
+    <line x1="200" y1="126" x2="200" y2="690"/>
+    <line x1="410" y1="126" x2="410" y2="690"/>
+    <line x1="570" y1="126" x2="570" y2="690"/>
+    <line x1="810" y1="126" x2="810" y2="690"/>
+    <line x1="990" y1="126" x2="990" y2="690"/>
+  </g>
+
+  <rect x="201" y="173" width="208" height="42" fill="#14314a"/>
+  <g fill="#ffffff" font-size="14" font-family="Arial, Helvetica, sans-serif">
+    <text x="54" y="199">Enero</text>
+    <text x="281" y="199">1.500.000,00</text>
+    <text x="456" y="199">3,10x</text>
+    <text x="635" y="199">4.650.000,00</text>
+    <text x="865" y="199">6,00%</text>
+    <text x="1036" y="199">4.371.000,00</text>
+  </g>
+
+  <g fill="#dbe4f2" font-size="13" font-family="Arial, Helvetica, sans-serif">
+    <text x="54" y="246">Febrero</text>
+    <text x="54" y="285">Marzo</text>
+    <text x="54" y="324">Abril</text>
+    <text x="54" y="363">Mayo</text>
+    <text x="54" y="402">Junio</text>
+    <text x="54" y="441">Julio</text>
+    <text x="54" y="480">Agosto</text>
+    <text x="54" y="519">Septiembre</text>
+    <text x="54" y="558">Octubre</text>
+    <text x="54" y="597">Noviembre</text>
+    <text x="54" y="636">Diciembre</text>
+    <text x="54" y="675" font-weight="700" fill="#ffffff">Total</text>
+    <text x="281" y="675" font-weight="700" fill="#ffffff">1.500.000,00</text>
+    <text x="635" y="675" font-weight="700" fill="#ffffff">4.650.000,00</text>
+    <text x="1036" y="675" font-weight="700" fill="#ffffff">4.371.000,00</text>
+  </g>
+
+  <g stroke="#334155" stroke-width="1">
+    <line x1="18" y1="215" x2="1182" y2="215"/>
+    <line x1="18" y1="254" x2="1182" y2="254"/>
+    <line x1="18" y1="293" x2="1182" y2="293"/>
+    <line x1="18" y1="332" x2="1182" y2="332"/>
+    <line x1="18" y1="371" x2="1182" y2="371"/>
+    <line x1="18" y1="410" x2="1182" y2="410"/>
+    <line x1="18" y1="449" x2="1182" y2="449"/>
+    <line x1="18" y1="488" x2="1182" y2="488"/>
+    <line x1="18" y1="527" x2="1182" y2="527"/>
+    <line x1="18" y1="566" x2="1182" y2="566"/>
+    <line x1="18" y1="605" x2="1182" y2="605"/>
+    <line x1="18" y1="644" x2="1182" y2="644"/>
+    <line x1="18" y1="683" x2="1182" y2="683"/>
+  </g>
+</svg>
