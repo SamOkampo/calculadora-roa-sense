@@ -1865,25 +1865,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </section>
 
-      <section
-        id="faq-ad-slot"
-        class="mt-8 rounded-[2rem] border border-dashed border-accent/20 bg-slate-950/25 p-5"
-      >
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5585541068973240"
-         crossorigin="anonymous"></script>
-        <div
-          id="faqAdFallback"
-          class="min-h-[180px] rounded-[1.5rem] border border-line/60 bg-slate-950/35"
-        ></div>
-        <div id="faqGoogleAdWrap" class="hidden">
-          <ins
-            id="faqGoogleAd"
-            class="adsbygoogle block min-h-[250px] w-full overflow-hidden rounded-[1.2rem] border border-line bg-slate-950/70"
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          ></ins>
-        </div>
-      </section>
     </main>
 
     <footer
@@ -2188,14 +2169,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         // Usa los slots reales de AdSense cuando los crees para cada ubicacion.
         googleAdsClientId: "ca-pub-5585541068973240",
         googleAdsCalculatorSlot: "1234567890",
-        googleAdsFaqSlot: "0987654321",
         // Reemplaza estos placeholders cuando conectes GA4 y Meta Ads.
         gaMeasurementId: "G-XXXXXXXXXX",
         metaPixelId: "META_PIXEL_ID",
       };
 
       const TRACKING_PLACEHOLDERS = new Set(["", "G-XXXXXXXXXX", "META_PIXEL_ID"]);
-      const GOOGLE_ADS_SLOT_PLACEHOLDERS = new Set(["", "1234567890", "0987654321"]);
+      const GOOGLE_ADS_SLOT_PLACEHOLDERS = new Set(["", "1234567890"]);
       const REPORT_FUNCTION_PLACEHOLDERS = new Set([
         "",
         "https://TU-PROYECTO.supabase.co/functions/v1/send-report",
@@ -2487,9 +2467,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         calculatorGoogleAdWrap: document.getElementById("calculatorGoogleAdWrap"),
         calculatorGoogleAd: document.getElementById("calculatorGoogleAd"),
         calculatorAdFooter: document.getElementById("calculatorAdFooter"),
-        faqAdFallback: document.getElementById("faqAdFallback"),
-        faqGoogleAdWrap: document.getElementById("faqGoogleAdWrap"),
-        faqGoogleAd: document.getElementById("faqGoogleAd"),
         hotmartTemplateLink: document.getElementById("hotmartTemplateLink"),
         shopifyB2bBannerLink: document.getElementById("shopifyB2bBannerLink"),
         floatingUpsellLink: document.getElementById("floatingUpsellLink"),
@@ -2711,13 +2688,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           adElement: elements.calculatorGoogleAd,
           wrapElement: elements.calculatorGoogleAdWrap,
           fallbackElement: elements.calculatorAdFallback,
-        });
-
-        await initializeGoogleAdSlot({
-          slotId: SITE_CONFIG.googleAdsFaqSlot?.trim() || "",
-          adElement: elements.faqGoogleAd,
-          wrapElement: elements.faqGoogleAdWrap,
-          fallbackElement: elements.faqAdFallback,
         });
       };
 
