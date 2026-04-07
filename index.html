@@ -254,6 +254,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         background: rgba(2, 6, 23, 0.76);
         backdrop-filter: blur(12px);
       }
+
+      .expandable-image {
+        cursor: zoom-in;
+        transition:
+          transform 180ms ease,
+          box-shadow 180ms ease,
+          border-color 180ms ease;
+      }
+
+      .expandable-image:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 16px 40px rgba(2, 6, 23, 0.28);
+      }
+
+      .image-lightbox-backdrop {
+        background: rgba(2, 6, 23, 0.88);
+        backdrop-filter: blur(10px);
+      }
     </style>
     <script type="application/ld+json">
       {
@@ -1487,7 +1505,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img
                     src="/assets/excel-preview-proyeccion.svg"
                     alt="Vista previa de la hoja de proyeccion financiera de EscalaMargen"
-                    class="h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover"
+                    class="expandable-image h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover"
                   />
                   <figcaption class="mt-3 text-xs text-slate-400">
                     Hoja de proyecci&oacute;n a 12 meses para estimar ventas, devoluciones y presupuesto.
@@ -1497,7 +1515,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img
                     src="/assets/excel-preview-gastos.svg"
                     alt="Vista previa de la hoja de gastos operativos de EscalaMargen"
-                    class="h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover"
+                    class="expandable-image h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover"
                   />
                   <figcaption class="mt-3 text-xs text-slate-400">
                     Hoja de gastos operativos para bajar a tierra tu utilidad real.
@@ -1507,7 +1525,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <img
                     src="/assets/excel-preview-control-diario.svg"
                     alt="Vista previa de la hoja de control diario de EscalaMargen"
-                    class="h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover"
+                    class="expandable-image h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover"
                   />
                   <figcaption class="mt-3 text-xs text-slate-400">
                     Hoja de control diario para medir ads, ventas y beneficio sin improvisar.
@@ -1912,7 +1930,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <img
                   src="/assets/samuel-profile.jpg"
                   alt="Samuel Ocampo, creador de EscalaMargen"
-                  class="h-20 w-20 shrink-0 rounded-2xl border border-line object-cover object-center"
+                  class="expandable-image h-20 w-20 shrink-0 rounded-2xl border border-line object-cover object-center"
                   loading="lazy"
                 />
                 <div>
@@ -2085,6 +2103,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <p id="exitIntentStatus" class="mt-3 text-xs leading-5 text-muted">
           Solo se mostrar&aacute; una vez por visita y no se activa en dispositivos m&oacute;viles.
         </p>
+      </div>
+    </div>
+
+    <div
+      id="imageLightbox"
+      class="image-lightbox-backdrop fixed inset-0 z-[70] hidden items-center justify-center p-4"
+      aria-hidden="true"
+    >
+      <div class="relative w-full max-w-6xl">
+        <button
+          id="closeImageLightbox"
+          type="button"
+          class="absolute right-0 top-0 z-10 inline-flex h-11 w-11 -translate-y-14 items-center justify-center rounded-full border border-white/10 bg-slate-950/90 text-lg text-white transition hover:border-accent hover:text-accent"
+          aria-label="Cerrar imagen ampliada"
+        >
+          &times;
+        </button>
+        <div class="overflow-hidden rounded-[1.8rem] border border-line bg-slate-950/95 p-3 shadow-glow sm:p-4">
+          <img
+            id="imageLightboxAsset"
+            src=""
+            alt=""
+            class="max-h-[78vh] w-full rounded-[1.2rem] object-contain"
+          />
+          <p
+            id="imageLightboxCaption"
+            class="px-1 pt-4 text-center text-sm leading-6 text-slate-300"
+          ></p>
+        </div>
       </div>
     </div>
 
@@ -2556,6 +2603,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         exitIntentEmail: document.getElementById("exitIntentEmail"),
         exitIntentConsent: document.getElementById("exitIntentConsent"),
         exitIntentStatus: document.getElementById("exitIntentStatus"),
+        imageLightbox: document.getElementById("imageLightbox"),
+        imageLightboxAsset: document.getElementById("imageLightboxAsset"),
+        imageLightboxCaption: document.getElementById("imageLightboxCaption"),
+        closeImageLightbox: document.getElementById("closeImageLightbox"),
       };
 
       const placeholderValues = {
@@ -3331,6 +3382,72 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
       };
 
+      const openImageLightbox = (imageElement) => {
+        if (
+          !imageElement ||
+          !elements.imageLightbox ||
+          !elements.imageLightboxAsset ||
+          !elements.imageLightboxCaption
+        ) {
+          return;
+        }
+
+        const imageSource = imageElement.currentSrc || imageElement.src;
+        const imageAlt = imageElement.getAttribute("alt") || "Imagen ampliada";
+
+        elements.imageLightboxAsset.src = imageSource;
+        elements.imageLightboxAsset.alt = imageAlt;
+        elements.imageLightboxCaption.textContent = imageAlt;
+        elements.imageLightbox.classList.remove("hidden");
+        elements.imageLightbox.classList.add("flex");
+        elements.imageLightbox.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      };
+
+      const closeImageLightbox = () => {
+        if (!elements.imageLightbox || !elements.imageLightboxAsset || !elements.imageLightboxCaption) {
+          return;
+        }
+
+        elements.imageLightbox.classList.add("hidden");
+        elements.imageLightbox.classList.remove("flex");
+        elements.imageLightbox.setAttribute("aria-hidden", "true");
+        elements.imageLightboxAsset.src = "";
+        elements.imageLightboxAsset.alt = "";
+        elements.imageLightboxCaption.textContent = "";
+        document.body.style.overflow = "";
+      };
+
+      const initializeExpandableImages = () => {
+        const contentImages = [...document.querySelectorAll("img[src]")];
+
+        contentImages.forEach((imageElement) => {
+          if (
+            imageElement.closest("#imageLightbox") ||
+            imageElement.dataset.expandableBound === "true"
+          ) {
+            return;
+          }
+
+          imageElement.dataset.expandableBound = "true";
+          imageElement.classList.add("expandable-image");
+          imageElement.setAttribute("role", "button");
+          imageElement.setAttribute("tabindex", "0");
+          imageElement.setAttribute("aria-label", `Abrir imagen: ${imageElement.alt || "vista ampliada"}`);
+
+          imageElement.addEventListener("click", () => {
+            openImageLightbox(imageElement);
+          });
+
+          imageElement.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              openImageLightbox(imageElement);
+            }
+          });
+        });
+      };
+
       const closeExitIntentModal = () => {
         if (!elements.exitIntentModal) {
           return;
@@ -3619,9 +3736,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         });
       }
 
+      if (elements.closeImageLightbox) {
+        elements.closeImageLightbox.addEventListener("click", closeImageLightbox);
+      }
+
+      if (elements.imageLightbox) {
+        elements.imageLightbox.addEventListener("click", (event) => {
+          if (event.target === elements.imageLightbox) {
+            closeImageLightbox();
+          }
+        });
+      }
+
       document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
           closeExitIntentModal();
+          closeImageLightbox();
         }
       });
 
@@ -3643,6 +3773,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       initializeTracking();
       initializeGoogleAds();
+      initializeExpandableImages();
       observeSectionView(elements.templateSection, "template_offer_view", "template_offer_view", {
         section: "plantilla-excel",
       });
