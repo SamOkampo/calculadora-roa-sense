@@ -60,6 +60,8 @@
       content="https://escalamargen.com/assets/escalamargen-logo-400.png"
     />
     <meta name="twitter:image:alt" content="Logo de EscalaMargen" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5585541068973240"
+     crossorigin="anonymous"></script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -1862,6 +1864,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </details>
         </div>
       </section>
+
+      <section
+        id="faq-ad-slot"
+        class="mt-8 rounded-[2rem] border border-dashed border-accent/20 bg-slate-950/25 p-5"
+      >
+        <div
+          id="faqAdFallback"
+          class="min-h-[180px] rounded-[1.5rem] border border-line/60 bg-slate-950/35"
+        ></div>
+        <div id="faqGoogleAdWrap" class="hidden">
+          <ins
+            id="faqGoogleAd"
+            class="adsbygoogle block min-h-[250px] w-full overflow-hidden rounded-[1.2rem] border border-line bg-slate-950/70"
+            data-ad-format="auto"
+            data-full-width-responsive="true"
+          ></ins>
+        </div>
+      </section>
     </main>
 
     <footer
@@ -2202,16 +2222,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           "https://fqzwjrxouyijcxsxqiqo.supabase.co/functions/v1/send-report",
         reportFunctionTimeoutMs: 12000,
         emailDraftFallback: false,
-        // Reemplaza estos placeholders cuando te aprueben AdSense.
-        googleAdsClientId: "ca-pub-XXXXXXXXXXXXXXXX",
+        // Usa los slots reales de AdSense cuando los crees para cada ubicacion.
+        googleAdsClientId: "ca-pub-5585541068973240",
         googleAdsCalculatorSlot: "1234567890",
+        googleAdsFaqSlot: "0987654321",
         // Reemplaza estos placeholders cuando conectes GA4 y Meta Ads.
         gaMeasurementId: "G-XXXXXXXXXX",
         metaPixelId: "META_PIXEL_ID",
       };
 
       const TRACKING_PLACEHOLDERS = new Set(["", "G-XXXXXXXXXX", "META_PIXEL_ID"]);
-      const GOOGLE_ADS_PLACEHOLDERS = new Set(["", "ca-pub-XXXXXXXXXXXXXXXX", "1234567890"]);
+      const GOOGLE_ADS_SLOT_PLACEHOLDERS = new Set(["", "1234567890", "0987654321"]);
       const REPORT_FUNCTION_PLACEHOLDERS = new Set([
         "",
         "https://TU-PROYECTO.supabase.co/functions/v1/send-report",
@@ -2219,8 +2240,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       const shouldEnableTracking = (value) =>
         typeof value === "string" && !TRACKING_PLACEHOLDERS.has(value.trim());
-      const shouldEnableGoogleAdsValue = (value) =>
-        typeof value === "string" && !GOOGLE_ADS_PLACEHOLDERS.has(value.trim());
+      const shouldEnableGoogleAdsClient = (value) =>
+        typeof value === "string" && value.trim().startsWith("ca-pub-");
+      const shouldEnableGoogleAdsSlot = (value) =>
+        typeof value === "string" && !GOOGLE_ADS_SLOT_PLACEHOLDERS.has(value.trim());
 
       const loadGoogleAnalytics = (measurementId) => {
         if (!shouldEnableTracking(measurementId) || window.gtag) {
@@ -2279,7 +2302,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       };
 
       const loadGoogleAdsScript = (clientId) => {
-        if (!shouldEnableGoogleAdsValue(clientId)) {
+        if (!shouldEnableGoogleAdsClient(clientId)) {
           return Promise.resolve(false);
         }
 
@@ -2288,7 +2311,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         }
 
         window.__escalaMargenGoogleAdsPromise = new Promise((resolve, reject) => {
-          const existingScript = document.querySelector('script[data-google-ads-loader="true"]');
+          const existingScript = document.querySelector(
+            'script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
+          );
           if (existingScript) {
             resolve(true);
             return;
@@ -2499,6 +2524,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         calculatorGoogleAdWrap: document.getElementById("calculatorGoogleAdWrap"),
         calculatorGoogleAd: document.getElementById("calculatorGoogleAd"),
         calculatorAdFooter: document.getElementById("calculatorAdFooter"),
+        faqAdFallback: document.getElementById("faqAdFallback"),
+        faqGoogleAdWrap: document.getElementById("faqGoogleAdWrap"),
+        faqGoogleAd: document.getElementById("faqGoogleAd"),
         hotmartTemplateLink: document.getElementById("hotmartTemplateLink"),
         shopifyB2bBannerLink: document.getElementById("shopifyB2bBannerLink"),
         floatingUpsellLink: document.getElementById("floatingUpsellLink"),
@@ -2682,44 +2710,49 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         observer.observe(element);
       };
 
-      const initializeCalculatorGoogleAd = async () => {
+      const initializeGoogleAdSlot = async ({ slotId, adElement, wrapElement, fallbackElement }) => {
         const clientId = SITE_CONFIG.googleAdsClientId?.trim() || "";
-        const slotId = SITE_CONFIG.googleAdsCalculatorSlot?.trim() || "";
         const shouldEnableAds =
-          shouldEnableGoogleAdsValue(clientId) && shouldEnableGoogleAdsValue(slotId);
+          shouldEnableGoogleAdsClient(clientId) && shouldEnableGoogleAdsSlot(slotId);
 
-        if (!shouldEnableAds || !elements.calculatorGoogleAd || !elements.calculatorGoogleAdWrap) {
+        if (!adElement || !wrapElement) {
+          return;
+        }
+
+        if (!shouldEnableAds) {
+          wrapElement.classList.add("hidden");
+          fallbackElement?.classList.remove("hidden");
           return;
         }
 
         try {
-          elements.calculatorGoogleAd.setAttribute("data-ad-client", clientId);
-          elements.calculatorGoogleAd.setAttribute("data-ad-slot", slotId);
+          adElement.setAttribute("data-ad-client", clientId);
+          adElement.setAttribute("data-ad-slot", slotId);
           await loadGoogleAdsScript(clientId);
-
-          elements.calculatorGoogleAdWrap.classList.remove("hidden");
-          elements.calculatorAdFallback?.classList.add("hidden");
-          elements.calculatorAdTags?.classList.add("hidden");
-          elements.calculatorAdFooter?.classList.add("hidden");
-
-          if (elements.calculatorAdEyebrow) {
-            elements.calculatorAdEyebrow.textContent = "Google Ads";
-          }
-          if (elements.calculatorAdTitle) {
-            elements.calculatorAdTitle.textContent = "Publicidad dentro de la calculadora";
-          }
-          if (elements.calculatorAdStatus) {
-            elements.calculatorAdStatus.textContent = "Activo";
-          }
-          if (elements.calculatorAdCopy) {
-            elements.calculatorAdCopy.textContent =
-              "Este espacio ya est\u00E1 preparado para monetizaci\u00F3n con Google Ads sin romper la experiencia principal de la herramienta.";
-          }
-
+          wrapElement.classList.remove("hidden");
+          fallbackElement?.classList.add("hidden");
           (window.adsbygoogle = window.adsbygoogle || []).push({});
         } catch (error) {
-          console.error("No se pudo inicializar Google Ads en el slot de calculadora.", error);
+          console.error("No se pudo inicializar Google Ads en uno de los slots.", error);
+          wrapElement.classList.add("hidden");
+          fallbackElement?.classList.remove("hidden");
         }
+      };
+
+      const initializeGoogleAds = async () => {
+        await initializeGoogleAdSlot({
+          slotId: SITE_CONFIG.googleAdsCalculatorSlot?.trim() || "",
+          adElement: elements.calculatorGoogleAd,
+          wrapElement: elements.calculatorGoogleAdWrap,
+          fallbackElement: elements.calculatorAdFallback,
+        });
+
+        await initializeGoogleAdSlot({
+          slotId: SITE_CONFIG.googleAdsFaqSlot?.trim() || "",
+          adElement: elements.faqGoogleAd,
+          wrapElement: elements.faqGoogleAdWrap,
+          fallbackElement: elements.faqAdFallback,
+        });
       };
 
       const templateFeatures = {
@@ -3609,7 +3642,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       });
 
       initializeTracking();
-      initializeCalculatorGoogleAd();
+      initializeGoogleAds();
       observeSectionView(elements.templateSection, "template_offer_view", "template_offer_view", {
         section: "plantilla-excel",
       });
