@@ -668,18 +668,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <label class="block sm:col-span-2">
                       <span class="mb-2 flex items-center justify-between gap-4 text-sm text-slate-200">
                         <span>Impuesto sobre la venta (%)</span>
-                        <span class="select-shell w-full sm:w-auto sm:min-w-[12.5rem]">
-                          <select
-                            id="taxPresetMode"
-                            class="select-control text-xs sm:min-w-[12.5rem]"
-                          >
-                            <option value="auto" selected>Auto por moneda</option>
-                            <option value="custom">Personalizado</option>
-                          </select>
-                          <span class="select-caret" aria-hidden="true">
-                            <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
-                              <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
-                            </svg>
+                        <span class="flex items-center gap-3">
+                          <span class="text-xs uppercase tracking-[0.16em] text-slate-400">
+                            Aplicar
+                          </span>
+                          <span class="relative shrink-0">
+                            <input
+                              id="applySalesTax"
+                              name="applySalesTax"
+                              type="checkbox"
+                              checked
+                              class="peer sr-only"
+                            />
+                            <span class="block h-7 w-12 rounded-full bg-slate-800 transition peer-checked:bg-accent/30"></span>
+                            <span class="absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition peer-checked:translate-x-5 peer-checked:bg-accent"></span>
                           </span>
                         </span>
                       </span>
@@ -693,7 +695,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:opacity-55"
                       />
                       <p id="taxPresetHint" class="mt-3 text-xs leading-5 text-muted">
-                        Se autocompleta seg&uacute;n la moneda elegida. Si tu r&eacute;gimen o pa&iacute;s no coincide, cambia a Personalizado.
+                        Act&iacute;valo si tus ventas cargan impuesto. Si vendes exento o no quieres modelarlo, puedes apagarlo.
                       </p>
                     </label>
                   </div>
@@ -2162,74 +2164,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         BZD: { locale: "en-BZ", decimals: 2, label: "BZD" },
       };
 
-      const taxReferenceCatalog = {
-        COP: { rate: 19, country: "Colombia", taxName: "IVA" },
-        USD: {
-          rate: 0,
-          country: "Estados Unidos",
-          taxName: "sales tax",
-          note:
-            "En Estados Unidos no hay IVA federal. Si cobras sales tax estatal o local, cambia a Personalizado.",
-        },
-        EUR: {
-          rate: 21,
-          country: "Espa\u00F1a",
-          taxName: "IVA",
-          note:
-            "Referencia base para EUR usando Espa\u00F1a. Si tu pa\u00EDs usa otra tasa, cambia a Personalizado.",
-        },
-        ARS: { rate: 21, country: "Argentina", taxName: "IVA" },
-        BOB: { rate: 13, country: "Bolivia", taxName: "IVA" },
-        BRL: {
-          rate: null,
-          country: "Brasil",
-          taxName: "tributaci\u00F3n indirecta",
-          note:
-            "Brasil no maneja una sola tasa nacional comparable a IVA. Usa Personalizado.",
-        },
-        CLP: { rate: 19, country: "Chile", taxName: "IVA" },
-        CRC: { rate: 13, country: "Costa Rica", taxName: "IVA" },
-        CUP: {
-          rate: null,
-          country: "Cuba",
-          taxName: "impuesto indirecto",
-          note:
-            "No dejamos una tasa \u00FAnica por defecto para esta moneda. Usa Personalizado.",
-        },
-        DOP: { rate: 18, country: "Rep\u00FAblica Dominicana", taxName: "ITBIS" },
-        GYD: { rate: 14, country: "Guyana", taxName: "VAT" },
-        GTQ: { rate: 12, country: "Guatemala", taxName: "IVA" },
-        HNL: { rate: 15, country: "Honduras", taxName: "sales tax" },
-        HTG: {
-          rate: null,
-          country: "Hait\u00ED",
-          taxName: "impuesto indirecto",
-          note:
-            "No dejamos una tasa \u00FAnica por defecto para esta moneda. Usa Personalizado.",
-        },
-        MXN: { rate: 16, country: "M\u00E9xico", taxName: "IVA" },
-        NIO: { rate: 15, country: "Nicaragua", taxName: "IVA" },
-        PAB: { rate: 7, country: "Panam\u00E1", taxName: "ITBMS" },
-        PEN: { rate: 18, country: "Per\u00FA", taxName: "IGV" },
-        PYG: { rate: 10, country: "Paraguay", taxName: "IVA" },
-        SRD: {
-          rate: null,
-          country: "Surinam",
-          taxName: "impuesto indirecto",
-          note:
-            "No dejamos una tasa \u00FAnica por defecto para esta moneda. Usa Personalizado.",
-        },
-        UYU: { rate: 22, country: "Uruguay", taxName: "IVA" },
-        VES: { rate: 16, country: "Venezuela", taxName: "IVA" },
-        BZD: {
-          rate: null,
-          country: "Belice",
-          taxName: "GST",
-          note:
-            "No dejamos una tasa \u00FAnica por defecto para esta moneda. Usa Personalizado.",
-        },
-      };
-
       const templateUsdPrice = 9;
       const templateRegularUsdPrice = 49;
       const usdReferenceRates = {
@@ -2490,8 +2424,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         gatewayPreset: "wompi",
         gatewayPercent: 2.65,
         gatewayFixed: 700,
-        taxPresetMode: "auto",
         taxPercent: 19,
+        applySalesTax: true,
         applyGatewayVat: true,
         gatewayVatPercent: 19,
         discountPercent: 0,
@@ -2517,9 +2451,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         gatewayPercent: document.getElementById("gatewayPercent"),
         gatewayFixed: document.getElementById("gatewayFixed"),
         gatewayFixedLabel: document.getElementById("gatewayFixedLabel"),
-        taxPresetMode: document.getElementById("taxPresetMode"),
         taxPercent: document.getElementById("taxPercent"),
         taxPresetHint: document.getElementById("taxPresetHint"),
+        applySalesTax: document.getElementById("applySalesTax"),
         applyGatewayVat: document.getElementById("applyGatewayVat"),
         gatewayVatPercent: document.getElementById("gatewayVatPercent"),
         discountPercent: document.getElementById("discountPercent"),
@@ -2634,7 +2568,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       let marketingMode = defaults.marketingMode;
       let latestSummaryText = "";
       let latestCalculation = null;
-      let manualTaxPercentValue = String(defaults.taxPercent);
       const trackedViews = new Set();
       let hasShownExitIntent = false;
 
@@ -2957,6 +2890,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             gateway_percent: parseNumber(elements.gatewayPercent.value),
             gateway_fixed: parseNumber(elements.gatewayFixed.value),
             tax_percent: parseNumber(elements.taxPercent.value),
+            apply_sales_tax: elements.applySalesTax.checked,
             gateway_vat_percent: parseNumber(elements.gatewayVatPercent.value),
             discount_percent: parseNumber(elements.discountPercent.value),
             returns_percent: parseNumber(elements.returnsPercent.value),
@@ -3053,50 +2987,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.templateLocalOriginalPrice.textContent = `Antes: aprox. ${localRegularReferenceValue}`;
       };
 
-      const getTaxReference = (currencyCode) => taxReferenceCatalog[currencyCode] || null;
-
-      const isFiniteTaxRate = (value) => typeof value === "number" && Number.isFinite(value);
-
-      const syncTaxPresetUI = ({ preserveManual = true } = {}) => {
-        if (!elements.taxPercent || !elements.taxPresetMode || !elements.taxPresetHint) {
+      const syncSalesTaxUI = () => {
+        if (!elements.taxPercent || !elements.applySalesTax || !elements.taxPresetHint) {
           return;
         }
 
-        const taxReference = getTaxReference(selectedCurrency);
-        const selectedMode = elements.taxPresetMode.value || defaults.taxPresetMode;
-        const referenceText =
-          taxReference && isFiniteTaxRate(taxReference.rate)
-            ? `${taxReference.taxName} de ${taxReference.country}: ${numberFormatter.format(taxReference.rate)}%`
-            : "";
-
-        if (selectedMode === "auto" && taxReference && isFiniteTaxRate(taxReference.rate)) {
-          elements.taxPercent.value = String(taxReference.rate);
-          elements.taxPercent.disabled = true;
-          elements.taxPresetHint.textContent = taxReference.note
-            ? `Auto por moneda. ${referenceText}. ${taxReference.note}`
-            : `Auto por moneda. ${referenceText}. Si tu caso es distinto, cambia a Personalizado.`;
-          return;
-        }
-
-        if (selectedMode === "auto" && (!taxReference || !isFiniteTaxRate(taxReference.rate))) {
-          elements.taxPresetMode.value = "custom";
-        }
-
-        elements.taxPercent.disabled = false;
-
-        if (preserveManual && manualTaxPercentValue !== "") {
-          elements.taxPercent.value = manualTaxPercentValue;
-        } else if (!elements.taxPercent.value && taxReference && isFiniteTaxRate(taxReference.rate)) {
-          elements.taxPercent.value = String(taxReference.rate);
-        } else if (!preserveManual && elements.taxPresetMode.value === "custom") {
-          elements.taxPercent.value = "";
-        }
-
-        elements.taxPresetHint.textContent =
-          taxReference && isFiniteTaxRate(taxReference.rate)
-            ? `Referencia informativa: ${referenceText}. Puedes editarlo si tu r\u00E9gimen no coincide.`
-            : taxReference?.note ||
-              "Escribe el porcentaje real que te aplica seg\u00FAn tu pa\u00EDs, r\u00E9gimen o producto.";
+        const shouldApplySalesTax = elements.applySalesTax.checked;
+        elements.taxPercent.disabled = !shouldApplySalesTax;
+        elements.taxPresetHint.textContent = shouldApplySalesTax
+          ? "Impuesto activo. Escribe el porcentaje real que aplica a tu venta."
+          : "Impuesto desactivado. La calculadora no restara este porcentaje del resultado.";
       };
 
       const syncCurrencyUI = () => {
@@ -3108,7 +3008,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.gatewayFixedLabel.textContent = `Comisi\u00F3n plana (${selectedCurrency})`;
         syncTemplatePriceReference();
         updateGatewayPresetSummary();
-        syncTaxPresetUI();
       };
 
       const syncInputPlaceholders = () => {
@@ -3237,6 +3136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         const gatewayPercent = parseNumber(elements.gatewayPercent.value) / 100;
         const gatewayFixed = parseNumber(elements.gatewayFixed.value);
         const taxPercent = parseNumber(elements.taxPercent.value) / 100;
+        const applySalesTax = elements.applySalesTax.checked;
         const gatewayVatPercent = parseNumber(elements.gatewayVatPercent.value) / 100;
         const discountPercent = parseNumber(elements.discountPercent.value) / 100;
         const returnsPercent = parseNumber(elements.returnsPercent.value) / 100;
@@ -3251,7 +3151,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         const baseGatewayFee = effectiveRevenue * gatewayPercent + gatewayFixed;
         const gatewayFeeVat = applyGatewayVat ? baseGatewayFee * gatewayVatPercent : 0;
         const gatewayTotal = baseGatewayFee + gatewayFeeVat;
-        const taxCost = effectiveRevenue * taxPercent;
+        const taxCost = applySalesTax ? effectiveRevenue * taxPercent : 0;
         const fulfillmentCost = productCost + shippingCost;
         const marketplaceFeeCost = effectiveRevenue * marketplaceFeePercent;
         const returnsReserveCost = effectiveRevenue * returnsPercent;
@@ -3583,14 +3483,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           elements[key].value = "";
         });
 
+        elements.applySalesTax.checked = defaults.applySalesTax;
         elements.applyGatewayVat.checked = defaults.applyGatewayVat;
         marketingMode = defaults.marketingMode;
-        manualTaxPercentValue = String(defaults.taxPercent);
         syncMarketingUI();
         elements.gatewayPreset.value = "custom";
-        elements.taxPresetMode.value = defaults.taxPresetMode;
         setPreset("custom");
-        syncTaxPresetUI();
+        syncSalesTaxUI();
         if (shouldTrack) {
           trackEvent("calculator_reset", {
             marketing_mode: marketingMode,
@@ -3619,12 +3518,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         elements.dailyOrders,
       ].forEach((input) => input.addEventListener("input", calculate));
 
-      elements.taxPercent.addEventListener("input", () => {
-        if (elements.taxPresetMode.value === "custom") {
-          manualTaxPercentValue = elements.taxPercent.value.trim();
-        }
-      });
-
       [elements.applyGatewayVat, elements.gatewayPreset].forEach((input) =>
         input.addEventListener("change", () => {
           if (input === elements.gatewayPreset) {
@@ -3639,8 +3532,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         })
       );
 
-      elements.taxPresetMode.addEventListener("change", () => {
-        syncTaxPresetUI();
+      elements.applySalesTax.addEventListener("change", () => {
+        syncSalesTaxUI();
         calculate();
       });
 
@@ -3781,6 +3674,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       syncEmailReportHints();
       elements.currencyCode.value = selectedCurrency;
       syncCurrencyUI();
+      syncSalesTaxUI();
       syncTemplateFeature("catalogo");
       resetForm(false);
     </script>
