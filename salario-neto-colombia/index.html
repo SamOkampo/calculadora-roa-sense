@@ -29,11 +29,35 @@
           linear-gradient(180deg, #07111f 0%, #050b14 100%);
       }
       .glass { background: rgba(13, 23, 40, 0.82); backdrop-filter: blur(16px); }
+      .colombia-frame {
+        position: relative;
+        padding: 1px;
+        border-radius: 2rem;
+        background: linear-gradient(
+          90deg,
+          rgba(252, 209, 22, 0.98) 0%,
+          rgba(252, 209, 22, 0.98) 50%,
+          rgba(0, 56, 147, 0.98) 50%,
+          rgba(0, 56, 147, 0.98) 75%,
+          rgba(206, 17, 38, 0.98) 75%,
+          rgba(206, 17, 38, 0.98) 100%
+        );
+        box-shadow:
+          0 0 0 1px rgba(252, 209, 22, 0.08),
+          0 18px 48px rgba(6, 10, 18, 0.45);
+      }
+      .colombia-shell {
+        border-radius: calc(2rem - 1px);
+        background: rgba(13, 23, 40, 0.9);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.02);
+      }
     </style>
   </head>
   <body class="font-body text-slate-100 antialiased">
     <main class="mx-auto max-w-5xl px-4 py-8 sm:px-6 lg:px-8">
-      <section class="glass rounded-[2rem] border border-line p-6 shadow-glow sm:p-8">
+      <section class="colombia-frame">
+        <div class="colombia-shell p-6 sm:p-8">
         <div class="flex flex-col gap-5 border-b border-line pb-6 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Pr&oacute;xima fase</p>
@@ -86,6 +110,7 @@
               Costo de empleado Colombia
             </a>
           </div>
+        </div>
         </div>
       </section>
     </main>
