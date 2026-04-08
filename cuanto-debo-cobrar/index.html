@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora de Cu&aacute;nto Debo Cobrar por Hora y Proyecto | EscalaMargen</title>
+    <meta
+      name="description"
+      content="Calcula cu&aacute;nto debes cobrar por hora, por mes o por proyecto seg&uacute;n tu meta neta, tus costos fijos, tus horas facturables y tu margen objetivo."
+    />
+    <link rel="icon" type="image/png" sizes="400x400" href="/assets/escalamargen-logo-400.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="shortcut icon" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="canonical" href="https://escalamargen.com/cuanto-debo-cobrar/" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#07111f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EscalaMargen" />
+    <meta property="og:url" content="https://escalamargen.com/cuanto-debo-cobrar/" />
+    <meta
+      property="og:title"
+      content="Calculadora de Cu&aacute;nto Debo Cobrar por Hora y Proyecto | EscalaMargen"
+    />
+    <meta
+      property="og:description"
+      content="Convierte tu meta de ingreso neto, tus costos fijos y tus horas facturables en una tarifa sostenible para no improvisar precios."
+    />
+    <meta
+      property="og:image"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <meta property="og:locale" content="es_CO" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Calculadora de Cu&aacute;nto Debo Cobrar por Hora y Proyecto | EscalaMargen"
+    />
+    <meta
+      name="twitter:description"
+      content="Convierte tu meta de ingreso neto, tus costos fijos y tus horas facturables en una tarifa sostenible para no improvisar precios."
+    />
+    <meta
+      name="twitter:image"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <script
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key="HD7lvpJt7JbcTOhkD5Sy4g"
+      async
+    ></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PV4NNKW4');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQNE3MNV04"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-NQNE3MNV04");
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              shell: "#07111f",
+              panel: "#0d1728",
+              panelSoft: "#101d31",
+              line: "rgba(148, 163, 184, 0.18)",
+              accent: "#38f2a1",
+              accentSoft: "#1ec8ff",
+              danger: "#ff6b7b",
+              warning: "#ffc857",
+              muted: "#9fb0c9",
+            },
+            fontFamily: {
+              display: [
+                "ui-monospace",
+                "SFMono-Regular",
+                "Cascadia Code",
+                "Consolas",
+                "monospace"
+              ],
+              body: [
+                "\"Segoe UI Variable Text\"",
+                "Aptos",
+                "\"Trebuchet MS\"",
+                "sans-serif"
+              ],
+            },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(56, 242, 161, 0.14), 0 18px 48px rgba(6, 10, 18, 0.45)"
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top, rgba(30, 200, 255, 0.12), transparent 28%),
+          radial-gradient(circle at 80% 0%, rgba(56, 242, 161, 0.14), transparent 20%),
+          linear-gradient(180deg, #07111f 0%, #050b14 100%);
+      }
+      .glass {
+        background: rgba(13, 23, 40, 0.82);
+        backdrop-filter: blur(16px);
+      }
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+      input[type="number"] { -moz-appearance: textfield; }
+      .select-shell { position: relative; min-width: 0; }
+      .select-control {
+        width: 100%;
+        appearance: none;
+        border: 1px solid rgba(148, 163, 184, 0.18);
+        background:
+          linear-gradient(180deg, rgba(15, 23, 42, 0.96), rgba(7, 17, 31, 0.92)),
+          rgba(2, 6, 23, 0.8);
+        color: #ffffff;
+        border-radius: 9999px;
+        padding: 0.8rem 2.9rem 0.8rem 1rem;
+        font-weight: 600;
+      }
+      .select-caret {
+        pointer-events: none;
+        position: absolute;
+        right: 0.95rem;
+        top: 50%;
+        display: inline-flex;
+        height: 1.3rem;
+        width: 1.3rem;
+        transform: translateY(-50%);
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background: rgba(56, 242, 161, 0.1);
+        color: #38f2a1;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://escalamargen.com/cuanto-debo-cobrar/#webpage",
+        "url": "https://escalamargen.com/cuanto-debo-cobrar/",
+        "name": "Calculadora de Cu&aacute;nto Debo Cobrar por Hora y Proyecto | EscalaMargen",
+        "description": "Calcula cu&aacute;nto debes cobrar por hora, por mes o por proyecto seg&uacute;n tu meta neta, tus costos fijos, tus horas facturables y tu margen objetivo.",
+        "inLanguage": "es-CO"
+      }
+    </script>
+  </head>
+  <body class="font-body text-slate-100 antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV4NNKW4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="mx-auto max-w-7xl px-4 pb-10 pt-5 sm:px-6 lg:px-8">
+      <div
+        class="glass flex flex-wrap items-center justify-between gap-4 rounded-[2rem] border border-line px-4 py-3 shadow-glow"
+      >
+        <div class="flex items-center gap-3">
+          <span
+            class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-slate-950 text-sm font-semibold text-accent"
+          >
+            ILR
+          </span>
+          <div>
+            <p class="font-display text-sm tracking-[0.18em] text-slate-300">
+              EscalaMargen
+            </p>
+            <p class="text-xs text-muted">Precios, salarios y rentabilidad en una sola plataforma</p>
+          </div>
+        </div>
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-slate-300">
+          <a
+            href="/"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Inicio
+          </a>
+          <a
+            href="/#calculadora"
+            id="backToMarginLink"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Margen real
+          </a>
+          <a
+            href="/#plantilla-excel"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Plantilla
+          </a>
+          <a
+            href="/#contacto"
+            class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white"
+          >
+            Contacto
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section class="mb-8 grid gap-5 lg:grid-cols-[1.02fr_0.98fr] lg:items-end">
+        <div class="space-y-5">
+          <span
+            class="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.24em] text-cyan-200"
+          >
+            Nueva calculadora conectada
+          </span>
+          <div class="max-w-3xl space-y-4">
+            <h1 class="font-display text-4xl leading-tight text-white sm:text-5xl">
+              Calculadora de cu&aacute;nto debo cobrar por hora, por mes o por proyecto
+            </h1>
+            <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
+              Convierte tu meta neta, tus costos fijos y tus horas facturables en una
+              tarifa sostenible para que no vendas trabajo por debajo de lo que realmente necesitas.
+            </p>
+            <p class="max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">
+              Esta calculadora traduce tu criterio financiero en precio. Primero defines
+              cu&aacute;nto quieres conservar, luego modelas fricciones y por &uacute;ltimo ves
+              la tarifa que sostiene tu negocio sin improvisar.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 text-sm text-slate-300">
+            <span class="rounded-full border border-line px-3 py-2">
+              Meta neta mensual
+            </span>
+            <span class="rounded-full border border-line px-3 py-2">
+              Costos fijos + fees
+            </span>
+            <span class="rounded-full border border-line px-3 py-2">
+              Hora, retainer y proyecto
+            </span>
+          </div>
+        </div>
+
+        <aside class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            Resultado principal
+          </p>
+          <div class="mt-4 rounded-[1.75rem] border border-accent/20 bg-slate-950/60 p-5">
+            <p class="text-sm text-muted">Facturaci&oacute;n objetivo mensual</p>
+            <div class="mt-3 flex items-end justify-between gap-3">
+              <p
+                id="heroBilling"
+                class="font-display text-4xl font-semibold tracking-tight text-accent sm:text-5xl"
+              >
+                $0
+              </p>
+              <span
+                id="heroStatus"
+                class="rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent"
+              >
+                clara
+              </span>
+            </div>
+            <p id="heroCopy" class="mt-3 text-sm leading-6 text-slate-300">
+              Esto es lo que deber&iacute;as facturar para cubrir estructura, fees y dejarte un colch&oacute;n sano.
+            </p>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
+            <div class="rounded-2xl border border-line bg-slate-950/45 p-4">
+              <p class="text-muted">Tarifa por hora</p>
+              <p id="miniHourly" class="mt-2 font-display text-2xl text-white">
+                $0
+              </p>
+            </div>
+            <div class="rounded-2xl border border-line bg-slate-950/45 p-4">
+              <p class="text-muted">Proyecto m&iacute;nimo</p>
+              <p id="miniProject" class="mt-2 font-display text-2xl text-white">
+                $0
+              </p>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid items-start gap-6 xl:grid-cols-[1.02fr_0.98fr]">
+        <form
+          id="pricingCalculatorForm"
+          class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6"
+          aria-label="Formulario para calcular cuánto debo cobrar"
+        >
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                Entradas
+              </p>
+              <h2 class="mt-2 text-2xl font-semibold text-white">
+                Define tu piso rentable
+              </h2>
+            </div>
+            <button
+              id="resetPricingButton"
+              type="button"
+              class="rounded-full border border-line px-4 py-2 text-sm text-slate-200 transition hover:border-accent hover:text-accent"
+            >
+              Restablecer
+            </button>
+          </div>
+
+          <div class="mt-6 space-y-6">
+            <section>
+              <div class="mb-4 flex items-center justify-between gap-4">
+                <h3 class="text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                  Meta e infraestructura
+                </h3>
+                <label class="flex items-center gap-2 text-xs text-slate-300">
+                  <span class="text-slate-400">Moneda</span>
+                  <span class="select-shell">
+                    <select id="currencyCode" class="select-control min-w-[7.5rem] text-sm">
+                      <option value="COP">COP</option>
+                      <option value="USD">USD</option>
+                      <option value="EUR">EUR</option>
+                      <option value="MXN">MXN</option>
+                      <option value="CLP">CLP</option>
+                      <option value="PEN">PEN</option>
+                    </select>
+                    <span class="select-caret" aria-hidden="true">
+                      <svg viewBox="0 0 20 20" class="h-3.5 w-3.5 fill-current">
+                        <path d="M5.4 7.6a1 1 0 0 1 1.4 0L10 10.8l3.2-3.2a1 1 0 1 1 1.4 1.4l-3.9 3.9a1 1 0 0 1-1.4 0L5.4 9a1 1 0 0 1 0-1.4z"/>
+                      </svg>
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Cu&aacute;nto quiero ganar neto al mes
+                  </span>
+                  <input
+                    id="desiredNetIncome"
+                    type="number"
+                    min="0"
+                    step="10000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Costos fijos al mes
+                  </span>
+                  <input
+                    id="fixedCosts"
+                    type="number"
+                    min="0"
+                    step="10000"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+            </section>
+
+            <section>
+              <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                Capacidad comercial
+              </h3>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Horas facturables al mes
+                  </span>
+                  <input
+                    id="billableHours"
+                    type="number"
+                    min="1"
+                    step="1"
+                    inputmode="numeric"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Proyectos facturables al mes
+                  </span>
+                  <input
+                    id="projectsPerMonth"
+                    type="number"
+                    min="1"
+                    step="1"
+                    inputmode="numeric"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+            </section>
+
+            <section>
+              <h3 class="mb-4 text-sm font-semibold uppercase tracking-[0.18em] text-slate-300">
+                Colch&oacute;n y fricciones
+              </h3>
+              <div class="grid gap-4 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Margen objetivo (%)
+                  </span>
+                  <input
+                    id="targetMarginPercent"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+
+                <label class="block">
+                  <span class="mb-2 block text-sm text-slate-200">
+                    Impuestos o comisiones (%)
+                  </span>
+                  <input
+                    id="taxesAndFeesPercent"
+                    type="number"
+                    min="0"
+                    step="0.01"
+                    inputmode="decimal"
+                    class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
+                  />
+                </label>
+              </div>
+
+              <p class="mt-4 text-xs leading-5 text-muted">
+                Usa este porcentaje para agrupar comisiones de cobro, retenciones, impuestos
+                o cualquier fricci&oacute;n que reduzca lo que realmente te queda despu&eacute;s de facturar.
+              </p>
+            </section>
+          </div>
+        </form>
+
+        <section class="space-y-6">
+          <div class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+                  Resultados
+                </p>
+                <h2 class="mt-2 text-2xl font-semibold text-white">
+                  Tarifa sugerida en tiempo real
+                </h2>
+              </div>
+              <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
+                Live
+              </span>
+            </div>
+
+            <div class="mt-6 grid gap-4 sm:grid-cols-2">
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">Facturaci&oacute;n objetivo mensual</p>
+                <p id="targetBillingValue" class="mt-3 font-display text-3xl text-white">$0</p>
+                <p class="mt-2 text-sm text-slate-300">
+                  El ingreso bruto que deber&iacute;as sostener cada mes.
+                </p>
+              </article>
+
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">Tarifa por hora</p>
+                <p id="hourlyRateValue" class="mt-3 font-display text-3xl text-white">$0</p>
+                <p class="mt-2 text-sm text-slate-300">
+                  Basada solo en horas realmente vendibles.
+                </p>
+              </article>
+
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">Retainer mensual</p>
+                <p id="monthlyRetainerValue" class="mt-3 font-display text-3xl text-white">$0</p>
+                <p class="mt-2 text-sm text-slate-300">
+                  &Uacute;til para igualas o paquetes mensuales.
+                </p>
+              </article>
+
+              <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
+                <p class="text-sm text-muted">Precio m&iacute;nimo por proyecto</p>
+                <p id="projectPriceValue" class="mt-3 font-display text-3xl text-white">$0</p>
+                <p id="projectPriceNote" class="mt-2 text-sm text-slate-300">
+                  Seg&uacute;n la cantidad de proyectos que quieres vender al mes.
+                </p>
+              </article>
+            </div>
+
+            <div class="mt-6 rounded-[1.75rem] border border-line bg-slate-950/45 p-5">
+              <div class="flex items-center justify-between gap-3">
+                <p class="text-sm text-muted">Desglose mensual</p>
+                <p id="statusLabel" class="text-sm font-medium text-slate-300">
+                  Lectura base
+                </p>
+              </div>
+
+              <dl class="mt-4 space-y-3 text-sm">
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Meta neta del due&ntilde;o</dt>
+                  <dd id="desiredIncomeValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Costos fijos</dt>
+                  <dd id="fixedCostsValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Base a cubrir</dt>
+                  <dd id="operatingBaseValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Impacto por fees/impuestos</dt>
+                  <dd id="feesAmountValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4">
+                  <dt class="text-slate-300">Colch&oacute;n por margen</dt>
+                  <dd id="marginBufferValue" class="font-medium text-white">$0</dd>
+                </div>
+                <div class="flex items-center justify-between gap-4 border-t border-line pt-3">
+                  <dt class="font-semibold text-white">Base sin colch&oacute;n</dt>
+                  <dd id="baseWithoutBufferValue" class="font-display text-2xl font-semibold text-accent">$0</dd>
+                </div>
+              </dl>
+
+              <div class="mt-5 grid gap-3 sm:grid-cols-2">
+                <button
+                  id="copyPricingSummaryButton"
+                  type="button"
+                  class="inline-flex items-center justify-center rounded-2xl border border-line px-4 py-3 text-sm font-semibold text-white transition hover:border-accent hover:text-accent"
+                >
+                  Copiar resultado
+                </button>
+                <a
+                  href="/#calculadora"
+                  class="inline-flex items-center justify-center rounded-2xl bg-accent px-4 py-3 text-sm font-semibold text-slate-950 transition hover:opacity-90"
+                >
+                  Volver a calcular margen real
+                </a>
+              </div>
+              <p id="actionStatus" class="mt-3 text-xs leading-5 text-muted">
+                Usa este resultado como tarifa base y luego aj&uacute;stala con contexto comercial, posicionamiento y demanda.
+              </p>
+            </div>
+
+            <div class="mt-6 rounded-[1.75rem] border border-accent/15 bg-accent/5 p-5">
+              <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">
+                Monetizaci&oacute;n discreta
+              </p>
+              <h3 class="mt-2 text-lg font-semibold text-white">
+                Si adem&aacute;s vendes productos o controlas caja, la plantilla te ahorra horas de improvisaci&oacute;n
+              </h3>
+              <p class="mt-2 text-sm leading-6 text-slate-300">
+                EscalaMargen no termina en el precio. La Plantilla Excel PRO te ayuda a aterrizar utilidad,
+                flujo de caja, cat&aacute;logo e inventario cuando el negocio empieza a crecer.
+              </p>
+              <a
+                href="/#plantilla-excel"
+                class="mt-4 inline-flex items-center justify-center rounded-2xl border border-accent/25 bg-accent/10 px-5 py-3 text-sm font-semibold text-accent transition hover:bg-accent hover:text-slate-950"
+              >
+                Ver Plantilla Excel PRO
+              </a>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="mt-8 grid gap-4 lg:grid-cols-[0.96fr_1.04fr]">
+        <article class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            C&oacute;mo interpretarlo
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-white">
+            Qu&eacute; significa cada resultado
+          </h2>
+          <div class="mt-5 space-y-4 text-sm leading-6 text-slate-300">
+            <p>
+              <strong class="text-white">Facturaci&oacute;n objetivo mensual:</strong> es el total que
+              deber&iacute;as vender en el mes para cubrir costos fijos, comisiones y el colch&oacute;n de margen que definiste.
+            </p>
+            <p>
+              <strong class="text-white">Tarifa por hora:</strong> usa solo horas que realmente puedes vender.
+              No metas todo tu calendario, porque tiempo comercial, administraci&oacute;n y operaci&oacute;n tambi&eacute;n existen.
+            </p>
+            <p>
+              <strong class="text-white">Proyecto m&iacute;nimo:</strong> te sirve para no aceptar trabajos
+              que se ven atractivos, pero te dejan corto al final del mes.
+            </p>
+          </div>
+        </article>
+
+        <article class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">
+            Supuestos de la f&oacute;rmula
+          </p>
+          <h2 class="mt-2 text-2xl font-semibold text-white">
+            La calculadora asume esto para no inventar cifras
+          </h2>
+          <div class="mt-5 grid gap-3 sm:grid-cols-3">
+            <div class="rounded-[1.35rem] border border-line bg-slate-950/55 p-4">
+              <p class="text-[11px] uppercase tracking-[0.16em] text-accentSoft">Meta neta</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">
+                Es el dinero que quieres conservar despu&eacute;s de cubrir estructura y fricciones.
+              </p>
+            </div>
+            <div class="rounded-[1.35rem] border border-line bg-slate-950/55 p-4">
+              <p class="text-[11px] uppercase tracking-[0.16em] text-accentSoft">Fees</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">
+                Agrupan impuestos, comisiones o descuentos ligados al acto de cobrar.
+              </p>
+            </div>
+            <div class="rounded-[1.35rem] border border-line bg-slate-950/55 p-4">
+              <p class="text-[11px] uppercase tracking-[0.16em] text-accentSoft">Margen objetivo</p>
+              <p class="mt-2 text-sm leading-6 text-slate-300">
+                Funciona como colch&oacute;n para no quedarte operando al l&iacute;mite.
+              </p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="mt-8 grid gap-4 md:grid-cols-3">
+        <a
+          href="/#calculadora"
+          class="glass rounded-[1.75rem] border border-line p-5 shadow-glow transition hover:border-accent/25 hover:bg-slate-950/65"
+        >
+          <p class="text-xs uppercase tracking-[0.18em] text-accentSoft">Relacionado ahora</p>
+          <h3 class="mt-2 text-lg font-semibold text-white">Volver a margen real</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-300">
+            Usa el resultado de esta p&aacute;gina y comp&aacute;ralo con lo que realmente te deja una venta.
+          </p>
+        </a>
+        <a
+          href="/salario-neto-colombia/"
+          class="glass rounded-[1.75rem] border border-line p-5 shadow-glow transition hover:border-accent/25 hover:bg-slate-950/65"
+        >
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Segunda fase</p>
+          <h3 class="mt-2 text-lg font-semibold text-white">Salario neto Colombia</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-300">
+            Ruta preparada para calcular ingreso neto local con reglas y supuestos visibles.
+          </p>
+        </a>
+        <a
+          href="/punto-de-equilibrio/"
+          class="glass rounded-[1.75rem] border border-line p-5 shadow-glow transition hover:border-accent/25 hover:bg-slate-950/65"
+        >
+          <p class="text-xs uppercase tracking-[0.18em] text-slate-400">Segunda fase</p>
+          <h3 class="mt-2 text-lg font-semibold text-white">Punto de equilibrio</h3>
+          <p class="mt-2 text-sm leading-6 text-slate-300">
+            Base lista para convertir costo fijo y margen esperado en metas m&iacute;nimas de venta.
+          </p>
+        </a>
+      </section>
+    </main>
+    <footer class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400">EscalaMargen</p>
+            <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+              Una plataforma para calcular precios, salarios y rentabilidad sin improvisar.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 text-sm">
+            <a href="/terminos.html" class="inline-flex rounded-full border border-line px-4 py-2 text-slate-200 transition hover:border-accent hover:text-accent">
+              T&eacute;rminos
+            </a>
+            <a href="/privacidad.html" class="inline-flex rounded-full border border-line px-4 py-2 text-slate-200 transition hover:border-accent hover:text-accent">
+              Privacidad
+            </a>
+          </div>
+        </div>
+      </section>
+    </footer>
+    <script>
+      const currencyCatalog = {
+        COP: { locale: "es-CO", decimals: 0 },
+        USD: { locale: "en-US", decimals: 2 },
+        EUR: { locale: "es-ES", decimals: 2 },
+        MXN: { locale: "es-MX", decimals: 2 },
+        CLP: { locale: "es-CL", decimals: 0 },
+        PEN: { locale: "es-PE", decimals: 2 },
+      };
+
+      const STORAGE_KEY = "escalamargen:currency";
+      const defaults = {
+        currencyCode: "COP",
+        desiredNetIncome: 5000000,
+        fixedCosts: 1500000,
+        billableHours: 80,
+        projectsPerMonth: 4,
+        targetMarginPercent: 20,
+        taxesAndFeesPercent: 8,
+      };
+
+      const getStoredCurrency = () => {
+        try {
+          const stored = window.localStorage.getItem(STORAGE_KEY);
+          return currencyCatalog[stored] ? stored : defaults.currencyCode;
+        } catch (error) {
+          return defaults.currencyCode;
+        }
+      };
+
+      let selectedCurrency = getStoredCurrency();
+
+      const createCurrencyFormatter = (currencyCode) => {
+        const { locale, decimals } = currencyCatalog[currencyCode] || currencyCatalog.COP;
+        return new Intl.NumberFormat(locale, {
+          style: "currency",
+          currency: currencyCode,
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        });
+      };
+
+      let currencyFormatter = createCurrencyFormatter(selectedCurrency);
+      const percentFormatter = new Intl.NumberFormat("es-CO", {
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1,
+      });
+
+      const parseNumber = (value) => {
+        if (typeof value !== "string" && typeof value !== "number") {
+          return 0;
+        }
+        const normalized = String(value).replace(/[^0-9.,-]/g, "").replace(/\./g, "").replace(",", ".");
+        const parsed = Number(normalized);
+        return Number.isFinite(parsed) ? parsed : 0;
+      };
+
+      const formatCurrency = (value) => currencyFormatter.format(Number.isFinite(value) ? value : 0);
+      const formatCurrencyOrFallback = (value, fallback = "No viable") =>
+        Number.isFinite(value) ? formatCurrency(value) : fallback;
+      const formatPercent = (value) => `${percentFormatter.format(Number.isFinite(value) ? value : 0)}%`;
+
+      const elements = {
+        currencyCode: document.getElementById("currencyCode"),
+        desiredNetIncome: document.getElementById("desiredNetIncome"),
+        fixedCosts: document.getElementById("fixedCosts"),
+        billableHours: document.getElementById("billableHours"),
+        projectsPerMonth: document.getElementById("projectsPerMonth"),
+        targetMarginPercent: document.getElementById("targetMarginPercent"),
+        taxesAndFeesPercent: document.getElementById("taxesAndFeesPercent"),
+        resetPricingButton: document.getElementById("resetPricingButton"),
+        heroBilling: document.getElementById("heroBilling"),
+        heroStatus: document.getElementById("heroStatus"),
+        heroCopy: document.getElementById("heroCopy"),
+        miniHourly: document.getElementById("miniHourly"),
+        miniProject: document.getElementById("miniProject"),
+        targetBillingValue: document.getElementById("targetBillingValue"),
+        hourlyRateValue: document.getElementById("hourlyRateValue"),
+        monthlyRetainerValue: document.getElementById("monthlyRetainerValue"),
+        projectPriceValue: document.getElementById("projectPriceValue"),
+        projectPriceNote: document.getElementById("projectPriceNote"),
+        statusLabel: document.getElementById("statusLabel"),
+        desiredIncomeValue: document.getElementById("desiredIncomeValue"),
+        fixedCostsValue: document.getElementById("fixedCostsValue"),
+        operatingBaseValue: document.getElementById("operatingBaseValue"),
+        feesAmountValue: document.getElementById("feesAmountValue"),
+        marginBufferValue: document.getElementById("marginBufferValue"),
+        baseWithoutBufferValue: document.getElementById("baseWithoutBufferValue"),
+        copyPricingSummaryButton: document.getElementById("copyPricingSummaryButton"),
+        actionStatus: document.getElementById("actionStatus"),
+      };
+
+      let latestSummaryText = "";
+
+      const trackEvent = (eventName, params = {}) => {
+        const payload = {
+          page_location: window.location.href,
+          page_path: window.location.pathname || "/cuanto-debo-cobrar/",
+          currency: selectedCurrency,
+          ...params,
+        };
+
+        if (typeof window.gtag === "function") {
+          window.gtag("event", eventName, payload);
+        }
+
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: eventName, ...payload });
+      };
+
+      const setActionStatus = (message, isError = false) => {
+        elements.actionStatus.textContent = message;
+        elements.actionStatus.className = isError
+          ? "mt-3 text-xs leading-5 text-danger"
+          : "mt-3 text-xs leading-5 text-muted";
+      };
+
+      const resetForm = (shouldTrack = true) => {
+        elements.currencyCode.value = selectedCurrency;
+        elements.desiredNetIncome.value = defaults.desiredNetIncome;
+        elements.fixedCosts.value = defaults.fixedCosts;
+        elements.billableHours.value = defaults.billableHours;
+        elements.projectsPerMonth.value = defaults.projectsPerMonth;
+        elements.targetMarginPercent.value = defaults.targetMarginPercent;
+        elements.taxesAndFeesPercent.value = defaults.taxesAndFeesPercent;
+        if (shouldTrack) {
+          trackEvent("pricing_calculator_reset");
+        }
+        calculatePricing();
+      };
+
+      const updateStatus = (hourlyRate, targetBilling, marginPercent) => {
+        if (!Number.isFinite(hourlyRate) || !Number.isFinite(targetBilling)) {
+          elements.heroStatus.textContent = "revisar";
+          elements.heroStatus.className =
+            "rounded-full border border-danger/20 bg-danger/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-danger";
+          elements.heroCopy.textContent =
+            "Con estos supuestos no es posible calcular una tarifa sostenible. Revisa horas, fees o margen.";
+          elements.statusLabel.textContent = "Supuestos no viables";
+          return;
+        }
+
+        if (marginPercent >= 25) {
+          elements.heroStatus.textContent = "ambiciosa";
+          elements.heroStatus.className =
+            "rounded-full border border-accent/20 bg-accent/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-accent";
+          elements.heroCopy.textContent =
+            "La tarifa ya incluye un colch&oacute;n sano para no operar pegado al l&iacute;mite.";
+          elements.statusLabel.textContent = "Con reserva";
+          return;
+        }
+
+        elements.heroStatus.textContent = "clara";
+        elements.heroStatus.className =
+          "rounded-full border border-warning/20 bg-warning/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-warning";
+        elements.heroCopy.textContent =
+          "La tarifa cubre tu estructura, pero el margen objetivo todav&iacute;a es ajustado.";
+        elements.statusLabel.textContent = "Base rentable";
+      };
+
+      const calculatePricing = () => {
+        const desiredNetIncome = parseNumber(elements.desiredNetIncome.value);
+        const fixedCosts = parseNumber(elements.fixedCosts.value);
+        const billableHours = parseNumber(elements.billableHours.value);
+        const projectsPerMonth = Math.max(parseNumber(elements.projectsPerMonth.value), 1);
+        const targetMarginRate = parseNumber(elements.targetMarginPercent.value) / 100;
+        const feesRate = parseNumber(elements.taxesAndFeesPercent.value) / 100;
+        const denominator = 1 - feesRate - targetMarginRate;
+        const operatingBase = desiredNetIncome + fixedCosts;
+        const baseWithoutBuffer = feesRate < 1 ? operatingBase / Math.max(1 - feesRate, 0.000001) : Number.NaN;
+        const targetBilling = denominator > 0 ? operatingBase / denominator : Number.NaN;
+        const hourlyRate = billableHours > 0 && Number.isFinite(targetBilling)
+          ? targetBilling / billableHours
+          : Number.NaN;
+        const projectPrice = Number.isFinite(targetBilling)
+          ? targetBilling / projectsPerMonth
+          : Number.NaN;
+        const feesAmount = Number.isFinite(targetBilling) ? targetBilling * feesRate : Number.NaN;
+        const marginBuffer = Number.isFinite(targetBilling) ? targetBilling * targetMarginRate : Number.NaN;
+
+        elements.heroBilling.textContent = formatCurrencyOrFallback(targetBilling);
+        elements.miniHourly.textContent = formatCurrencyOrFallback(hourlyRate);
+        elements.miniProject.textContent = formatCurrencyOrFallback(projectPrice);
+        elements.targetBillingValue.textContent = formatCurrencyOrFallback(targetBilling);
+        elements.hourlyRateValue.textContent = formatCurrencyOrFallback(hourlyRate);
+        elements.monthlyRetainerValue.textContent = formatCurrencyOrFallback(targetBilling);
+        elements.projectPriceValue.textContent = formatCurrencyOrFallback(projectPrice);
+        elements.projectPriceNote.textContent = `Asumiendo ${projectsPerMonth} proyecto(s) facturable(s) al mes.`;
+        elements.desiredIncomeValue.textContent = formatCurrency(desiredNetIncome);
+        elements.fixedCostsValue.textContent = formatCurrency(fixedCosts);
+        elements.operatingBaseValue.textContent = formatCurrency(operatingBase);
+        elements.feesAmountValue.textContent = formatCurrencyOrFallback(feesAmount, "--");
+        elements.marginBufferValue.textContent = formatCurrencyOrFallback(marginBuffer, "--");
+        elements.baseWithoutBufferValue.textContent = formatCurrencyOrFallback(baseWithoutBuffer, "--");
+
+        latestSummaryText = [
+          "Resumen de cuanto debo cobrar",
+          `Facturacion objetivo mensual: ${formatCurrencyOrFallback(targetBilling)}`,
+          `Tarifa por hora: ${formatCurrencyOrFallback(hourlyRate)}`,
+          `Retainer mensual: ${formatCurrencyOrFallback(targetBilling)}`,
+          `Proyecto minimo: ${formatCurrencyOrFallback(projectPrice)}`
+        ].join("\n");
+
+        updateStatus(hourlyRate, targetBilling, targetMarginRate * 100);
+      };
+
+      const copySummary = async () => {
+        try {
+          if (navigator.clipboard?.writeText) {
+            await navigator.clipboard.writeText(latestSummaryText);
+          } else {
+            const helper = document.createElement("textarea");
+            helper.value = latestSummaryText;
+            helper.setAttribute("readonly", "true");
+            helper.style.position = "absolute";
+            helper.style.left = "-9999px";
+            document.body.appendChild(helper);
+            helper.select();
+            document.execCommand("copy");
+            helper.remove();
+          }
+          setActionStatus("Resultado copiado. Ya puedes usarlo en una propuesta o compartirlo con tu equipo.");
+          trackEvent("pricing_copy_summary_click", { action: "success" });
+        } catch (error) {
+          setActionStatus("No se pudo copiar el resultado. Int&eacute;ntalo otra vez.", true);
+          trackEvent("pricing_copy_summary_click", { action: "error" });
+        }
+      };
+
+      [
+        elements.desiredNetIncome,
+        elements.fixedCosts,
+        elements.billableHours,
+        elements.projectsPerMonth,
+        elements.targetMarginPercent,
+        elements.taxesAndFeesPercent,
+      ].forEach((input) => input.addEventListener("input", calculatePricing));
+
+      elements.currencyCode.addEventListener("change", () => {
+        selectedCurrency = elements.currencyCode.value;
+        currencyFormatter = createCurrencyFormatter(selectedCurrency);
+        try {
+          window.localStorage.setItem(STORAGE_KEY, selectedCurrency);
+        } catch (error) {
+          // No bloquea el calculo.
+        }
+        calculatePricing();
+        trackEvent("pricing_currency_change");
+      });
+
+      elements.resetPricingButton.addEventListener("click", () => resetForm(true));
+      elements.copyPricingSummaryButton.addEventListener("click", copySummary);
+
+      resetForm(false);
+    </script>
+  </body>
+</html>
