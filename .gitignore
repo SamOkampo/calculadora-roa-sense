@@ -5,3 +5,4 @@ skills-lock.json
 productos-internos/
 supabase/.env
 supabase/.temp/
+dist/

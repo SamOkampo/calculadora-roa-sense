@@ -679,6 +679,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </div>
       </section>
     </footer>
+    <script src="/assets/js/escalamargen-calculators.js"></script>
     <script>
       const currencyCatalog = {
         COP: { locale: "es-CO", decimals: 0 },
@@ -840,24 +841,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       };
 
       const calculatePricing = () => {
-        const desiredNetIncome = parseNumber(elements.desiredNetIncome.value);
-        const fixedCosts = parseNumber(elements.fixedCosts.value);
-        const billableHours = parseNumber(elements.billableHours.value);
-        const projectsPerMonth = Math.max(parseNumber(elements.projectsPerMonth.value), 1);
-        const targetMarginRate = parseNumber(elements.targetMarginPercent.value) / 100;
-        const feesRate = parseNumber(elements.taxesAndFeesPercent.value) / 100;
-        const denominator = 1 - feesRate - targetMarginRate;
-        const operatingBase = desiredNetIncome + fixedCosts;
-        const baseWithoutBuffer = feesRate < 1 ? operatingBase / Math.max(1 - feesRate, 0.000001) : Number.NaN;
-        const targetBilling = denominator > 0 ? operatingBase / denominator : Number.NaN;
-        const hourlyRate = billableHours > 0 && Number.isFinite(targetBilling)
-          ? targetBilling / billableHours
-          : Number.NaN;
-        const projectPrice = Number.isFinite(targetBilling)
-          ? targetBilling / projectsPerMonth
-          : Number.NaN;
-        const feesAmount = Number.isFinite(targetBilling) ? targetBilling * feesRate : Number.NaN;
-        const marginBuffer = Number.isFinite(targetBilling) ? targetBilling * targetMarginRate : Number.NaN;
+        const computePricingTargets = window.EscalaMargenCalculators?.computePricingTargets;
+        if (typeof computePricingTargets !== "function") {
+          throw new Error("No se encontró el motor de cálculo de precios.");
+        }
+
+        const result = computePricingTargets({
+          desiredNetIncome: parseNumber(elements.desiredNetIncome.value),
+          fixedCosts: parseNumber(elements.fixedCosts.value),
+          billableHours: parseNumber(elements.billableHours.value),
+          projectsPerMonth: parseNumber(elements.projectsPerMonth.value),
+          targetMarginPercent: parseNumber(elements.targetMarginPercent.value),
+          taxesAndFeesPercent: parseNumber(elements.taxesAndFeesPercent.value),
+        });
+
+        const {
+          desiredNetIncome,
+          fixedCosts,
+          projectsPerMonth,
+          operatingBase,
+          baseWithoutBuffer,
+          targetBilling,
+          hourlyRate,
+          projectPrice,
+          feesAmount,
+          marginBuffer,
+          targetMarginRate,
+        } = result;
 
         elements.heroBilling.textContent = formatCurrencyOrFallback(targetBilling);
         elements.miniHourly.textContent = formatCurrencyOrFallback(hourlyRate);

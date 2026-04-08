@@ -23,6 +23,34 @@ SPA en un solo archivo pensada para captacion de trafico, SEO on-page, monetizac
 
 Sube `index.html` a cualquier hosting estatico o a GitHub Pages.
 
+## Build y tests automáticos
+
+El proyecto ahora incluye una base ligera de automatización sin dependencias externas:
+
+- `npm test`
+  - valida referencias locales, sitemap y una parte de la lógica numérica de la calculadora `cuanto-debo-cobrar`
+- `npm run build`
+  - valida el sitio y genera una copia lista para publicar en `dist/`
+- `npm run validate`
+  - corre solo la validación estructural del sitio
+
+### Flujo local recomendado
+
+En PowerShell usa `npm.cmd` si `npm` está bloqueado por la política de ejecución:
+
+```powershell
+cmd /c npm.cmd test
+cmd /c npm.cmd run build
+```
+
+### CI automática
+
+Se añadió el workflow:
+
+- `.github/workflows/validate-static-site.yml`
+
+Ese workflow ejecuta tests y build en cada `push` a `main` y en cada `pull_request`.
+
 ## Reportes por correo con Supabase + Resend
 
 La landing ya quedo preparada para enviar el reporte automaticamente y guardar cada lead en base de datos. La arquitectura sugerida es:
