@@ -787,7 +787,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                           Aplicar IVA a la comisi&oacute;n de la pasarela
                           </p>
                           <p class="mt-1 text-xs leading-5 text-muted">
-                          Act&iacute;valo si la tarifa oficial publicada no incluye IVA o si quieres modelarlo aparte.
+                          Act&iacute;valo solo si tu pasarela cobra la comisi&oacute;n m&aacute;s IVA por separado.
                           </p>
                         </div>
                       </div>
@@ -805,7 +805,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     </label>
                     <label class="block sm:max-w-xs">
                       <span class="mb-2 block text-sm font-medium text-slate-200">
-                        IVA sobre comisi&oacute;n (%)
+                        IVA de la pasarela (%)
                       </span>
                       <input
                         id="gatewayVatPercent"
@@ -2981,8 +2981,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         const shouldApplySalesTax = elements.applySalesTax.checked;
         elements.taxPercent.disabled = !shouldApplySalesTax;
         elements.taxPresetHint.textContent = shouldApplySalesTax
-          ? "Impuesto activo. Escribe el porcentaje real que aplica a tu venta."
-          : "Impuesto desactivado. La calculadora no restara este porcentaje del resultado.";
+          ? "Impuesto activo. Escribe el porcentaje real que se descuenta sobre la venta."
+          : "Impuesto desactivado. La calculadora no restara este porcentaje aplicado a la venta.";
       };
 
       const syncCurrencyUI = () => {
