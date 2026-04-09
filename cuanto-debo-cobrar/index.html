@@ -250,10 +250,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           </div>
           <div class="flex flex-wrap gap-3 text-sm text-slate-300">
             <span class="rounded-full border border-line px-3 py-2">
-              Meta neta + costos + fees
+              Meta neta + costos + comisiones
             </span>
             <span class="rounded-full border border-line px-3 py-2">
-              Hora, retainer y proyecto
+              Hora, mensual y proyecto
             </span>
           </div>
         </div>
@@ -279,7 +279,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </span>
             </div>
             <p id="heroCopy" class="mt-3 text-sm leading-6 text-slate-300">
-              Esto es lo que deber&iacute;as facturar para cubrir estructura, fees y dejarte un colch&oacute;n sano.
+              Esto es lo que deber&iacute;as facturar para cubrir estructura, comisiones y dejarte un colch&oacute;n sano.
             </p>
           </div>
 
@@ -470,7 +470,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </h2>
               </div>
               <span class="rounded-full border border-accent/20 bg-accent/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-accent">
-                Live
+                En vivo
               </span>
             </div>
 
@@ -492,7 +492,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               </article>
 
               <article class="rounded-[1.6rem] border border-line bg-slate-950/50 p-5">
-                <p class="text-sm text-muted">Retainer mensual</p>
+                <p class="text-sm text-muted">Tarifa mensual sugerida</p>
                 <p id="monthlyRetainerValue" class="mt-3 font-display text-3xl text-white">$0</p>
                 <p class="mt-2 text-sm text-slate-300">
                   &Uacute;til para igualas o paquetes mensuales.
@@ -530,7 +530,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                   <dd id="operatingBaseValue" class="font-medium text-white">$0</dd>
                 </div>
                 <div class="flex items-center justify-between gap-4">
-                  <dt class="text-slate-300">Impacto por fees/impuestos</dt>
+                  <dt class="text-slate-300">Impacto por comisiones e impuestos</dt>
                   <dd id="feesAmountValue" class="font-medium text-white">$0</dd>
                 </div>
                 <div class="flex items-center justify-between gap-4">
@@ -714,7 +714,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       };
 
       const formatCurrency = (value) => currencyFormatter.format(Number.isFinite(value) ? value : 0);
-      const formatCurrencyOrFallback = (value, fallback = "No viable") =>
+      const formatCurrencyOrFallback = (value, fallback = "No calculable") =>
         Number.isFinite(value) ? formatCurrency(value) : fallback;
       const formatPercent = (value) => `${percentFormatter.format(Number.isFinite(value) ? value : 0)}%`;
 
@@ -793,8 +793,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           elements.heroStatus.className =
             "rounded-full border border-danger/20 bg-danger/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-danger";
           elements.heroCopy.textContent =
-            "Con estos supuestos no es posible calcular una tarifa sostenible. Revisa horas, fees o margen.";
-          elements.statusLabel.textContent = "Supuestos no viables";
+            "Con estos supuestos no es posible calcular una tarifa sostenible. Revisa horas, comisiones o margen.";
+          elements.statusLabel.textContent = "Requiere revisión";
           return;
         }
 
@@ -808,11 +808,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           return;
         }
 
-        elements.heroStatus.textContent = "clara";
+        elements.heroStatus.textContent = "ajustada";
         elements.heroStatus.className =
           "rounded-full border border-warning/20 bg-warning/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-warning";
         elements.heroCopy.textContent =
-          "La tarifa cubre tu estructura, pero el margen objetivo todav&iacute;a es ajustado.";
+          "La tarifa cubre tu estructura, pero el margen objetivo sigue quedando justo.";
         elements.statusLabel.textContent = "Base rentable";
       };
 
@@ -862,10 +862,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         latestSummaryText = [
           "Resumen de cuanto debo cobrar",
-          `Facturacion objetivo mensual: ${formatCurrencyOrFallback(targetBilling)}`,
+          `Facturación objetivo mensual: ${formatCurrencyOrFallback(targetBilling)}`,
           `Tarifa por hora: ${formatCurrencyOrFallback(hourlyRate)}`,
-          `Retainer mensual: ${formatCurrencyOrFallback(targetBilling)}`,
-          `Proyecto minimo: ${formatCurrencyOrFallback(projectPrice)}`
+          `Tarifa mensual sugerida: ${formatCurrencyOrFallback(targetBilling)}`,
+          `Proyecto mínimo: ${formatCurrencyOrFallback(projectPrice)}`
         ].join("\n");
 
         updateStatus(hourlyRate, targetBilling, targetMarginRate * 100);
