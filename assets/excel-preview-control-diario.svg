@@ -4,7 +4,7 @@
   <rect width="1200" height="720" fill="#0b1220"/>
   <rect x="18" y="18" width="1164" height="64" rx="12" fill="#101a2d" stroke="#3af2a1" stroke-width="2"/>
   <text x="600" y="58" fill="#ffffff" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">EscalaMargen | Control Diario</text>
-  <text x="600" y="104" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Moneda base activa: Valor - Descripcion (COP)</text>
+  <text x="600" y="104" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Moneda base activa: COP</text>
 
   <rect x="18" y="126" width="1164" height="46" fill="#101a2d"/>
   <g fill="#ffffff" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">

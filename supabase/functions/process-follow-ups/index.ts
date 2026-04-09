@@ -107,7 +107,7 @@ const getStageContent = (lead: FollowUpLead) => {
               <div style="margin-top:22px;border:1px solid rgba(56,242,161,0.16);background:rgba(56,242,161,0.06);border-radius:20px;padding:20px;">
                 <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#38f2a1;">Siguiente paso recomendado</p>
                 <p style="margin:0;color:#d8e2f0;line-height:1.7;">
-                  Si quieres dejar de improvisar mes a mes, usa la plantilla para controlar caja, utilidad, inventario y proyeccion a 12 meses.
+          Si quieres dejar de improvisar mes a mes, usa la plantilla para controlar caja, utilidad, inventario y proyección a 12 meses.
                 </p>
                 <a href="${HOTMART_TEMPLATE_URL}" style="display:inline-block;margin-top:16px;padding:12px 18px;border-radius:999px;background:#38f2a1;color:#07111f;font-weight:700;text-decoration:none;">
                   Ver la plantilla por $9
@@ -141,15 +141,15 @@ const getStageContent = (lead: FollowUpLead) => {
           <div style="max-width:640px;margin:0 auto;background:#0d1728;border:1px solid rgba(148,163,184,0.18);border-radius:24px;overflow:hidden;">
             <div style="padding:28px;background:linear-gradient(180deg,#0d1728 0%,#101d31 100%);">
               <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;color:#38f2a1;">Plantilla EscalaMargen</p>
-              <h1 style="margin:0;font-size:28px;line-height:1.2;">La calculadora te dice hoy. La plantilla te ordena todo el ano.</h1>
+              <h1 style="margin:0;font-size:28px;line-height:1.2;">La calculadora te dice hoy. La plantilla te ordena todo el año.</h1>
             </div>
             <div style="padding:28px;">
               <div style="border:1px solid rgba(148,163,184,0.12);border-radius:20px;padding:20px;background:#081120;">
                 <ul style="margin:0;padding-left:18px;color:#d8e2f0;line-height:1.8;">
-                  <li>Simulador de catalogo para detectar productos que destruyen margen.</li>
-                  <li>Proyeccion a 12 meses para no adivinar cuanto invertir.</li>
+                  <li>Simulador de catálogo para detectar productos que destruyen margen.</li>
+                  <li>Proyección a 12 meses para no adivinar cuánto invertir.</li>
                   <li>Control diario para caja, ventas y beneficio real.</li>
-                  <li>Guia PDF para implementarla rapido.</li>
+                  <li>Guía PDF para implementarla rápido.</li>
                 </ul>
               </div>
               <a href="${HOTMART_TEMPLATE_URL}" style="display:inline-block;margin-top:20px;padding:13px 20px;border-radius:999px;background:#38f2a1;color:#07111f;font-weight:700;text-decoration:none;">
@@ -160,10 +160,10 @@ const getStageContent = (lead: FollowUpLead) => {
         </div>
       `,
       text: [
-        "EscalaMargen | La plantilla que ordena tu operacion",
+        "EscalaMargen | La plantilla que ordena tu operación",
         "",
         "La calculadora te dice la verdad de hoy.",
-        "La plantilla te ayuda a controlar caja, utilidad, inventario y ads durante todo el ano.",
+        "La plantilla te ayuda a controlar caja, utilidad, inventario y ads durante todo el año.",
         "",
         `Comprar plantilla: ${HOTMART_TEMPLATE_URL}`,
       ].join("\n"),

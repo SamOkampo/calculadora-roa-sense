@@ -4,13 +4,13 @@
   <rect width="1200" height="720" fill="#0b1220"/>
   <rect x="18" y="18" width="1164" height="64" rx="12" fill="#101a2d" stroke="#3af2a1" stroke-width="2"/>
   <text x="600" y="58" fill="#ffffff" font-size="28" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">EscalaMargen | Gastos Operativos</text>
-  <text x="600" y="104" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Todos los valores en Valor - Descripcion</text>
+  <text x="600" y="104" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Todos los valores en moneda base (COP)</text>
 
   <rect x="18" y="126" width="1164" height="46" fill="#101a2d"/>
   <g fill="#ffffff" font-size="13" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">
     <text x="175" y="155">Concepto</text>
     <text x="445" y="155">Costo Mensual</text>
-    <text x="645" y="155">Categoria</text>
+    <text x="645" y="155">Categoría</text>
     <text x="930" y="155">Impacto</text>
   </g>
 
@@ -22,10 +22,10 @@
   </g>
 
   <g fill="#ffffff" font-size="14" font-family="Arial, Helvetica, sans-serif">
-    <text x="40" y="203">Nomina / equipo</text>
+    <text x="40" y="203">Nómina / equipo</text>
     <text x="40" y="245">Shopify / plataforma</text>
     <text x="40" y="287">Apps y suscripciones</text>
-    <text x="40" y="329">Contador / administracion</text>
+    <text x="40" y="329">Contador / administración</text>
     <text x="40" y="371">Bodegaje / almacenamiento</text>
     <text x="40" y="413">Dominio y hosting</text>
     <text x="40" y="455">Herramientas CRO / email</text>

@@ -147,9 +147,9 @@ const buildEmailHtml = (payload: ReportPayload) => `
 
         <div style="margin-top:22px;border:1px solid rgba(56,242,161,0.16);background:rgba(56,242,161,0.06);border-radius:20px;padding:20px;">
           <p style="margin:0 0 8px;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:#38f2a1;">Siguiente paso recomendado</p>
-          <h2 style="margin:0 0 10px;font-size:20px;line-height:1.3;">Controla caja, utilidad, inventario y ROAS todo el ano</h2>
+          <h2 style="margin:0 0 10px;font-size:20px;line-height:1.3;">Controla caja, utilidad, inventario y ROAS todo el año</h2>
           <p style="margin:0;color:#d8e2f0;line-height:1.7;">
-            Si ya viste la verdad de hoy, el siguiente paso es ordenar tu operacion completa con la plantilla maestra de EscalaMargen.
+            Si ya viste la verdad de hoy, el siguiente paso es ordenar tu operación completa con la plantilla maestra de EscalaMargen.
           </p>
           <a
             href="${HOTMART_TEMPLATE_URL}"
