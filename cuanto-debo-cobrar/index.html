@@ -367,6 +367,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     min="0"
                     step="10000"
                     inputmode="decimal"
+                    placeholder="Ej: 5.000.000"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
@@ -381,6 +382,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     min="0"
                     step="10000"
                     inputmode="decimal"
+                    placeholder="Ej: 1.500.000"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
@@ -402,6 +404,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     min="1"
                     step="1"
                     inputmode="numeric"
+                    placeholder="Ej: 80"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
@@ -416,6 +419,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     min="1"
                     step="1"
                     inputmode="numeric"
+                    placeholder="Ej: 4"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
@@ -437,6 +441,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     min="0"
                     step="0.01"
                     inputmode="decimal"
+                    placeholder="Ej: 20"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
@@ -451,6 +456,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     min="0"
                     step="0.01"
                     inputmode="decimal"
+                    placeholder="Ej: 8"
                     class="w-full rounded-2xl border border-line bg-slate-950/70 px-4 py-4 text-base text-white outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
                   />
                 </label>
@@ -747,12 +753,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       ]);
       const defaults = {
         currencyCode: "COP",
-        desiredNetIncome: 5000000,
-        fixedCosts: 1500000,
-        billableHours: 80,
-        projectsPerMonth: 4,
-        targetMarginPercent: 20,
-        taxesAndFeesPercent: 8,
+        desiredNetIncome: "",
+        fixedCosts: "",
+        billableHours: "",
+        projectsPerMonth: "",
+        targetMarginPercent: "",
+        taxesAndFeesPercent: "",
       };
 
       const getStoredCurrency = () => {
@@ -795,6 +801,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       const formatCurrencyOrFallback = (value, fallback = "No calculable") =>
         Number.isFinite(value) ? formatCurrency(value) : fallback;
       const formatPercent = (value) => `${percentFormatter.format(Number.isFinite(value) ? value : 0)}%`;
+      const hasValue = (value) => String(value ?? "").trim() !== "";
 
       const elements = {
         currencyCode: document.getElementById("currencyCode"),
@@ -832,6 +839,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
       let latestSummaryText = "";
       let latestCalculation = null;
+
+      const hasPricingInputs = () =>
+        [
+          elements.desiredNetIncome.value,
+          elements.fixedCosts.value,
+          elements.billableHours.value,
+          elements.projectsPerMonth.value,
+          elements.targetMarginPercent.value,
+          elements.taxesAndFeesPercent.value,
+        ].some(hasValue);
 
       const trackEvent = (eventName, params = {}) => {
         const payload = {
@@ -1018,6 +1035,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         calculatePricing();
       };
 
+      const renderEmptyState = () => {
+        latestCalculation = null;
+        latestSummaryText = "";
+
+        elements.heroBilling.textContent = formatCurrency(0);
+        elements.miniHourly.textContent = formatCurrency(0);
+        elements.miniProject.textContent = formatCurrency(0);
+        elements.targetBillingValue.textContent = formatCurrency(0);
+        elements.hourlyRateValue.textContent = formatCurrency(0);
+        elements.monthlyRetainerValue.textContent = formatCurrency(0);
+        elements.projectPriceValue.textContent = formatCurrency(0);
+        elements.projectPriceNote.textContent =
+          "Completa tus datos para estimar tu precio mínimo por proyecto.";
+        elements.desiredIncomeValue.textContent = formatCurrency(0);
+        elements.fixedCostsValue.textContent = formatCurrency(0);
+        elements.operatingBaseValue.textContent = formatCurrency(0);
+        elements.feesAmountValue.textContent = formatCurrency(0);
+        elements.marginBufferValue.textContent = formatCurrency(0);
+        elements.baseWithoutBufferValue.textContent = formatCurrency(0);
+        elements.heroStatus.textContent = "base";
+        elements.heroStatus.className =
+          "rounded-full border border-line bg-slate-950/55 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-slate-300";
+        elements.heroCopy.textContent =
+          "Empieza con tu meta neta y tus costos para descubrir una tarifa sostenible.";
+        elements.statusLabel.textContent = "Completa tus datos";
+        setActionStatus(
+          "Usa este resultado como tarifa base y luego ajústala con contexto comercial, posicionamiento y demanda."
+        );
+      };
+
       const updateStatus = (hourlyRate, targetBilling, marginPercent) => {
         if (!Number.isFinite(hourlyRate) || !Number.isFinite(targetBilling)) {
           elements.heroStatus.textContent = "revisar";
@@ -1051,6 +1098,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         const computePricingTargets = window.EscalaMargenCalculators?.computePricingTargets;
         if (typeof computePricingTargets !== "function") {
           throw new Error("No se encontró el motor de cálculo de precios.");
+        }
+
+        if (!hasPricingInputs()) {
+          renderEmptyState();
+          return;
         }
 
         const result = computePricingTargets({
