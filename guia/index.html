@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía de Uso de EscalaMargen | Cómo leer margen, ROAS y precios</title>
+    <meta
+      name="description"
+      content="Aprende a usar EscalaMargen paso a paso. Entiende cómo cargar tus costos, leer el margen real, guardar el reporte y convertirlo en una tarifa usable."
+    />
+    <link rel="icon" type="image/png" sizes="400x400" href="/assets/escalamargen-logo-400.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="shortcut icon" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
+    <link rel="canonical" href="https://escalamargen.com/guia/" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <meta name="theme-color" content="#07111f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="EscalaMargen" />
+    <meta property="og:url" content="https://escalamargen.com/guia/" />
+    <meta property="og:title" content="Guía de Uso de EscalaMargen | Cómo leer margen, ROAS y precios" />
+    <meta
+      property="og:description"
+      content="Una introducción didáctica para entender cómo usar EscalaMargen desde la calculadora principal hasta la plantilla Excel."
+    />
+    <meta
+      property="og:image"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <meta property="og:locale" content="es_CO" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Guía de Uso de EscalaMargen | Cómo leer margen, ROAS y precios"
+    />
+    <meta
+      name="twitter:description"
+      content="Empieza por la calculadora principal, guarda tu reporte y conecta la lectura con cuánto debes cobrar."
+    />
+    <meta
+      name="twitter:image"
+      content="https://escalamargen.com/assets/escalamargen-logo-400.png"
+    />
+    <script
+      src="https://analytics.ahrefs.com/analytics.js"
+      data-key="HD7lvpJt7JbcTOhkD5Sy4g"
+      async
+    ></script>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PV4NNKW4');</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NQNE3MNV04"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+      gtag("config", "G-NQNE3MNV04");
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              shell: "#07111f",
+              panel: "#0d1728",
+              panelSoft: "#101d31",
+              line: "rgba(148, 163, 184, 0.18)",
+              accent: "#38f2a1",
+              accentSoft: "#1ec8ff",
+              danger: "#ff6b7b",
+              warning: "#ffc857",
+              muted: "#9fb0c9",
+            },
+            fontFamily: {
+              display: [
+                "ui-monospace",
+                "SFMono-Regular",
+                "Cascadia Code",
+                "Consolas",
+                "monospace"
+              ],
+              body: [
+                "\"Segoe UI Variable Text\"",
+                "Aptos",
+                "\"Trebuchet MS\"",
+                "sans-serif"
+              ],
+            },
+            boxShadow: {
+              glow: "0 0 0 1px rgba(56, 242, 161, 0.14), 0 18px 48px rgba(6, 10, 18, 0.45)"
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      :root { color-scheme: dark; }
+      body {
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top, rgba(30, 200, 255, 0.12), transparent 28%),
+          radial-gradient(circle at 80% 0%, rgba(56, 242, 161, 0.14), transparent 20%),
+          linear-gradient(180deg, #07111f 0%, #050b14 100%);
+      }
+      .glass {
+        background: rgba(13, 23, 40, 0.82);
+        backdrop-filter: blur(16px);
+      }
+      .metric-grid {
+        background-image:
+          linear-gradient(rgba(159, 176, 201, 0.08) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(159, 176, 201, 0.08) 1px, transparent 1px);
+        background-size: 24px 24px;
+      }
+      .expandable-image {
+        cursor: zoom-in;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+      .expandable-image:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 34px rgba(3, 8, 18, 0.35);
+      }
+      .step-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 999px;
+        background: rgba(56, 242, 161, 0.12);
+        color: #38f2a1;
+        font-weight: 700;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "@id": "https://escalamargen.com/guia/#webpage",
+        "url": "https://escalamargen.com/guia/",
+        "name": "Guía de Uso de EscalaMargen | Cómo leer margen, ROAS y precios",
+        "description": "Guía paso a paso para aprender a usar EscalaMargen y sacarle provecho a la calculadora principal, al reporte y a cuánto debo cobrar.",
+        "inLanguage": "es-CO"
+      }
+    </script>
+  </head>
+  <body class="font-body text-slate-100 antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PV4NNKW4"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <header class="mx-auto max-w-7xl px-4 pb-10 pt-5 sm:px-6 lg:px-8">
+      <div
+        class="glass flex flex-wrap items-center justify-between gap-4 rounded-[2rem] border border-line px-4 py-3 shadow-glow"
+      >
+        <div class="flex items-center gap-3">
+          <img
+            src="/assets/escalamargen-logo-400.png"
+            alt="Logo de EscalaMargen"
+            class="h-10 w-10 rounded-full border border-line object-cover"
+            width="40"
+            height="40"
+          />
+          <div>
+            <p class="font-display text-sm tracking-[0.18em] text-slate-300">EscalaMargen</p>
+            <p class="text-xs text-muted">Guía rápida para entender el flujo completo</p>
+          </div>
+        </div>
+        <nav class="flex flex-wrap items-center gap-2 text-sm text-slate-300">
+          <a href="/" class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white">Inicio</a>
+          <a href="/#calculadora" class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white">Margen real</a>
+          <a href="/cuanto-debo-cobrar/" class="rounded-full border border-transparent px-3 py-2 transition hover:border-line hover:text-white">Cuánto cobrar</a>
+          <a href="/guia/" aria-current="page" class="rounded-full border border-accent/20 bg-accent/10 px-3 py-2 text-accent">Guía</a>
+          <a href="/#plantilla-excel" class="rounded-full bg-accent px-4 py-2 font-semibold text-slate-950 transition hover:opacity-90">Plantilla PRO</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section class="mb-8 grid gap-6 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
+        <div class="space-y-6">
+          <span class="inline-flex rounded-full border border-cyan-400/20 bg-cyan-400/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] text-cyan-200">
+            Introducción rápida
+          </span>
+          <div class="max-w-3xl space-y-5">
+            <h1 class="max-w-4xl text-4xl font-semibold leading-[0.96] tracking-[-0.06em] text-white sm:text-6xl xl:text-[4.65rem]">
+              Cómo usar EscalaMargen sin perderte
+            </h1>
+            <p class="max-w-2xl text-base leading-7 text-muted sm:text-lg">
+              Esta guía te muestra qué revisar primero, cómo leer el margen real, cuándo guardar el reporte y cómo pasar de una lectura financiera a una tarifa usable.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 text-sm text-slate-300">
+            <a href="/#calculadora" class="rounded-full border border-line px-4 py-2 transition hover:border-accent hover:text-accent">Abrir margen y ROAS</a>
+            <a href="/cuanto-debo-cobrar/" class="rounded-full border border-line px-4 py-2 transition hover:border-accent hover:text-accent">Abrir cuánto debo cobrar</a>
+          </div>
+        </div>
+
+        <aside class="glass metric-grid rounded-[2.2rem] border border-line p-6 shadow-glow">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Ruta recomendada</p>
+          <ol class="mt-5 space-y-4 text-sm text-slate-200">
+            <li class="flex gap-3"><span class="step-badge">1</span><span>Carga precio, costo, envío, pasarela, impuestos y ads.</span></li>
+            <li class="flex gap-3"><span class="step-badge">2</span><span>Lee beneficio real, margen neto y ROAS de equilibrio.</span></li>
+            <li class="flex gap-3"><span class="step-badge">3</span><span>Guarda el resultado por correo o compártelo.</span></li>
+            <li class="flex gap-3"><span class="step-badge">4</span><span>Usa cuánto debo cobrar si quieres convertir el criterio en precio.</span></li>
+            <li class="flex gap-3"><span class="step-badge">5</span><span>Descarga la plantilla si necesitas control diario, proyección y caja.</span></li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="mb-8 glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+        <div class="flex flex-wrap gap-4 lg:items-center lg:justify-between">
+          <div class="max-w-3xl">
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Qué vas a encontrar</p>
+            <h2 class="mt-2 text-3xl font-semibold text-white">Empieza por lo activo y sigue el flujo</h2>
+            <p class="mt-3 text-sm leading-6 text-slate-300">
+              La página no está pensada para llenarte de datos. Está pensada para que tomes una decisión buena más rápido.
+            </p>
+          </div>
+        </div>
+        <div class="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <article class="rounded-[1.5rem] border border-line bg-slate-950/45 p-4">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-accentSoft">Principal</p>
+            <h3 class="mt-2 text-lg font-semibold text-white">Margen y ROAS real</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Te dice si realmente ganas o solo estás moviendo dinero.</p>
+          </article>
+          <article class="rounded-[1.5rem] border border-line bg-slate-950/45 p-4">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-accent">Nueva</p>
+            <h3 class="mt-2 text-lg font-semibold text-white">Cuánto debo cobrar</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Convierte tu meta neta y tus costos en una tarifa usable.</p>
+          </article>
+          <article class="rounded-[1.5rem] border border-line bg-slate-950/45 p-4">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Apoyo</p>
+            <h3 class="mt-2 text-lg font-semibold text-white">Reportes por correo</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Te ayudan a guardar escenarios y revisarlos luego sin rehacerlos.</p>
+          </article>
+          <article class="rounded-[1.5rem] border border-line bg-slate-950/45 p-4">
+            <p class="text-[11px] uppercase tracking-[0.18em] text-slate-400">Pro</p>
+            <h3 class="mt-2 text-lg font-semibold text-white">Plantilla Excel</h3>
+            <p class="mt-2 text-sm leading-6 text-slate-300">Da el siguiente paso cuando necesitas más control operativo.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="space-y-6">
+        <article class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-accentSoft">Paso 1</p>
+              <h2 class="mt-2 text-3xl font-semibold text-white">Carga solo números reales</h2>
+              <p class="mt-3 text-sm leading-7 text-slate-300">
+                No empieces por el ROAS. Empieza por el precio, el costo, el envío, la pasarela, los impuestos y el CPA o gasto real en marketing.
+              </p>
+              <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-200">
+                <li>• Si no tienes el costo exacto, usa una estimación conservadora.</li>
+                <li>• No ignores comisiones ni costos pequeños por pedido.</li>
+                <li>• Usa esta parte para descubrir si tu venta sí protege caja.</li>
+              </ul>
+            </div>
+            <figure class="overflow-hidden rounded-[1.6rem] border border-line bg-slate-950/55 p-3">
+              <img src="/assets/guide-step-margin.svg" alt="Mockup de la calculadora de margen real de EscalaMargen" class="expandable-image w-full rounded-xl border border-line bg-slate-900/70" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+
+        <article class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            <figure class="overflow-hidden rounded-[1.6rem] border border-line bg-slate-950/55 p-3 lg:order-2">
+              <img src="/assets/guide-step-report.svg" alt="Mockup del bloque para enviar el reporte de EscalaMargen por correo" class="expandable-image w-full rounded-xl border border-line bg-slate-900/70" loading="lazy" />
+            </figure>
+            <div class="lg:order-1">
+              <p class="text-xs uppercase tracking-[0.24em] text-accentSoft">Paso 2</p>
+              <h2 class="mt-2 text-3xl font-semibold text-white">Guarda tu lectura o compártela</h2>
+              <p class="mt-3 text-sm leading-7 text-slate-300">
+                Cuando ya veas un escenario claro, envíatelo por correo. Así puedes comparar escenarios, compartirlo o revisarlo luego sin depender de una sola visita.
+              </p>
+              <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-200">
+                <li>• Usa el correo si quieres seguimiento o volver después.</li>
+                <li>• Usa “Copiar resumen” si necesitas pegarlo en una nota o propuesta.</li>
+                <li>• Usa WhatsApp si quieres discutirlo con un socio o tu equipo.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+          <div class="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+            <div>
+              <p class="text-xs uppercase tracking-[0.24em] text-accentSoft">Paso 3</p>
+              <h2 class="mt-2 text-3xl font-semibold text-white">Convierte el criterio en precio</h2>
+              <p class="mt-3 text-sm leading-7 text-slate-300">
+                Si ya sabes cuánto te deja una venta o cuánto quieres ganar al mes, esta calculadora te ayuda a transformar esa lectura en tarifa por hora, mensual o por proyecto.
+              </p>
+              <ul class="mt-5 space-y-3 text-sm leading-6 text-slate-200">
+                <li>• Deja vacíos los campos hasta que tengas tu meta real.</li>
+                <li>• Usa horas facturables, no horas totales del calendario.</li>
+                <li>• Ajusta margen e impuestos para no cobrar “a ojo”.</li>
+              </ul>
+              <a href="/cuanto-debo-cobrar/" class="mt-6 inline-flex rounded-full border border-accent/25 bg-accent/10 px-4 py-2 text-sm font-semibold text-accent transition hover:bg-accent hover:text-slate-950">Abrir cuánto debo cobrar</a>
+            </div>
+            <figure class="overflow-hidden rounded-[1.6rem] border border-line bg-slate-950/55 p-3">
+              <img src="/assets/guide-step-pricing.svg" alt="Mockup de la calculadora cuánto debo cobrar de EscalaMargen" class="expandable-image w-full rounded-xl border border-line bg-slate-900/70" loading="lazy" />
+            </figure>
+          </div>
+        </article>
+      </section>
+
+      <section class="glass mt-8 rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+        <div class="max-w-3xl">
+          <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Cuando necesitas más control</p>
+          <h2 class="mt-2 text-3xl font-semibold text-white">La plantilla te lleva de una lectura a una operación completa</h2>
+          <p class="mt-3 text-sm leading-7 text-slate-300">
+            La web te ayuda a decidir. La plantilla te ayuda a operar con más orden cuando ya quieres proyectar, controlar gastos y revisar tu día a día.
+          </p>
+        </div>
+        <div class="mt-6 grid gap-4 lg:grid-cols-3">
+          <figure class="overflow-hidden rounded-[1.25rem] border border-line bg-slate-950/55 p-3">
+            <img src="/assets/excel-preview-proyeccion.svg" alt="Vista previa de la proyección financiera de EscalaMargen" class="expandable-image h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover" loading="lazy" />
+            <figcaption class="mt-3 text-xs text-slate-400">Proyección a 12 meses para no improvisar presupuesto ni devoluciones.</figcaption>
+          </figure>
+          <figure class="overflow-hidden rounded-[1.25rem] border border-line bg-slate-950/55 p-3">
+            <img src="/assets/excel-preview-gastos.svg" alt="Vista previa de la hoja de gastos operativos de EscalaMargen" class="expandable-image h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover" loading="lazy" />
+            <figcaption class="mt-3 text-xs text-slate-400">Lectura clara de gastos para bajar a tierra tu utilidad real.</figcaption>
+          </figure>
+          <figure class="overflow-hidden rounded-[1.25rem] border border-line bg-slate-950/55 p-3">
+            <img src="/assets/excel-preview-control-diario.svg" alt="Vista previa de la hoja de control diario de EscalaMargen" class="expandable-image h-44 w-full rounded-xl border border-line bg-slate-900/70 object-cover" loading="lazy" />
+            <figcaption class="mt-3 text-xs text-slate-400">Control diario para que ventas y ads no se te vayan de la mano.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="glass mt-8 rounded-[2rem] border border-line p-6 shadow-glow sm:p-7">
+        <div class="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+          <div>
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400">Empieza hoy</p>
+            <h2 class="mt-2 text-3xl font-semibold text-white">No necesitas hacerlo todo a la vez</h2>
+            <p class="mt-3 max-w-3xl text-sm leading-7 text-slate-300">
+              Empieza por la calculadora principal. Si esa lectura ya te da claridad, sigue con cuánto debes cobrar. Si luego necesitas orden operativo, ahí sí subes a la plantilla.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="/#calculadora" class="inline-flex rounded-full border border-line px-4 py-2 text-sm text-slate-200 transition hover:border-accent hover:text-accent">Ir a margen real</a>
+            <a href="/cuanto-debo-cobrar/" class="inline-flex rounded-full border border-line px-4 py-2 text-sm text-slate-200 transition hover:border-accent hover:text-accent">Ir a cuánto cobrar</a>
+            <a href="/#plantilla-excel" class="inline-flex rounded-full bg-accent px-4 py-2 text-sm font-semibold text-slate-950 transition hover:opacity-90">Ver plantilla PRO</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="mx-auto max-w-7xl px-4 pb-24 sm:px-6 lg:px-8">
+      <section class="glass rounded-[2rem] border border-line p-5 shadow-glow sm:p-6">
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-xs uppercase tracking-[0.24em] text-slate-400">EscalaMargen</p>
+            <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+              Una guía simple para que cualquier persona entienda el flujo antes de usar la calculadora o comprar la plantilla.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3 text-sm">
+            <a href="/terminos.html" class="inline-flex rounded-full border border-line px-4 py-2 text-slate-200 transition hover:border-accent hover:text-accent">Términos</a>
+            <a href="/privacidad.html" class="inline-flex rounded-full border border-line px-4 py-2 text-slate-200 transition hover:border-accent hover:text-accent">Privacidad</a>
+          </div>
+        </div>
+      </section>
+    </footer>
+  </body>
+</html>

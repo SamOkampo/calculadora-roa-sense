@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Paso 3: Convierte el margen en una tarifa</title>
+  <desc id="desc">Mockup de la página cuánto debo cobrar con entradas y resultados sugeridos.</desc>
+  <rect width="1200" height="720" fill="#08111f"/>
+  <rect x="36" y="36" width="1128" height="648" rx="36" fill="#0d1728" stroke="#22344b"/>
+  <text x="74" y="92" fill="#d8e2f0" font-size="15" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">PASO 3 · TRADUCE EL CRITERIO EN PRECIO</text>
+  <text x="74" y="144" fill="#ffffff" font-size="40" font-family="Arial, Helvetica, sans-serif" font-weight="700">Cuánto debo cobrar</text>
+  <text x="74" y="184" fill="#9fb0c9" font-size="22" font-family="Arial, Helvetica, sans-serif">Cuando ya sabes cuánto te deja la operación, conviértelo en tarifa por hora, mes o proyecto.</text>
+
+  <rect x="74" y="232" width="470" height="390" rx="30" fill="#09111e" stroke="#22344b"/>
+  <text x="108" y="278" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">ENTRADAS</text>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="108" y="330" fill="#ffffff" font-size="18" font-weight="700">Meta neta mensual</text>
+    <rect x="108" y="344" width="402" height="54" rx="18" fill="#0f1728" stroke="#2a3f5a"/>
+    <text x="132" y="378" fill="#7f8da4" font-size="18">Ej: 5.000.000</text>
+
+    <text x="108" y="442" fill="#ffffff" font-size="18" font-weight="700">Costos fijos</text>
+    <rect x="108" y="456" width="402" height="54" rx="18" fill="#0f1728" stroke="#2a3f5a"/>
+    <text x="132" y="490" fill="#7f8da4" font-size="18">Ej: 1.500.000</text>
+
+    <text x="108" y="554" fill="#ffffff" font-size="18" font-weight="700">Horas facturables + margen</text>
+    <rect x="108" y="568" width="402" height="54" rx="18" fill="#0f1728" stroke="#2a3f5a"/>
+    <text x="132" y="602" fill="#7f8da4" font-size="18">Ej: 80 horas · 20%</text>
+  </g>
+
+  <rect x="580" y="232" width="548" height="390" rx="30" fill="#09111e" stroke="#22344b"/>
+  <text x="614" y="278" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">SALIDAS</text>
+  <rect x="614" y="304" width="480" height="96" rx="24" fill="#10253d" stroke="#1c5a50"/>
+  <text x="648" y="344" fill="#9fb0c9" font-size="18" font-family="Arial, Helvetica, sans-serif">Facturación objetivo mensual</text>
+  <text x="648" y="382" fill="#38f2a1" font-size="44" font-family="Arial, Helvetica, sans-serif" font-weight="700">$ 8.100.000</text>
+
+  <rect x="614" y="424" width="226" height="142" rx="22" fill="#0f1728" stroke="#22344b"/>
+  <text x="642" y="462" fill="#9fb0c9" font-size="18" font-family="Arial, Helvetica, sans-serif">Tarifa por hora</text>
+  <text x="642" y="520" fill="#ffffff" font-size="38" font-family="Arial, Helvetica, sans-serif" font-weight="700">$ 101.250</text>
+
+  <rect x="868" y="424" width="226" height="142" rx="22" fill="#0f1728" stroke="#22344b"/>
+  <text x="896" y="462" fill="#9fb0c9" font-size="18" font-family="Arial, Helvetica, sans-serif">Proyecto mínimo</text>
+  <text x="896" y="520" fill="#ffffff" font-size="38" font-family="Arial, Helvetica, sans-serif" font-weight="700">$ 2.025.000</text>
+
+  <text x="614" y="610" fill="#d8e2f0" font-size="20" font-family="Arial, Helvetica, sans-serif">Aquí conviertes una lectura financiera en una decisión comercial usable.</text>
+</svg>

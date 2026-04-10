@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Paso 1: Carga tus números en la calculadora de margen</title>
+  <desc id="desc">Mockup visual de la calculadora principal de EscalaMargen con campos y resultados.</desc>
+  <rect width="1200" height="720" fill="#08111f"/>
+  <rect x="28" y="28" width="1144" height="72" rx="24" fill="#0f1a2d" stroke="#27415f"/>
+  <circle cx="82" cy="64" r="22" fill="#10253d" stroke="#38f2a1"/>
+  <text x="82" y="71" fill="#38f2a1" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-weight="700">EM</text>
+  <text x="130" y="60" fill="#ffffff" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">Paso 1 · Carga tus números reales</text>
+  <text x="130" y="84" fill="#9fb0c9" font-size="16" font-family="Arial, Helvetica, sans-serif">Precio, costo, envío, pasarela, impuestos y ads.</text>
+
+  <rect x="40" y="136" width="520" height="544" rx="34" fill="#0d1728" stroke="#22344b"/>
+  <text x="72" y="182" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">ENTRADAS</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="72" y="236" fill="#ffffff" font-size="18" font-weight="700">Precio de venta</text>
+    <rect x="72" y="252" width="456" height="58" rx="18" fill="#09111e" stroke="#2a3f5a"/>
+    <text x="96" y="289" fill="#9fb0c9" font-size="20">Ej: 89.900</text>
+
+    <text x="72" y="354" fill="#ffffff" font-size="18" font-weight="700">Costo del producto</text>
+    <rect x="72" y="370" width="456" height="58" rx="18" fill="#09111e" stroke="#2a3f5a"/>
+    <text x="96" y="407" fill="#9fb0c9" font-size="20">Ej: 28.000</text>
+
+    <text x="72" y="472" fill="#ffffff" font-size="18" font-weight="700">Costo de envío + pasarela + CPA</text>
+    <rect x="72" y="488" width="456" height="58" rx="18" fill="#09111e" stroke="#2a3f5a"/>
+    <text x="96" y="525" fill="#9fb0c9" font-size="20">Carga lo que realmente descuentas</text>
+
+    <rect x="72" y="590" width="220" height="56" rx="18" fill="#38f2a1"/>
+    <text x="182" y="625" fill="#08111f" font-size="20" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Actualiza en vivo</text>
+  </g>
+
+  <rect x="600" y="136" width="560" height="544" rx="34" fill="#0d1728" stroke="#22344b"/>
+  <text x="632" y="182" fill="#d8e2f0" font-size="14" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">LECTURA</text>
+  <rect x="632" y="212" width="496" height="150" rx="28" fill="#09111e" stroke="#1c5a50"/>
+  <text x="668" y="264" fill="#9fb0c9" font-size="20" font-family="Arial, Helvetica, sans-serif">Beneficio real por venta</text>
+  <text x="668" y="334" fill="#ffc857" font-size="72" font-family="Arial, Helvetica, sans-serif" font-weight="700">$ 32.400</text>
+  <rect x="980" y="250" width="120" height="40" rx="18" fill="#3b2d16" stroke="#ffc857"/>
+  <text x="1040" y="276" fill="#ffc857" font-size="18" font-family="Arial, Helvetica, sans-serif" text-anchor="middle" font-weight="700">SANO</text>
+
+  <rect x="632" y="394" width="230" height="120" rx="22" fill="#09111e" stroke="#22344b"/>
+  <text x="660" y="434" fill="#9fb0c9" font-size="20" font-family="Arial, Helvetica, sans-serif">Margen neto</text>
+  <text x="660" y="490" fill="#ffffff" font-size="46" font-family="Arial, Helvetica, sans-serif" font-weight="700">36,0%</text>
+
+  <rect x="898" y="394" width="230" height="120" rx="22" fill="#09111e" stroke="#22344b"/>
+  <text x="926" y="434" fill="#9fb0c9" font-size="20" font-family="Arial, Helvetica, sans-serif">ROAS equilibrio</text>
+  <text x="926" y="490" fill="#ffffff" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="700">2,8x</text>
+
+  <text x="632" y="586" fill="#d8e2f0" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700">La idea es simple:</text>
+  <text x="632" y="622" fill="#9fb0c9" font-size="20" font-family="Arial, Helvetica, sans-serif">Si aquí no se ve sano, no escales tráfico ni descuentos.</text>
+</svg>
