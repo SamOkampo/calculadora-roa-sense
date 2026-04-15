@@ -14,7 +14,19 @@
   </url>
   <url>
     <loc>https://escalamargen.com/guia/</loc>
-    <lastmod>2026-04-09</lastmod>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://escalamargen.com/calculadora-margen-ganancia/</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://escalamargen.com/precio-de-venta-con-margen/</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
